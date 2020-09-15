@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "298448875154",
+    "firebase_url": "https://albarecord-e03cd.firebaseio.com",
+    "project_id": "albarecord-e03cd",
+    "storage_bucket": "albarecord-e03cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:298448875154:android:8c2c86b124c8572318404b",
+        "android_client_info": {
+          "package_name": "com.AlbaRecord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "298448875154-sgbgeqvmu3tangso8re55i42jipefgo7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.AlbaRecord",
+            "certificate_hash": "74c476714abf0131e4df82820f16f04b70da3f7e"
+          }
+        },
+        {
+          "client_id": "298448875154-gngues4nbrubbm3b56pqdg0mdfhoprkj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwo2UjyOuSfL1luEU9HwTvrCwDQAN9WEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "298448875154-gngues4nbrubbm3b56pqdg0mdfhoprkj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
