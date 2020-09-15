@@ -58,7 +58,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    // 유저의 이메일 인증 유무를 확인합니다.
+    // 유저의 이메일 인증 유무를 확인합니다.ㅗ
     public void firebaseAuthCheck() {
         firebaseAuth.getInstance().getCurrentUser().reload();
         firebaseUser = firebaseAuth.getInstance().getCurrentUser();
