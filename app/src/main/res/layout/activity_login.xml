@@ -1,79 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".login.LoginActivity">
+    android:background="@drawable/loginbackground"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:background="#ffacac"
-        android:textColor="@color/colorAccent"
-        android:textSize="23dp" />
 
-    <EditText
-        android:id="@+id/editTextEmail"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:hint="이메일"
-        android:inputType="textEmailAddress" />
+    <Button
+        android:id="@+id/textViewFindpassword"
+        android:layout_width="184dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="516dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="아이디/비밀번호 찾기"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextPassword"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:hint="비밀번호"
-        android:inputType="textPassword" />
+    <Button
+        android:id="@+id/textViewSignin"
+        android:layout_width="184dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="516dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="회원가입"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewFindpassword"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonSignup"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="15dp"
-        android:background="#fbbd5c"
-        android:text="로그인" />
+        android:layout_width="76dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="348dp"
+        android:background="@drawable/LoginButton"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="password 입력"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-        <TextView
-            android:id="@+id/textViewFindpassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="아이디/비밀번호찾기"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textViewSignin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="쿠플존 회원가입"
-            android:textColor="#971c3c"
-            android:textSize="25dp" />
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="348dp"
+        android:ems="10"
+        android:hint="e-mail ID 입력"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textviewMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="50dp"
-        android:textColor="@color/colorAccent" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
