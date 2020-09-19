@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">AlbaRecord</string>
     <string name="알바조회">알바\n조회</string>
+    <string name="열람한후기">열람한\n후기</string>
 </resources>
