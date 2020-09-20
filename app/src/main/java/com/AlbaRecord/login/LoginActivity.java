@@ -36,12 +36,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // 파이어베이스 객체 선언
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
-    Button Signupbtn,Loginbtn;
+    Button Signupbtn, Loginbtn;
+    String flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        flag = getIntent().getStringExtra("Flag");
+
 
         // 파이어베이스 초기화
         firebaseAuth = FirebaseAuth.getInstance();
@@ -120,7 +123,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             userLogin();
         }
         if (view == Signupbtn) {
-            startActivity(new Intent(this, BossSignupActivity.class));
+            if(flag.equals("사장")) {
+                startActivity(new Intent(this, BossSignupActivity.class));
+            }else if(flag.equals("직원")){
+                startActivity(new Intent(this, EmployeeSignupActivity.class));
+            }
+
         }
         if (view == textviewFindPassword) {
             startActivity(new Intent(this, FindActivity.class));

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.AlbaRecord.login.LoginActivity;
+import com.AlbaRecord.login.LoginWayActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -22,11 +23,13 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    private Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(this);
+
+
+
 
 
 
@@ -49,4 +57,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        if(v==logout){
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
+            finish();
+        }
+    }
 }
