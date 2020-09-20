@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     //define view objects
     EditText editTextEmail;
     EditText editTextPassword;
-    Button buttonSignin;
-    TextView textviewSingin;
+
+
     TextView textviewMessage;
     TextView textviewFindPassword;
     ProgressDialog progressDialog;
@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     // 파이어베이스 객체 선언
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    Button Signupbtn,Loginbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +62,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textviewSingin = (TextView) findViewById(R.id.textViewSignin);
+        Signupbtn = findViewById(R.id.buttonSignup);//버튼
         textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         textviewFindPassword = (TextView) findViewById(R.id.textViewFindpassword);
-        buttonSignin = (Button) findViewById(R.id.buttonSignup);
+        Loginbtn = (Button) findViewById(R.id.loginbutton);//버튼
         progressDialog = new ProgressDialog(this);
 
         //button click event
-        buttonSignin.setOnClickListener(this);
-        textviewSingin.setOnClickListener(this);
+        Loginbtn.setOnClickListener(this);
+        Signupbtn.setOnClickListener(this);
         textviewFindPassword.setOnClickListener(this);
     }
 
@@ -115,11 +116,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (view == buttonSignin) {
+        if (view == Loginbtn) {
             userLogin();
         }
-        if (view == textviewSingin) {
-            startActivity(new Intent(this, SignupActivity.class));
+        if (view == Signupbtn) {
+            startActivity(new Intent(this, BossSignupActivity.class));
         }
         if (view == textviewFindPassword) {
             startActivity(new Intent(this, FindActivity.class));

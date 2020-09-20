@@ -1,154 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bosssignupbackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signupbackground"
+    >
+
+
+
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/information"
-        android:layout_width="366dp"
-        android:layout_height="211dp"
-        app:layout_constraintBottom_toTopOf="@+id/bossinformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.924">
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress2"
-            android:layout_width="259dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="4dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.831"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="233dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="4dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.864"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword3"
-            android:layout_width="232dp"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.865"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <EditText
-            android:id="@+id/editTextPhone"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="phone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.57"
-            app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="54dp"
-            android:layout_height="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/information_textview"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="#ED6432"
+            android:text="기본정보"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.973"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.882" />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/eamil"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="Email:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/email_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/email_edittext" />
+
+        <EditText
+            android:id="@+id/email_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="10sp"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/eamil"
+            app:layout_constraintTop_toBottomOf="@+id/information_textview" />
+
+        <TextView
+            android:id="@+id/password"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="Password:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/password_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
+
+        <EditText
+            android:id="@+id/password_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
+
+        <TextView
+            android:id="@+id/password_re"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="Password:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/password_re_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
+
+        <EditText
+            android:id="@+id/password_re_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+
+            android:text="전화번호:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/phone_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
+
+
+        <EditText
+            android:id="@+id/phone_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/password"
+            app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bossinformation"
-        android:layout_width="365dp"
-        android:layout_height="244dp"
-        android:layout_marginBottom="104dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information">
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="64dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+        <TextView
+            android:id="@+id/bossinformation_textview"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="#ED6432"
+            android:text="사장님정보"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toTopOf="@+id/name_edittext"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="이름:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/brand_edittext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/name_edittext" />
+
         <EditText
-            android:id="@+id/editTextTextPersonName2"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:id="@+id/name_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/name"
+            app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />
+
+        <TextView
+            android:id="@+id/brand"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="상호명:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/brand_edittext"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toTopOf="@+id/brand_edittext" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/brand_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toEndOf="@+id/brand"
+            app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="주소:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/address_edittext"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toTopOf="@+id/address_edittext" />
 
         <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="274dp"
-            android:layout_height="30dp"
+            android:id="@+id/address_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.142"
+            app:layout_constraintStart_toEndOf="@+id/address"
+            app:layout_constraintTop_toBottomOf="@+id/brand_edittext" />
+
+        <TextView
+            android:id="@+id/business"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:text="사업자등록번호:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/business_edittext"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
-            app:layout_constraintVertical_bias="0.865" />
+            app:layout_constraintTop_toBottomOf="@+id/address_edittext" />
+
+        <EditText
+            android:id="@+id/business_edittext"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/business"
+            app:layout_constraintTop_toBottomOf="@+id/address_edittext" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="101dp"
-        android:layout_height="45dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/buttonSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="18dp"
+        android:text="회원가입"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintTop_toBottomOf="@+id/bossinformation" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
