@@ -47,13 +47,19 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
     FirebaseFirestore firebaseStore;
 
     EditText email_edittext, password_edittext, password_re_edittext, phone_edittext;
-    EditText name_edittext, brand_edittext, address_edittext, business_edittext;
-    Button buttonSignup;
+    EditText name_edittext, brand_edittext,address_edittext,  business_edittext;
+    Button buttonSignup,address_button;
+    TextView address_result;
+    String arg1="주소를입력하시오";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_signup);
+        initfindId();
+        String arg1=getIntent().getStringExtra("주소");
+
 
         //initializig firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
@@ -64,22 +70,15 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             //그리고 profile 액티비티를 연다.
             startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
         }
-        //initializing views
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        //editTextPasswordCheck = (EditText) findViewById(R.id.editTextPasswordCheck);
-        editTextPhone = (EditText) findViewById(R.id.editTextPhone);
-        //editTextNickname = (EditText) findViewById(R.id.editTextNickname);
-        textviewMessage = (TextView) findViewById(R.id.textviewMessage);
-        buttonSignup = (Button) findViewById(R.id.buttonSignup);
-        progressDialog = new ProgressDialog(this);
-        //textviewSingin=findViewById(R.id)
-        //button click event
-        //buttonSignup.setOnClickListener(this);
-//        textviewSingin.setOnClickListener(this);
 
-        initfindId();
+        progressDialog = new ProgressDialog(this);
+
+        address_result.setText(arg1);
+
+
+
         buttonSignup.setOnClickListener(this);
+        address_button.setOnClickListener(this);
 
 
     }
@@ -91,9 +90,17 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         phone_edittext = findViewById(R.id.phone_edittext);
         name_edittext = findViewById(R.id.name_edittext);
         brand_edittext = findViewById(R.id.brand_edittext);
-        address_edittext = findViewById(R.id.address_edittext);
+        address_button=findViewById(R.id.address_button);
         business_edittext = findViewById(R.id.business_edittext);
         buttonSignup = findViewById(R.id.buttonSignup);
+        address_result=findViewById(R.id.address_result);
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        //editTextPasswordCheck = (EditText) findViewById(R.id.editTextPasswordCheck);
+        editTextPhone = (EditText) findViewById(R.id.editTextPhone);
+        //editTextNickname = (EditText) findViewById(R.id.editTextNickname);
+        textviewMessage = (TextView) findViewById(R.id.textviewMessage);
+        buttonSignup = (Button) findViewById(R.id.buttonSignup);
     }
 
     //button click event
@@ -107,6 +114,11 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             finish();
             startActivity(new Intent(this, LoginActivity.class)); //추가해 줄 로그인 액티비티
         }
+        if(view==address_button){
+            finish();
+            startActivity(new Intent(this, DaumWebViewActivity.class)); //추가해 줄 로그인 액티비티
+
+        }
     }
 
     //Firebse creating a new user
@@ -118,8 +130,10 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         String phoneNumber = phone_edittext.getText().toString().trim();
         String name = name_edittext.getText().toString().trim();
         String brand = brand_edittext.getText().toString().trim();
-        String address = address_edittext.getText().toString().trim();
+        String address = arg1;
         String businessNum = business_edittext.getText().toString().trim();
+
+
 
 
         //email과 password가 비었는지 아닌지를 체크 한다.
@@ -133,6 +147,11 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             return;
         }
         if (TextUtils.isEmpty(passwordRe)) {
+            Toast.makeText(this, "비밀번호 확인을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(address.equals("주소를입력하시오")){
             Toast.makeText(this, "비밀번호 확인을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
