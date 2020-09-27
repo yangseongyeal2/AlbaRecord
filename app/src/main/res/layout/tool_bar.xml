@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:background="@color/colorMain"
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:layout_gravity="end"
+            android:foreground="?attr/selectableItemBackground"
+             />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:text="알바굼"
+            android:textColor="@color/colorWhite"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+</LinearLayout>

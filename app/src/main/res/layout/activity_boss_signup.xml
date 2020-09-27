@@ -37,6 +37,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+
                 android:id="@+id/eamil"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -57,9 +58,11 @@
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/eamil"
-                app:layout_constraintTop_toBottomOf="@+id/information_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/information_textview"
+                android:background="@drawable/login_edittext"/>
 
             <TextView
+
                 android:id="@+id/password"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -72,6 +75,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
             <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_edittext"
                 android:id="@+id/password_edittext"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
@@ -82,6 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
             <TextView
+
                 android:id="@+id/password_re"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
@@ -94,6 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
 
             <EditText
+                android:background="@drawable/login_edittext"
                 android:id="@+id/password_re_edittext"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
@@ -101,7 +108,8 @@
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/password"
-                app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/password_edittext"
+                android:layout_marginTop="10dp"/>
 
             <TextView
                 android:id="@+id/phone"
@@ -118,6 +126,8 @@
 
 
             <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_edittext"
                 android:id="@+id/phone_edittext"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -165,6 +175,7 @@
                 app:layout_constraintTop_toTopOf="@+id/name_edittext" />
 
             <EditText
+                android:background="@drawable/login_edittext"
                 android:id="@+id/name_edittext"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
@@ -188,6 +199,8 @@
                 app:layout_constraintTop_toTopOf="@+id/brand_edittext" />
 
             <EditText
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login_edittext"
                 android:id="@+id/brand_edittext"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
@@ -228,8 +241,8 @@
                 android:text="검색"
                 app:layout_constraintBottom_toTopOf="@+id/business_edittext"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/address_edittext"
-                app:layout_constraintTop_toTopOf="@+id/address_edittext" />
+                app:layout_constraintStart_toEndOf="@+id/address_result"
+                app:layout_constraintTop_toBottomOf="@+id/brand_edittext" />
 
 
             <TextView
@@ -245,6 +258,7 @@
                 app:layout_constraintTop_toTopOf="@+id/business_edittext" />
 
             <EditText
+                android:background="@drawable/login_edittext"
                 android:id="@+id/business_edittext"
                 android:layout_width="250dp"
                 android:layout_height="40dp"

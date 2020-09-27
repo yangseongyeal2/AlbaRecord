@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.AlbaRecord.login.LoginActivity;
 import com.AlbaRecord.login.LoginWayActivity;
@@ -25,27 +26,22 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
-    private Button logout;
+    private Button logout,salary;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        logout=findViewById(R.id.logout);
-        logout.setOnClickListener(this);
+        initToolBar();
+        initViewId();
 
-
+        salary.setOnClickListener(this);
 
 
 
@@ -56,13 +52,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void initViewId() {
+        salary=findViewById(R.id.salary);
+    }
+
+    private void initToolBar() {
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(this);
+        Toolbar toolbar=findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
 
     @Override
     public void onClick(View v) {
-        if(v==logout){
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
-            finish();
+
+        switch (v.getId()){
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
+                finish();
+                break;
+            case R.id.salary:
+                startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
+                break;
         }
+
     }
 }
