@@ -51,6 +51,8 @@ public class UserModel {
         this.businessNum = businessNum;
         this.flag=flag;
     }
+    public UserModel(){}
+
 
     public String getEmail() {
         return email;

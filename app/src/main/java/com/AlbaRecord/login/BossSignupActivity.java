@@ -2,6 +2,7 @@ package com.AlbaRecord.login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -58,7 +59,9 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_signup);
         initfindId();
-        String arg1=getIntent().getStringExtra("주소");
+
+        takeTempoInfo();
+
 
 
         //initializig firebase auth object
@@ -73,7 +76,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
 
         progressDialog = new ProgressDialog(this);
 
-        address_result.setText(arg1);
+
 
 
 
@@ -81,6 +84,28 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         address_button.setOnClickListener(this);
 
 
+    }
+
+    private void takeTempoInfo() {
+        SharedPreferences pref = getSharedPreferences("UserModel", 0);
+        String email = pref.getString("email", "");
+        email_edittext.setText(email);
+        String password = pref.getString("password", "");
+        password_edittext.setText(password);
+        String passwordRe = pref.getString("passwordRe", "");
+        password_re_edittext.setText(passwordRe);
+        String phoneNumber = pref.getString("phoneNumber", "");
+        phone_edittext.setText(phoneNumber);
+        String name = pref.getString("name", "");
+        name_edittext.setText(name);
+        String brand = pref.getString("brand", "");
+        brand_edittext.setText(brand);
+        String address = pref.getString("address", "");
+        address_result.setText(address);
+        String businessNum = pref.getString("businessNum", "");
+        business_edittext.setText(businessNum);
+        String arg1=getIntent().getStringExtra("주소");
+        address_result.setText(arg1);
     }
 
     private void initfindId() {
@@ -115,10 +140,42 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             startActivity(new Intent(this, LoginActivity.class)); //추가해 줄 로그인 액티비티
         }
         if(view==address_button){
+
+            saveTempoInfo();
             finish();
             startActivity(new Intent(this, DaumWebViewActivity.class)); //추가해 줄 로그인 액티비티
 
         }
+    }
+
+    private void saveTempoInfo() {
+        String email = email_edittext.getText().toString().trim();
+        String password = password_edittext.getText().toString().trim();
+        String passwordRe = password_re_edittext.getText().toString().trim();
+        String phoneNumber = phone_edittext.getText().toString().trim();
+        String name = name_edittext.getText().toString().trim();
+        String brand = brand_edittext.getText().toString().trim();
+        String address = arg1;
+        String businessNum = business_edittext.getText().toString().trim();
+
+        SharedPreferences pref = getSharedPreferences("UserModel", 0);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.putString("passwordRe", passwordRe);
+        editor.putString("phoneNumber", phoneNumber);
+        editor.putString("name", name);
+        editor.putString("brand", brand);
+        editor.putString("address", address);
+        editor.putString("businessNum", businessNum);
+        //editor.commit();
+        editor.apply();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //saveTempoInfo();
     }
 
     //Firebse creating a new user
@@ -150,9 +207,13 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             Toast.makeText(this, "비밀번호 확인을 입력해 주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (!password.equals(passwordRe)) {
+            Toast.makeText(this, "비밀번호와 비밀번호 확인이 다릅니다", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        if(address.equals("주소를입력하시오")){
-            Toast.makeText(this, "비밀번호 확인을 입력해 주세요.", Toast.LENGTH_SHORT).show();
+        if(address_result.getText().toString().equals("주소를입력하시오")){
+            Toast.makeText(this, "주소를 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
 
