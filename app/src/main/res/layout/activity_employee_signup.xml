@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/employeesignupbackground"
     tools:context=".MainActivity">
 
 
@@ -166,7 +165,7 @@
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:text="이름:"
@@ -179,7 +178,7 @@
             <EditText
                 android:background="@drawable/login_edittext"
                 android:id="@+id/name_edittext"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="10sp"
                 android:ems="10"
@@ -190,7 +189,7 @@
 
             <TextView
                 android:id="@+id/age"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:text="나이:"
@@ -204,7 +203,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/login_edittext"
                 android:id="@+id/age_edittext"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textPersonName"
@@ -215,7 +214,7 @@
 
             <TextView
                 android:id="@+id/address"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:layout_marginBottom="20dp"
@@ -249,7 +248,7 @@
 
             <TextView
                 android:id="@+id/education"
-                android:layout_width="80dp"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:text="최종학력:"
@@ -262,7 +261,7 @@
             <EditText
                 android:background="@drawable/login_edittext"
                 android:id="@+id/education_edittext"
-                android:layout_width="150dp"
+                android:layout_width="170dp"
                 android:layout_height="40dp"
                 android:ems="10"
                 android:inputType="textPersonName"
