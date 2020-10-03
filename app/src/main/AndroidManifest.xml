@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".EmployeeSearch.SearchEmployeeActivity"></activity>
+        <activity android:name=".login.EmployeeSignupDetail1Activity" />
         <activity android:name=".SalaryActivity" />
         <activity android:name=".login.DaumWebViewActivity" />
         <activity android:name=".login.LoginWayActivity">
