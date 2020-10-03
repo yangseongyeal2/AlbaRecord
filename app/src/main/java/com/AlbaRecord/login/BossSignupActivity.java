@@ -122,7 +122,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         //editTextPasswordCheck = (EditText) findViewById(R.id.editTextPasswordCheck);
-        editTextPhone = (EditText) findViewById(R.id.editTextPhone);
+        editTextPhone = (EditText) findViewById(R.id.phone_edittext);
         //editTextNickname = (EditText) findViewById(R.id.editTextNickname);
         textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
