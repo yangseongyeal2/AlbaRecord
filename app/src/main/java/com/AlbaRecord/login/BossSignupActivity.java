@@ -260,7 +260,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                     business_edittext.getText().toString().trim(),
                                     0//사장님
                             );
-                            firebaseStore.collection("users")
+                            firebaseStore.collection("boss")
                                     .document(firebaseUser.getUid())
                                     .set(userModel)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {

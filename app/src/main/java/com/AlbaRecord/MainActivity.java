@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -41,6 +42,8 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -111,9 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
-
-
     }
 
 
@@ -129,11 +129,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initToolBar() {
-        logout=findViewById(R.id.logout);
-        logout.setOnClickListener(this);
         Toolbar toolbar=findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar() ;
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(this);
+
     }
 
 
