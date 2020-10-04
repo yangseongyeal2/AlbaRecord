@@ -170,6 +170,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         marker.setIconTintColor(Color.RED);
         marker.setMap(naverMap);
 
+//        naverMap.maps.Service.geocode({
+//                address: '불정로 6'
+//    }, function(status, response) {
+//            if (status !== naver.maps.Service.Status.OK) {
+//                return alert('Something wrong!');
+//            }
+//
+//            var result = response.result, // 검색 결과의 컨테이너
+//                    items = result.items; // 검색 결과의 배열
+//
+//            // do Something
+//        });
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode,
