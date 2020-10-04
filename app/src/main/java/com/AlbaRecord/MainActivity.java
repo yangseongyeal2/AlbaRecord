@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.AlbaRecord.login.LoginActivity;
 import com.AlbaRecord.login.LoginWayActivity;
+import com.AlbaRecord.searchemployee.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();
-    private Button logout,salary;
+    private Button logout,salary,albaReserch;
     private MapView map_view;
     private NaverMap naverMap;
 
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initViewId();
 
         salary.setOnClickListener(this);
+        albaReserch.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initViewId() {
         salary=findViewById(R.id.salary);
+        albaReserch=findViewById(R.id.albaReserch);
        // map_view=(MapView) findViewById(R.id.map_view);
 
     }
@@ -148,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.salary:
                 startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
+                break;
+            case R.id.albaReserch:
+                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
                 break;
         }
 

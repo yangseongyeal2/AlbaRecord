@@ -108,7 +108,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/carrerlayout1"
       android:layout_width="400dp"
-      android:layout_height="128dp"
+      android:layout_height="wrap_content"
       android:layout_marginTop="4dp"
       android:background="@drawable/grayedgebox"
       app:layout_constraintEnd_toEndOf="parent"
@@ -205,210 +205,14 @@
         app:layout_constraintStart_toEndOf="@+id/brandnavermap1"
         app:layout_constraintTop_toTopOf="@+id/carrer1"
         app:srcCompat="@drawable/pentagon" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/carrerlayout2"
-      android:layout_width="400dp"
-      android:layout_height="128dp"
-      android:layout_marginTop="4dp"
-      android:background="@drawable/grayedgebox"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/carrerlayout1">
-
-
-    <TextView
-        android:id="@+id/carrer2"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_main"
-        android:gravity="center_horizontal"
-        android:text="경력2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/brandnameis2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="상호명:"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer2"
-        app:layout_constraintStart_toEndOf="@+id/carrer2"
-        app:layout_constraintTop_toTopOf="@+id/carrer2" />
-
-    <TextView
-        android:id="@+id/brandname2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="ex)재은커피"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer2"
-        app:layout_constraintStart_toEndOf="@+id/brandnameis2"
-        app:layout_constraintTop_toTopOf="@+id/carrer2"
-        app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/brandnavermap2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/navermap"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer2"
-        app:layout_constraintStart_toEndOf="@+id/brandname2"
-        app:layout_constraintTop_toTopOf="@+id/carrer2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/branddivis2"
+        android:id="@+id/more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="직종분류:"
-        app:layout_constraintStart_toStartOf="@+id/carrer2"
-        app:layout_constraintTop_toBottomOf="@+id/carrer2" />
-
-    <TextView
-        android:id="@+id/branddiv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="ex)카페"
-        app:layout_constraintStart_toEndOf="@+id/branddivis2"
-        app:layout_constraintTop_toTopOf="@+id/branddivis2" />
-
-
-    <TextView
-        android:id="@+id/carrerlong2"
-        android:layout_width="201dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="근무기간"
-        app:layout_constraintStart_toStartOf="@+id/carrer2"
-        app:layout_constraintTop_toBottomOf="@+id/branddivis2" />
-
-    <TextView
-        android:id="@+id/careerthing2"
-        android:layout_width="201dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="담당업무"
-        app:layout_constraintStart_toStartOf="@+id/carrer2"
-        app:layout_constraintTop_toBottomOf="@+id/carrerlong2" />
-
-    <ImageView
-        android:id="@+id/carrerpentagon2"
-        android:layout_width="138dp"
-        android:layout_height="101dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/brandnavermap2"
-        app:layout_constraintTop_toTopOf="@+id/carrer2"
-        app:srcCompat="@drawable/pentagon" />
+        android:text="more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carrerpentagon1" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@+id/carrerlayout3"
-      android:layout_width="400dp"
-      android:layout_height="128dp"
-      android:layout_marginTop="4dp"
-      android:background="@drawable/grayedgebox"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/carrerlayout2">
-
-
-    <TextView
-        android:id="@+id/carrer3"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_main"
-        android:gravity="center_horizontal"
-        android:text="경력3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/brandnameis3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="상호명:"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer3"
-        app:layout_constraintStart_toEndOf="@+id/carrer3"
-        app:layout_constraintTop_toTopOf="@+id/carrer3" />
-
-    <TextView
-        android:id="@+id/brandname3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="ex)재은커피"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer3"
-        app:layout_constraintStart_toEndOf="@+id/brandnameis3"
-        app:layout_constraintTop_toTopOf="@+id/carrer3"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/brandnavermap3"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/navermap"
-        app:layout_constraintBottom_toBottomOf="@+id/carrer3"
-        app:layout_constraintStart_toEndOf="@+id/brandname3"
-        app:layout_constraintTop_toTopOf="@+id/carrer3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/branddivis3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="직종분류:"
-        app:layout_constraintStart_toStartOf="@+id/carrer3"
-        app:layout_constraintTop_toBottomOf="@+id/carrer3" />
-
-    <TextView
-        android:id="@+id/branddiv3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="ex)카페"
-        app:layout_constraintStart_toEndOf="@+id/branddivis3"
-        app:layout_constraintTop_toTopOf="@+id/branddivis3" />
-
-
-    <TextView
-        android:id="@+id/carrerlong3"
-        android:layout_width="201dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="근무기간"
-        app:layout_constraintStart_toStartOf="@+id/carrer3"
-        app:layout_constraintTop_toBottomOf="@+id/branddivis3" />
-
-    <TextView
-        android:id="@+id/careerthing3"
-        android:layout_width="201dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:text="담당업무"
-        app:layout_constraintStart_toStartOf="@+id/carrer3"
-        app:layout_constraintTop_toBottomOf="@+id/carrerlong3" />
-
-    <ImageView
-        android:id="@+id/carrerpentagon3"
-        android:layout_width="138dp"
-        android:layout_height="101dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/brandnavermap3"
-        app:layout_constraintTop_toTopOf="@+id/carrer3"
-        app:srcCompat="@drawable/pentagon" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
