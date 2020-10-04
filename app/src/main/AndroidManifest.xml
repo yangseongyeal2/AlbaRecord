@@ -2,9 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.AlbaRecord" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <meta-data android:name="com.kakao.sdk.AppKey" android:value="fc5791b03b911bc7efa4d8961a94ae9f"/>
+
+
+
+
+
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -31,6 +40,9 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".login.FindActivity" />
         <activity android:name=".login.LoginActivity" />
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="990du68u3n" />
     </application>
 
 </manifest>
