@@ -255,7 +255,8 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                     phone_edittext.getText().toString().trim(),
                                     name_edittext.getText().toString().trim(),
                                     brand_edittext.getText().toString().trim(),
-                                    address_edittext.getText().toString().trim(),
+                                    //address_edittext.getText().toString().trim(),
+                                    arg1,
                                     business_edittext.getText().toString().trim(),
                                     0//사장님
                             );
