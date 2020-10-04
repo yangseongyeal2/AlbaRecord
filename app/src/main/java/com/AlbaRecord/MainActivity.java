@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.login.LoginActivity;
 import com.AlbaRecord.login.LoginWayActivity;
+import com.AlbaRecord.searchemployee.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, btn1;
+    private Button logout, salary, btn1,albaReserch;
     private MapView map_view;
     private NaverMap naverMap;
     List<UserModel> bosslist = new ArrayList<>();
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         salary.setOnClickListener(this);
         btn1.setOnClickListener(this);
+        albaReserch.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         salary = findViewById(R.id.salary);
         // map_view=(MapView) findViewById(R.id.map_view);
         btn1 = (Button) findViewById(R.id.btn1);
+        albaReserch=(Button)findViewById(R.id.albaReserch);
 
     }
 
@@ -156,16 +159,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.salary:
                 startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
                 break;
-            case R.id.btn1:
-                List<Address> list = null;
-                final Geocoder geocoder = new Geocoder(this);
-
-                try {
-                    list = geocoder.getFromLocationName("서울 강남구 도곡동 957-14하늘빌딩", 10);
-                    Log.d("위도", list.get(0).toString());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            case R.id.albaReserch:
+                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
 
                 break;
         }

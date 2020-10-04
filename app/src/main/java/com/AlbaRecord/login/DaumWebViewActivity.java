@@ -20,6 +20,7 @@ public class DaumWebViewActivity extends AppCompatActivity {
     Dialog loadingDialog;
     private TextView result;
     private Handler handler;
+    String flag;
 
 
     @Override
@@ -28,6 +29,7 @@ public class DaumWebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daum_web_view);
         result = (TextView) findViewById(R.id.result);
+        flag=getIntent().getStringExtra("flag");
 
 
         // WebView 초기화
@@ -103,11 +105,20 @@ public class DaumWebViewActivity extends AppCompatActivity {
 
                    // init_webView();
                     finish();
-                    Intent intent=new Intent(DaumWebViewActivity.this,BossSignupActivity.class);
-                    //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
-                    intent.putExtra("주소",arg2+arg3);
+                    if(flag.equals("사장")){
+                        Intent intent=new Intent(DaumWebViewActivity.this,BossSignupActivity.class);
+                        //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
+                        intent.putExtra("주소",arg2+arg3);
+                        startActivity(intent);
+                    }else if(flag.equals("직원")){
+                        Intent intent=new Intent(DaumWebViewActivity.this,EmployeeSignupActivity.class);
+                        //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
+                        intent.putExtra("주소",arg2+arg3);
+                        startActivity(intent);
+                    }
 
-                    startActivity(intent);
+
+
                 }
 
             });

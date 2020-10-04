@@ -43,7 +43,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
     EditText editTextPhone;
     EditText editTextNickname;
 
-    TextView textviewSingin;
+    //TextView textviewSingin;
     TextView textviewMessage;
     ProgressDialog progressDialog;
 
@@ -156,16 +156,13 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         if (view == buttonSignup) {
             registerUser();
         }
-
-        if (view == textviewSingin) {
-            finish();
-            startActivity(new Intent(this, LoginActivity.class)); //추가해 줄 로그인 액티비티
-        }
         if(view==address_button){
 
             saveTempoInfo();
             finish();
-            startActivity(new Intent(this, DaumWebViewActivity.class)); //추가해 줄 로그인 액티비티
+            Intent intent=new Intent(this,DaumWebViewActivity.class);
+            intent.putExtra("flag","사장");
+            startActivity(intent); //추가해 줄 로그인 액티비티
 
         }
     }
