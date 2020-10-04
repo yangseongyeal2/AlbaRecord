@@ -8,6 +8,15 @@
     tools:context=".searchemployee.ShowEmployeeActivity"
     android:background="@drawable/short_background">
 
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent">
+
+
+
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/basicinform"
       android:layout_width="410dp"
@@ -19,6 +28,7 @@
 
 
     <ImageView
+        android:background="@drawable/grayedgebox"
         android:id="@+id/photo"
         android:layout_width="100dp"
         android:layout_height="130dp"
@@ -62,15 +72,15 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
+        android:background="@drawable/graybox"
         android:id="@+id/selfintro"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/btn_main"
+        android:layout_height="20dp"
+        android:layout_marginStart="88dp"
         android:gravity="center_horizontal"
         android:text="자기소개"
         app:layout_constraintBottom_toBottomOf="@+id/photo"
-        app:layout_constraintStart_toEndOf="@+id/photo"
+        app:layout_constraintStart_toStartOf="@+id/selfintrobody"
         app:layout_constraintTop_toTopOf="@+id/photo"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -78,13 +88,14 @@
         android:id="@+id/selfintrobody"
         android:layout_width="260dp"
         android:layout_height="110dp"
+        android:background="@drawable/grayedgebox"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/selfintro"
+        app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toBottomOf="@+id/selfintro" />
 
     <Button
+        android:background="@drawable/btn_main"
         android:id="@+id/setmyemployee"
         android:layout_width="161dp"
         android:layout_height="49dp"
@@ -94,6 +105,7 @@
         app:layout_constraintTop_toBottomOf="@+id/selfintrobody" />
 
     <Button
+        android:background="@drawable/btn_main"
         android:id="@+id/wish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,7 +120,7 @@
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/carrerlayout1"
       android:layout_width="400dp"
-      android:layout_height="128dp"
+      android:layout_height="wrap_content"
       android:layout_marginTop="4dp"
       android:background="@drawable/grayedgebox"
       app:layout_constraintEnd_toEndOf="parent"
@@ -119,10 +131,10 @@
     <TextView
         android:id="@+id/carrer1"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_main"
+        android:background="@drawable/graybox"
         android:gravity="center_horizontal"
         android:text="경력1"
         app:layout_constraintStart_toStartOf="parent"
@@ -201,16 +213,28 @@
         android:id="@+id/carrerpentagon1"
         android:layout_width="138dp"
         android:layout_height="101dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/brandnavermap1"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/carrer1"
         app:srcCompat="@drawable/pentagon" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/btn_main"
+        android:text="자세히보기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/carrerpentagon1"
+        app:layout_constraintTop_toBottomOf="@+id/carrerpentagon1" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
   <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/carrerlayout2"
       android:layout_width="400dp"
-      android:layout_height="128dp"
+      android:layout_height="wrap_content"
       android:layout_marginTop="4dp"
       android:background="@drawable/grayedgebox"
       app:layout_constraintEnd_toEndOf="parent"
@@ -221,10 +245,10 @@
     <TextView
         android:id="@+id/carrer2"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_main"
+        android:background="@drawable/graybox"
         android:gravity="center_horizontal"
         android:text="경력2"
         app:layout_constraintStart_toStartOf="parent"
@@ -303,10 +327,22 @@
         android:id="@+id/carrerpentagon2"
         android:layout_width="138dp"
         android:layout_height="101dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/brandnavermap2"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/carrer2"
         app:srcCompat="@drawable/pentagon" />
+
+    <Button
+        android:background="@drawable/btn_main"
+        android:id="@+id/viewmore"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:text="자세히보기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/carrerpentagon2"
+        app:layout_constraintTop_toBottomOf="@+id/carrerpentagon2" />
   </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -324,10 +360,10 @@
     <TextView
         android:id="@+id/carrer3"
         android:layout_width="70dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/btn_main"
+        android:background="@drawable/graybox"
         android:gravity="center_horizontal"
         android:text="경력3"
         app:layout_constraintStart_toStartOf="parent"
@@ -406,9 +442,12 @@
         android:id="@+id/carrerpentagon3"
         android:layout_width="138dp"
         android:layout_height="101dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/brandnavermap3"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/carrer3"
         app:srcCompat="@drawable/pentagon" />
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+  </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
