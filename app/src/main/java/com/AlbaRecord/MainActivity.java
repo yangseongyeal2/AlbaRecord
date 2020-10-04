@@ -7,6 +7,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.login.LoginActivity;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,6 +31,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.LocationTrackingMode;
@@ -50,18 +57,22 @@ import android.view.Window;
 import android.widget.Button;
 
 
-
+import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
-    private FirebaseAuth mAuth=FirebaseAuth.getInstance();
-    private Button logout,salary;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private Button logout, salary, btn1;
     private MapView map_view;
     private NaverMap naverMap;
+    List<UserModel> bosslist = new ArrayList<>();
 
 
     @Override
@@ -70,8 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initToolBar();
         initViewId();
+        Retreive_bosslist();
 
         salary.setOnClickListener(this);
+        btn1.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -93,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new NaverMapSdk.NaverCloudPlatformClient("990du68u3n"));
 
 
-
         NaverMapOptions options = new NaverMapOptions()
                 .camera(new CameraPosition(new LatLng(35.1798159, 100.0750222), 8))
                 .mapType(NaverMap.MapType.Hybrid)
@@ -103,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .lightness(0.3f);
 
         FragmentManager fm = getSupportFragmentManager();
-        MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment) fm.findFragmentById(R.id.map);
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance(options);
             fm.beginTransaction().add(R.id.map, mapFragment).commit();
@@ -111,29 +123,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mapFragment.getMapAsync(this);//Onmapready메소드 호출
 
 
-
-
-
     }
 
 
-
-
-
-
-
     private void initViewId() {
-        salary=findViewById(R.id.salary);
-       // map_view=(MapView) findViewById(R.id.map_view);
+        salary = findViewById(R.id.salary);
+        // map_view=(MapView) findViewById(R.id.map_view);
+        btn1 = (Button) findViewById(R.id.btn1);
 
     }
 
     private void initToolBar() {
-        Toolbar toolbar=findViewById(R.id.tool_bar);
+        Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
-        ActionBar ab = getSupportActionBar() ;
+        ActionBar ab = getSupportActionBar();
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        logout=findViewById(R.id.logout);
+        logout = findViewById(R.id.logout);
         logout.setOnClickListener(this);
 
     }
@@ -142,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
@@ -150,6 +155,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.salary:
                 startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
+                break;
+            case R.id.btn1:
+                List<Address> list = null;
+                final Geocoder geocoder = new Geocoder(this);
+
+                try {
+                    list = geocoder.getFromLocationName("서울 강남구 도곡동 957-14하늘빌딩", 10);
+                    Log.d("위도", list.get(0).toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 break;
         }
 
@@ -161,34 +178,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.naverMap = naverMap;
         locationSource =
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
-        Log.d("맵레디","성공");
+        Log.d("맵레디", "성공");
         naverMap.setLocationSource(locationSource);
-
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-        Marker marker = new Marker();
-        marker.setPosition(new LatLng(37.5670135, 126.9783740));
-        marker.setWidth(50);
-        marker.setHeight(80);
-        marker.setIconTintColor(Color.RED);
-        marker.setMap(naverMap);
 
-//        naverMap.maps.Service.geocode({
-//                address: '불정로 6'
-//    }, function(status, response) {
-//            if (status !== naver.maps.Service.Status.OK) {
-//                return alert('Something wrong!');
-//            }
-//
-//            var result = response.result, // 검색 결과의 컨테이너
-//                    items = result.items; // 검색 결과의 배열
-//
-//            // do Something
-//        });
-
+//        Marker marker = new Marker();
+//        marker.setPosition(new LatLng(37.5670135, 126.9783740));
+//        marker.setWidth(50);
+//        marker.setHeight(80);
+//        marker.setIconTintColor(Color.RED);
+//        marker.setMap(naverMap);
     }
+
+    private void Retreive_bosslist() {
+        db.collection("boss").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        UserModel userModel = document.toObject(UserModel.class);
+                        bosslist.add(userModel);
+                        Log.d("TAG", document.getId() + " => " + document.getData());
+
+                        Marker marker = new Marker();
+                        Log.d("위도경도설정", String.valueOf(userModel.getLatitude()));
+                        marker.setPosition(new LatLng(userModel.getLatitude(), userModel.getLongtitude()));
+                        marker.setWidth(50);
+                        marker.setHeight(80);
+                        marker.setIconTintColor(Color.RED);
+                        marker.setMap(naverMap);
+
+                    }
+                } else {
+                    Log.d("TAG", "Error getting documents: ", task.getException());
+                }
+            }
+        });
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,  @NonNull int[] grantResults) {
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (locationSource.onRequestPermissionsResult(
                 requestCode, permissions, grantResults)) {
             if (!locationSource.isActivated()) { // 권한 거부됨

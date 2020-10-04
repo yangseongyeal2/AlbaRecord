@@ -10,11 +10,8 @@ public class UserModel {
     private String brand;
     private String address;
     private String businessNum;
-    int flag;//0 : 사장님 1: 직원 2: 관리자
-
-    public int getFlag() {
-        return flag;
-    }
+    private double latitude;
+    private double longtitude;
 
     @Override
     public String toString() {
@@ -26,8 +23,32 @@ public class UserModel {
                 ", brand='" + brand + '\'' +
                 ", address='" + address + '\'' +
                 ", businessNum='" + businessNum + '\'' +
+                ", latitude=" + latitude +
+                ", longtitude=" + longtitude +
                 ", flag=" + flag +
                 '}';
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongtitude() {
+        return longtitude;
+    }
+
+    public void setLongtitude(double longtitude) {
+        this.longtitude = longtitude;
+    }
+
+    int flag;//0 : 사장님 1: 직원 2: 관리자
+
+    public int getFlag() {
+        return flag;
     }
 
     public void setFlag(int flag) {
@@ -41,7 +62,9 @@ public class UserModel {
             , String brand
             , String address
             , String businessNum
-            ,int flag) {
+            ,int flag
+            ,double latitude
+            ,double longtitude) {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -50,6 +73,8 @@ public class UserModel {
         this.address = address;
         this.businessNum = businessNum;
         this.flag=flag;
+        this.latitude=latitude;
+        this.longtitude=longtitude;
     }
     public UserModel(){}
 

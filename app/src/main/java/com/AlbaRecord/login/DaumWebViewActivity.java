@@ -104,7 +104,8 @@ public class DaumWebViewActivity extends AppCompatActivity {
                    // init_webView();
                     finish();
                     Intent intent=new Intent(DaumWebViewActivity.this,BossSignupActivity.class);
-                    intent.putExtra("주소","("+arg1+")"+arg2+arg3);
+                    //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
+                    intent.putExtra("주소",arg2+arg3);
 
                     startActivity(intent);
                 }

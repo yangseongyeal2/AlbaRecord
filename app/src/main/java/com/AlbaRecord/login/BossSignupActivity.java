@@ -3,8 +3,11 @@ package com.AlbaRecord.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,7 +30,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BossSignupActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SignupActivity";
@@ -64,6 +69,8 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
 
 
 
+
+
         //initializig firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStore = FirebaseFirestore.getInstance();
@@ -85,6 +92,21 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
 
 
     }
+    private void getlat_logtitude(){
+        List<Address> list = null;
+        final Geocoder geocoder = new Geocoder(this);
+        try {
+            list=geocoder.getFromLocationName("서울 강남구 도곡동 957-14하늘빌딩",10);
+            Address addr=list.get(0);
+            double lat=addr.getLatitude();
+            double lon=addr.getLongitude();
+            Log.d("위도",String.valueOf(lat));
+            Log.d("경도",String.valueOf(lon));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("실패","list.get(0).toString()");
+        }
+    }
 
     private void takeTempoInfo() {
         SharedPreferences pref = getSharedPreferences("UserModel", 0);
@@ -104,7 +126,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         address_result.setText(address);
         String businessNum = pref.getString("businessNum", "");
         business_edittext.setText(businessNum);
-        String arg1=getIntent().getStringExtra("주소");
+        arg1=getIntent().getStringExtra("주소");
         address_result.setText(arg1);
     }
 
@@ -242,6 +264,21 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void loginProcess(final String email, final String password) {
+        List<Address> list = null;
+        double lat,lon;
+        final Geocoder geocoder = new Geocoder(this);
+        try {
+            list=geocoder.getFromLocationName(arg1,10);
+            Address addr=list.get(0);
+             lat=addr.getLatitude();
+             lon=addr.getLongitude();
+            Log.d("위도",String.valueOf(lat));
+            Log.d("경도",String.valueOf(lon));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.d("실패","list.get(0).toString()");
+            return;
+        }
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -258,7 +295,9 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                     //address_edittext.getText().toString().trim(),
                                     arg1,
                                     business_edittext.getText().toString().trim(),
-                                    0//사장님
+                                    0,//사장님
+                                    lat,
+                                    lon
                             );
                             firebaseStore.collection("boss")
                                     .document(firebaseUser.getUid())
@@ -270,7 +309,6 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                             sendEmail();
                                             finish();
                                             startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
-
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
