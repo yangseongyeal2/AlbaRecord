@@ -23,7 +23,6 @@
         <activity android:name=".searchemployee.ShowMoreEmployeeActivity"></activity>
         <activity android:name=".searchemployee.ShowEmployeeActivity"></activity>
         <activity android:name=".searchemployee.SearchEmployeeActivity" />
-        <activity android:name=".login.EmployeeSignupDetail1Activity" />
         <activity android:name=".SalaryActivity" />
         <activity android:name=".login.DaumWebViewActivity" />
         <activity android:name=".login.LoginWayActivity">
