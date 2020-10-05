@@ -1,6 +1,7 @@
 package com.AlbaRecord.login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
@@ -9,8 +10,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +57,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
     FirebaseFirestore firebaseStore;
 
     EditText email_edittext, password_edittext, password_re_edittext, phone_edittext;
-    EditText name_edittext, brand_edittext,address_edittext,  business_edittext;
+    EditText name_edittext, brand_edittext,  business_edittext;
     Button buttonSignup,address_button;
     TextView address_result;
     String arg1="주소를입력하시오";
@@ -90,6 +93,8 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
 
         buttonSignup.setOnClickListener(this);
         address_button.setOnClickListener(this);
+
+
 
 
     }
@@ -149,21 +154,26 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         //editTextNickname = (EditText) findViewById(R.id.editTextNickname);
         textviewMessage = (TextView) findViewById(R.id.textviewMessage);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
+
+
+
+
     }
 
     //button click event
     @Override
     public void onClick(View view) {
-        if (view == buttonSignup) {
-            registerUser();
-        }
-        if(view==address_button){
-
-            saveTempoInfo();
-            finish();
-            Intent intent=new Intent(this,DaumWebViewActivity.class);
-            intent.putExtra("flag","사장");
-            startActivity(intent); //추가해 줄 로그인 액티비티
+        switch (view.getId()){
+            case R.id.buttonSignup:
+                registerUser();
+                break;
+            case R.id.address_button:
+                saveTempoInfo();
+                finish();
+                Intent intent=new Intent(this,DaumWebViewActivity.class);
+                intent.putExtra("flag","사장");
+                startActivity(intent); //추가해 줄 로그인 액티비티
+                break;
 
         }
     }
@@ -238,6 +248,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         }
 
         signupFunc(email, password);
+
     }
 
     public void signupFunc(final String email, final String password) {

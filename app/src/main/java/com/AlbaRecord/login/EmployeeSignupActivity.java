@@ -2,13 +2,13 @@ package com.AlbaRecord.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,8 +25,8 @@ import android.widget.Toast;
 
 import com.AlbaRecord.MainActivity;
 import com.AlbaRecord.Model.EmployeeModel;
-import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
+import com.AlbaRecord.CertificateAdapter;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,10 +43,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.sql.Ref;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -55,14 +53,16 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseStore;
 
-    EditText email_edittext, password_edittext, password_re_edittext, phone_edittext, name_edittext, age_edittext, education_edittext;
-    Button address_button, buttonSignup, setimage_button;
+    EditText email_edittext, password_edittext, password_re_edittext, phone_edittext, name_edittext, age_edittext, education_edittext, license1, selfintrobody;
+    Button address_button, buttonSignup, setimage_button, licenseplus, licensedelete;
     TextView address_result, textviewMessage;
     String arg1 = "주소를입력해주시오";
     ProgressDialog progressDialog;
     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     Uri downloadUri;
     ImageView image;
+    ArrayList<String> contents = new ArrayList<>();
+    RecyclerView certificate_recyclerView;
 
 
     @Override
@@ -88,6 +88,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         buttonSignup.setOnClickListener(this);
         address_button.setOnClickListener(this);
         setimage_button.setOnClickListener(this);
+        licenseplus.setOnClickListener(this);
+        licensedelete.setOnClickListener(this);
 
     }
 
@@ -105,6 +107,11 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         setimage_button = (Button) findViewById(R.id.setimage_button);
         address_button = (Button) findViewById(R.id.address_button);
         image = (ImageView) findViewById(R.id.image);
+        licenseplus = (Button) findViewById(R.id.licenseplus);
+        licensedelete = (Button) findViewById(R.id.licensedelete);
+        license1 = (EditText) findViewById(R.id.license1);
+        certificate_recyclerView = (RecyclerView) findViewById(R.id.certificate_recyclerView);
+        selfintrobody = (EditText) findViewById(R.id.selfintrobody);
     }
 
     private void takeTempoInfo() {
@@ -139,8 +146,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
             case R.id.address_button:
                 saveTempoInfo();
                 finish();
-                Intent intent1=new Intent(this, DaumWebViewActivity.class);
-                intent1.putExtra("flag","직원");
+                Intent intent1 = new Intent(this, DaumWebViewActivity.class);
+                intent1.putExtra("flag", "직원");
                 startActivity(intent1); //추가해 줄 로그인 액티비티
                 break;
             case R.id.setimage_button:
@@ -153,6 +160,27 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(mIntent, 1);
 
+                break;
+            case R.id.licenseplus:
+                Log.d("클릭", "성공");
+                if (license1.getText().toString().isEmpty()) {
+                    license1.requestFocus();
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+                } else {
+                    InputMethodManager immhide = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    immhide.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                    String content = license1.getText().toString().trim();
+                    contents.add(content);
+                    CertificateAdapter mAdapter = new CertificateAdapter(contents);
+                    certificate_recyclerView.setVisibility(View.VISIBLE);
+                    certificate_recyclerView.setAdapter(mAdapter);
+                    license1.setText("");
+                }
+
+
+                break;
+            case R.id.licensedelete:
                 break;
 
         }
@@ -189,11 +217,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                             if (task.isSuccessful()) {
                                 Log.d("스토리지업로드성공", task.getResult().toString());
                                 downloadUri = task.getResult();
-
-
 //                                Drawable mDrawble=loadImage(downloadUri.toString());
 //                                image.setImageDrawable(mDrawble);
-                                Glide.with(image)//.load("https://firebasestorage.googleapis.com/v0/b/testformain.appspot.com/o/image%2F%ED%8C%8C%EC%9D%B4%EC%96%B4%EB%B2%A0%EC%9D%B4%EC%8A%A4%EA%B3%84%EC%A0%95%EC%97%B0%EB%8F%99%EB%B0%94%EA%BE%B8%EB%8A%94%EB%B0%A9%EB%B2%95.PNG?alt=media&token=681df0a3-e503-45ca-95c1-c656a351cfe2")
+                                Glide.with(image)
                                         .load(downloadUri)
                                         .into(image);
                                 progressDialog.dismiss();
@@ -296,21 +322,21 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
 
     private void loginProcess(final String email, final String password) {
         List<Address> list = null;
-        Log.d("DownLoadURI",downloadUri.toString());
-        double lat, lon;
+        Log.d("DownLoadURI", downloadUri.toString());
+        double lat=0.0, lon=0.0;
         final Geocoder geocoder = new Geocoder(this);
-        try {
-            list = geocoder.getFromLocationName(arg1, 10);
-            Address addr = list.get(0);
-            lat = addr.getLatitude();
-            lon = addr.getLongitude();
-            Log.d("위도", String.valueOf(lat));
-            Log.d("경도", String.valueOf(lon));
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("실패", "list.get(0).toString()");
-            return;
-        }
+//        try {
+//            list = geocoder.getFromLocationName(arg1, 10);
+//            Address addr = list.get(0);
+//            lat = addr.getLatitude();
+//            lon = addr.getLongitude();
+//            Log.d("위도", String.valueOf(lat));
+//            Log.d("경도", String.valueOf(lon));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.d("실패", "list.get(0).toString()");
+//            return;
+//        }
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -327,7 +353,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     education_edittext.getText().toString().trim(),
                                     lat,
                                     lon,
-                                    downloadUri.toString()
+                                    downloadUri.toString(),
+                                    contents,
+                                    selfintrobody.getText().toString().trim()
                             );
                             firebaseStore.collection("employee")
                                     .document(firebaseUser.getUid())
@@ -337,8 +365,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                         public void onSuccess(Void aVoid) {
                                             // 이메일 인증 확인 메일을 전송합니다.
                                             sendEmail();
-                                            finish();
-                                            startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
+                                            Intent emailIntent=new Intent(getApplicationContext(), EmailCheckActivity.class);
+                                          //  emailIntent.putExtra("주소",arg1);
+                                            startActivity(emailIntent);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
@@ -350,7 +379,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                             FirebaseMessaging.getInstance().subscribeToTopic(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Log.d("구독하기","성공");
+                                    Log.d("구독하기", "성공");
+                                    finish();
                                 }
                             });
 

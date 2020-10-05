@@ -42,13 +42,14 @@ import static android.provider.ContactsContract.CommonDataKinds.Website.URL;
 
 public class ShowEmployeeActivity extends AppCompatActivity implements View.OnClickListener {
     private final String TAG = "ShowEmployeeActivity";
+    private final String URL = "https://fcm.googleapis.com/fcm/send";
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView name,age,education;
+    TextView name,age,education,selfintrobody;
     ImageView photo;
     Button setmyemployee,wish;
     private RequestQueue mRequesQue;
-    String Email;
+    String email;
 
 
     @Override
@@ -56,11 +57,22 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_employee);
         initViewId();
-        String email = getIntent().getStringExtra("Email");
-        Email=email;
-        Log.d(TAG, email);
-        List<EmployeeModel> list=new ArrayList<>();
+        email = getIntent().getStringExtra("Email");
 
+        Log.d(TAG, email);
+
+        List<EmployeeModel> list=new ArrayList<>();
+        RetrieveEmployeeInfo();
+
+
+        setmyemployee.setOnClickListener(this);
+        wish.setOnClickListener(this);
+
+
+
+    }
+
+    private void RetrieveEmployeeInfo() {
         db.collection("employee")
                 .whereEqualTo("email", email)
                 .get()
@@ -76,9 +88,11 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                 name.setText(employeeModel.getName());
                                 age.setText(employeeModel.getAge());
                                 education.setText(employeeModel.getDegree());
+                                selfintrobody.setText(employeeModel.getSelf_introduce());
                                 Glide.with(photo)//
                                         .load(employeeModel.getPhoto())
                                         .into(photo);
+
 
                                 Log.d(TAG,employeeModel.toString());
 
@@ -106,12 +120,6 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                         }
                     }
                 });
-
-        setmyemployee.setOnClickListener(this);
-        wish.setOnClickListener(this);
-
-
-
     }
 
     private void initViewId() {
@@ -122,6 +130,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
         setmyemployee=(Button)findViewById(R.id.setmyemployee);
         wish=(Button)findViewById(R.id.wish);
         mRequesQue = Volley.newRequestQueue(this);
+        selfintrobody=(TextView)findViewById(R.id.selfintrobody);
     }
 
     @Override
@@ -138,7 +147,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
-                        sendNotification(Email,"제목","내용");
+                        sendNotification(email,"제목","내용");
                         startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
                         dialog.dismiss();
                     }
@@ -206,4 +215,5 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
 
 
     }
+
 }

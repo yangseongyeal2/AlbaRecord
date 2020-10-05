@@ -2,6 +2,9 @@ package com.AlbaRecord.Model;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EmployeeModel {
     private String Email;
     private String PassWord;
@@ -13,20 +16,10 @@ public class EmployeeModel {
     private double latitude;
     private double logtitude;
     private String photo;
+    private ArrayList<String> licenses;
+    private String self_introduce;
 
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public EmployeeModel() {
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
-
-    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo) {
+    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce) {
         Email = email;
         PassWord = passWord;
         this.phonenumber = phonenumber;
@@ -37,6 +30,8 @@ public class EmployeeModel {
         this.latitude = latitude;
         this.logtitude = logtitude;
         this.photo = photo;
+        this.licenses = licenses;
+        this.self_introduce = self_introduce;
     }
 
     @Override
@@ -52,8 +47,39 @@ public class EmployeeModel {
                 ", latitude=" + latitude +
                 ", logtitude=" + logtitude +
                 ", photo='" + photo + '\'' +
+                ", licenses=" + licenses +
+                ", self_introduce='" + self_introduce + '\'' +
                 '}';
     }
+
+    public ArrayList<String> getLicenses() {
+        return licenses;
+    }
+
+    public void setLicenses(ArrayList<String> licenses) {
+        this.licenses = licenses;
+    }
+
+    public String getSelf_introduce() {
+        return self_introduce;
+    }
+
+    public void setSelf_introduce(String self_introduce) {
+        this.self_introduce = self_introduce;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public EmployeeModel() {
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+
 
     public double getLatitude() {
         return latitude;

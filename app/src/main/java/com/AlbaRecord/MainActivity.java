@@ -17,11 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.login.LoginActivity;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.AlbaRecord.searchemployee.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
@@ -87,7 +89,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initToolBar();
         initViewId();
+        //String adress=getIntent().getStringExtra("주소");
         Retreive_bosslist();
+
 
         salary.setOnClickListener(this);
         btn1.setOnClickListener(this);
@@ -129,27 +133,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         mapFragment.getMapAsync(this);//Onmapready메소드 호출
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "getInstanceId failed", task.getException());
-                            return;
-                        }
-
-                        // Get new Instance ID token
-                        String token = task.getResult().getToken();
-
-                        // Log and toast
-                       // String msg = getString(R.string.msg_token_fmt, token);
-                        Log.d(TAG, token);
-                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        FirebaseInstanceId.getInstance().getInstanceId()
+//                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+//                        if (!task.isSuccessful()) {
+//                            Log.w(TAG, "getInstanceId failed", task.getException());
+//                            return;
+//                        }
+//
+//                        // Get new Instance ID token
+//                        String token = task.getResult().getToken();
+//
+//                        // Log and toast
+//                       // String msg = getString(R.string.msg_token_fmt, token);
+//                        Log.d(TAG, token);
+//                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+//                    }
+//                });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
 
+        refreshLatLon();
+
+
+
+    }
+
+    private void refreshLatLon() {
+        db.collection("employee").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+                List<Address> list = null;
+                final Geocoder geocoder = new Geocoder(getApplicationContext());
+                double lat, lon;
+                try {
+                    list = geocoder.getFromLocationName(employeeModel.getAdress(), 10);
+                    Address addr = list.get(0);
+                    lat = addr.getLatitude();
+                    lon = addr.getLongitude();
+                    Log.d("위도", String.valueOf(lat));
+                    Log.d("경도", String.valueOf(lon));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.d("실패", "list.get(0).toString()");
+                    return;
+                }
+                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("latitude",lat);
+                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("logtitude",lon);
+            }
+        });
     }
 
 
