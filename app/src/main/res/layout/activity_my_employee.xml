@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyEmployee.MyEmployeeActivity"
+    android:background="@drawable/short_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="16dp"
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/myalba"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/btn_main"
+            android:text=" ▼나의알바생"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/grayedgebox"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="96dp"
+                android:layout_height="124dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="홍길동"
+                app:layout_constraintStart_toStartOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/photo" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="나이"
+                app:layout_constraintBottom_toBottomOf="@+id/name"
+                app:layout_constraintStart_toEndOf="@+id/name"
+                app:layout_constraintTop_toTopOf="@+id/name" />
+
+            //오빠이거 뭔느낌인지알죠 !!!! 직접입력해놓고 나중에 수정가능하게 하고싶어요 !!
+
+            <TextView
+                android:id="@+id/positionis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="직급 :"
+                app:layout_constraintStart_toEndOf="@+id/photo"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알바/직원/매니저/등등"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/positionis"
+                app:layout_constraintStart_toEndOf="@+id/positionis"
+                app:layout_constraintTop_toTopOf="@+id/positionis" />
+
+            <Button
+                android:id="@+id/setposition"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_main"
+                android:text="수정"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/position"
+                app:layout_constraintStart_toEndOf="@+id/position"
+                app:layout_constraintTop_toTopOf="@+id/position" />
+
+            <TextView
+                android:id="@+id/worklongis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="근무기간 :"
+                app:layout_constraintStart_toStartOf="@+id/positionis"
+                app:layout_constraintTop_toBottomOf="@+id/positionis" />
+
+            <TextView
+                android:id="@+id/workstart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="2020/1/31"
+                app:layout_constraintStart_toEndOf="@+id/worklongis"
+                app:layout_constraintTop_toTopOf="@+id/worklongis" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="~"
+                app:layout_constraintStart_toEndOf="@+id/workstart"
+                app:layout_constraintTop_toTopOf="@+id/workstart" />
+
+            //그만둔알바생은 밑에 표시할거임!!
+            //여기있는애들은 전부 현재까지 일하는중!
+
+            <TextView
+                android:id="@+id/now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재"
+                app:layout_constraintStart_toEndOf="@+id/text"
+                app:layout_constraintTop_toTopOf="@+id/text" />
+
+            <TextView
+                android:id="@+id/phoneis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="연락처 :"
+                app:layout_constraintStart_toStartOf="@+id/worklongis"
+                app:layout_constraintTop_toBottomOf="@+id/worklongis" />
+
+            //알바생이 등록해놓은 전화번호 가져오기
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="010-1234-5678"
+                app:layout_constraintStart_toEndOf="@+id/phoneis"
+                app:layout_constraintTop_toTopOf="@+id/phoneis" />
+
+            <Button
+                android:id="@+id/call"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/call"
+                app:layout_constraintBottom_toBottomOf="@+id/phone"
+                app:layout_constraintStart_toEndOf="@+id/phone"
+                app:layout_constraintTop_toTopOf="@+id/phone" />
+
+            <Button
+                android:id="@+id/evaluate"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_main"
+                android:text="평가하기"
+                app:layout_constraintStart_toEndOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/phoneis" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/btn_main"
+                android:text="해고하기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/evaluate"
+                app:layout_constraintTop_toTopOf="@+id/evaluate" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/grayedgebox"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+
+            <ImageView
+                android:id="@+id/photo2"
+                android:layout_width="96dp"
+                android:layout_height="124dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/name2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="홍길동"
+                app:layout_constraintStart_toStartOf="@+id/photo2"
+                app:layout_constraintTop_toBottomOf="@+id/photo2" />
+
+            <TextView
+                android:id="@+id/age2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="나이"
+                app:layout_constraintBottom_toBottomOf="@+id/name2"
+                app:layout_constraintStart_toEndOf="@+id/name2"
+                app:layout_constraintTop_toTopOf="@+id/name2" />
+
+            //오빠이거 뭔느낌인지알죠 !!!! 직접입력해놓고 나중에 수정가능하게 하고싶어요 !!
+
+            <TextView
+                android:id="@+id/positionis2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="직급 :"
+                app:layout_constraintStart_toEndOf="@+id/photo2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/position2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알바/직원/매니저/등등"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/positionis2"
+                app:layout_constraintStart_toEndOf="@+id/positionis2"
+                app:layout_constraintTop_toTopOf="@+id/positionis2" />
+
+            <Button
+                android:id="@+id/setposition2"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_main"
+                android:text="수정"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/position2"
+                app:layout_constraintStart_toEndOf="@+id/position2"
+                app:layout_constraintTop_toTopOf="@+id/position2" />
+
+            <TextView
+                android:id="@+id/worklongis2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="근무기간 :"
+                app:layout_constraintStart_toStartOf="@+id/positionis2"
+                app:layout_constraintTop_toBottomOf="@+id/positionis2" />
+
+            <TextView
+                android:id="@+id/workstart2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="2020/1/31"
+                app:layout_constraintStart_toEndOf="@+id/worklongis2"
+                app:layout_constraintTop_toTopOf="@+id/worklongis2" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="~"
+                app:layout_constraintStart_toEndOf="@+id/workstart2"
+                app:layout_constraintTop_toTopOf="@+id/workstart2" />
+
+            //그만둔알바생은 밑에 표시할거임!!
+            //여기있는애들은 전부 현재까지 일하는중!
+
+            <TextView
+                android:id="@+id/now2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="현재"
+                app:layout_constraintStart_toEndOf="@+id/text2"
+                app:layout_constraintTop_toTopOf="@+id/text2" />
+
+            <TextView
+                android:id="@+id/phoneis2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="연락처 :"
+                app:layout_constraintStart_toStartOf="@+id/worklongis2"
+                app:layout_constraintTop_toBottomOf="@+id/worklongis2" />
+
+            //알바생이 등록해놓은 전화번호 가져오기
+
+            <TextView
+                android:id="@+id/phone2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="010-1234-5678"
+                app:layout_constraintStart_toEndOf="@+id/phoneis2"
+                app:layout_constraintTop_toTopOf="@+id/phoneis2" />
+
+
+            <Button
+                android:id="@+id/call2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/call"
+                app:layout_constraintBottom_toBottomOf="@+id/phone2"
+                app:layout_constraintStart_toEndOf="@+id/phone2"
+                app:layout_constraintTop_toTopOf="@+id/phone2" />
+
+            <Button
+                android:id="@+id/evaluate2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_main"
+                android:text="평가하기"
+                app:layout_constraintStart_toEndOf="@+id/photo2"
+                app:layout_constraintTop_toBottomOf="@+id/phoneis2" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/btn_main"
+                android:text="해고하기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/evaluate2"
+                app:layout_constraintTop_toTopOf="@+id/evaluate2" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/btn_main"
+            android:text="▼지난알바생"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/grayedgebox"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button5">
+
+
+            <ImageView
+                android:id="@+id/photo3"
+                android:layout_width="96dp"
+                android:layout_height="124dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/name3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="홍길동"
+                app:layout_constraintStart_toStartOf="@+id/photo3"
+                app:layout_constraintTop_toBottomOf="@+id/photo3" />
+
+            <TextView
+                android:id="@+id/age3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="나이"
+                app:layout_constraintBottom_toBottomOf="@+id/name3"
+                app:layout_constraintStart_toEndOf="@+id/name3"
+                app:layout_constraintTop_toTopOf="@+id/name3" />
+
+            <TextView
+                android:id="@+id/positionis3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="최종직급 :"
+                app:layout_constraintStart_toEndOf="@+id/photo3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/position3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="매니저"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/positionis3"
+                app:layout_constraintStart_toEndOf="@+id/positionis3"
+                app:layout_constraintTop_toTopOf="@+id/positionis3" />
+
+            <TextView
+                android:id="@+id/worklongis3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="근무기간 :"
+                app:layout_constraintStart_toStartOf="@+id/positionis3"
+                app:layout_constraintTop_toBottomOf="@+id/positionis3" />
+
+            <TextView
+                android:id="@+id/workstart3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="2020/1/31"
+                app:layout_constraintStart_toEndOf="@+id/worklongis3"
+                app:layout_constraintTop_toTopOf="@+id/worklongis3" />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="~"
+                app:layout_constraintStart_toEndOf="@+id/workstart3"
+                app:layout_constraintTop_toTopOf="@+id/workstart3" />
+
+
+            <TextView
+                android:id="@+id/workend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/10/6"
+                app:layout_constraintStart_toEndOf="@+id/text3"
+                app:layout_constraintTop_toTopOf="@+id/text3" />
+
+            <TextView
+                android:id="@+id/phoneis3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="연락처 :"
+                app:layout_constraintStart_toStartOf="@+id/worklongis3"
+                app:layout_constraintTop_toBottomOf="@+id/worklongis3" />
+
+            //알바생이 등록해놓은 전화번호 가져오기
+
+            <TextView
+                android:id="@+id/phone3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="010-1234-5678"
+                app:layout_constraintStart_toEndOf="@+id/phoneis3"
+                app:layout_constraintTop_toTopOf="@+id/phoneis3" />
+
+
+            <Button
+                android:id="@+id/call3"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/call"
+                app:layout_constraintBottom_toBottomOf="@+id/phone3"
+                app:layout_constraintStart_toEndOf="@+id/phone3"
+                app:layout_constraintTop_toTopOf="@+id/phone3" />
+
+            <Button
+                android:id="@+id/evaluate3"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_main"
+                android:text="평가하기"
+                app:layout_constraintStart_toEndOf="@+id/photo3"
+                app:layout_constraintTop_toBottomOf="@+id/phoneis3" />
+
+            <Button
+                android:id="@+id/rehire"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/btn_main"
+                android:text="고용하기"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/evaluate3"
+                app:layout_constraintTop_toTopOf="@+id/evaluate3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
