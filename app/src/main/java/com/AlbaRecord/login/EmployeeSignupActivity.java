@@ -323,20 +323,20 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     private void loginProcess(final String email, final String password) {
         List<Address> list = null;
         Log.d("DownLoadURI", downloadUri.toString());
-        double lat, lon;
+        double lat=0.0, lon=0.0;
         final Geocoder geocoder = new Geocoder(this);
-        try {
-            list = geocoder.getFromLocationName(arg1, 10);
-            Address addr = list.get(0);
-            lat = addr.getLatitude();
-            lon = addr.getLongitude();
-            Log.d("위도", String.valueOf(lat));
-            Log.d("경도", String.valueOf(lon));
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("실패", "list.get(0).toString()");
-            return;
-        }
+//        try {
+//            list = geocoder.getFromLocationName(arg1, 10);
+//            Address addr = list.get(0);
+//            lat = addr.getLatitude();
+//            lon = addr.getLongitude();
+//            Log.d("위도", String.valueOf(lat));
+//            Log.d("경도", String.valueOf(lon));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.d("실패", "list.get(0).toString()");
+//            return;
+//        }
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -365,8 +365,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                         public void onSuccess(Void aVoid) {
                                             // 이메일 인증 확인 메일을 전송합니다.
                                             sendEmail();
-
-                                            startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
+                                            Intent emailIntent=new Intent(getApplicationContext(), EmailCheckActivity.class);
+                                          //  emailIntent.putExtra("주소",arg1);
+                                            startActivity(emailIntent);
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {

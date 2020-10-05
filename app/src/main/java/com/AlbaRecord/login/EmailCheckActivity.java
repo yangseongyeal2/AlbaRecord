@@ -35,6 +35,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         buttonAuthCheck = (Button) findViewById(R.id.buttonAuthCheck);
         textviewResend = (TextView) findViewById(R.id.textviewResend);
         emailCheckLogout = (Button) findViewById(R.id.emailCheckLogout);
+        String adress=getIntent().getStringExtra("주소");
 
         buttonAuthCheck.setOnClickListener(this);
         textviewResend.setOnClickListener(this);
@@ -66,7 +67,10 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         // 회원가입시 이메일 인증을 받은 경우
         if (firebaseUser.isEmailVerified() == true) {
             Toast.makeText(EmailCheckActivity.this, "인증 되었습니다", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            String adress=getIntent().getStringExtra("주소");
+            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+           // intent.putExtra("주소",adress);
+            startActivity(intent);
             finish();
 
         } else {
