@@ -19,6 +19,9 @@ public class EmployeeModel {
         return photo;
     }
 
+    public EmployeeModel() {
+    }
+
     public void setPhoto(String photo) {
         this.photo = photo;
     }

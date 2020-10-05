@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/searchEmployeeEdit"
             android:layout_width="300dp"
             android:layout_height="40dp"
             android:background="@drawable/textedge_orange"
@@ -47,7 +47,7 @@
             android:text="조회"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/searchEmployeeEdit" />
 
         <Button
             android:id="@+id/searchemployeeqrcode"
