@@ -300,11 +300,12 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                     //address_edittext.getText().toString().trim(),
                                     arg1,
                                     business_edittext.getText().toString().trim(),
-                                    0,//사장님
                                     lat,
-                                    lon
+                                    lon,
+                                    0,//사장님
+                                    firebaseUser.getUid()
                             );
-                            firebaseStore.collection("boss")
+                            firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())
                                     .set(userModel)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {

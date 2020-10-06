@@ -12,6 +12,30 @@ public class UserModel {
     private String businessNum;
     private double latitude;
     private double longtitude;
+    int flag;//0 : 사장님 1: 직원 2: 관리자
+    private String DocumentId;
+
+    public UserModel(String email, String password, String phoneNumber, String name, String brand, String address, String businessNum, double latitude, double longtitude, int flag, String documentId) {
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.name = name;
+        this.brand = brand;
+        this.address = address;
+        this.businessNum = businessNum;
+        this.latitude = latitude;
+        this.longtitude = longtitude;
+        this.flag = flag;
+        DocumentId = documentId;
+    }
+
+    public String getDocumentId() {
+        return DocumentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        DocumentId = documentId;
+    }
 
     @Override
     public String toString() {
@@ -26,6 +50,7 @@ public class UserModel {
                 ", latitude=" + latitude +
                 ", longtitude=" + longtitude +
                 ", flag=" + flag +
+                ", DocumentId='" + DocumentId + '\'' +
                 '}';
     }
 
@@ -45,7 +70,6 @@ public class UserModel {
         this.longtitude = longtitude;
     }
 
-    int flag;//0 : 사장님 1: 직원 2: 관리자
 
     public int getFlag() {
         return flag;

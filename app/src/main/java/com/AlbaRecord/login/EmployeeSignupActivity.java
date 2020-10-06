@@ -356,9 +356,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     downloadUri.toString(),
                                     contents,
                                     selfintrobody.getText().toString().trim(),
+                                    1,
                                     firebaseUser.getUid()
                             );
-                            firebaseStore.collection("employee")
+                            firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())
                                     .set(userModel)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {

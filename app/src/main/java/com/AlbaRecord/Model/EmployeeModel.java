@@ -18,7 +18,12 @@ public class EmployeeModel {
     private String photo;
     private ArrayList<String> licenses;
     private String self_introduce;
+    int flag;
     private String DocumentId;
+
+    public int getFlag() {
+        return flag;
+    }
 
     @Override
     public String toString() {
@@ -35,8 +40,30 @@ public class EmployeeModel {
                 ", photo='" + photo + '\'' +
                 ", licenses=" + licenses +
                 ", self_introduce='" + self_introduce + '\'' +
+                ", flag=" + flag +
                 ", DocumentId='" + DocumentId + '\'' +
                 '}';
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, int flag, String documentId) {
+        Email = email;
+        PassWord = passWord;
+        this.phonenumber = phonenumber;
+        this.name = name;
+        this.age = age;
+        this.adress = adress;
+        this.degree = degree;
+        this.latitude = latitude;
+        this.logtitude = logtitude;
+        this.photo = photo;
+        this.licenses = licenses;
+        this.self_introduce = self_introduce;
+        this.flag = flag;
+        DocumentId = documentId;
     }
 
     public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, String documentId) {

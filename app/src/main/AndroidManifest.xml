@@ -17,8 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EmployMainActivity"></activity>
-        <activity android:name=".login.LoginEmployeeActivity" />
+        <activity android:name=".login.LoginEmployeeActivity"></activity>
+        <activity android:name=".login.LoginEmplyeeActivity" />
+        <activity android:name=".EmployMainActivity" />
         <activity android:name=".MyEmployee.MyEmployeeActivity" />
         <activity android:name=".searchemployee.ShowMoreEmployeeActivity" />
         <activity android:name=".searchemployee.ShowEmployeeActivity" />
@@ -43,9 +44,7 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="990du68u3n" />
 
-        <service
-            android:name=".Notification.MyFirebaseMessagingService"
-            >
+        <service android:name=".Notification.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
