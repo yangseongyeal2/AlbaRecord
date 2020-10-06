@@ -40,7 +40,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message data payload: " + remoteMessage.getData());
             title=remoteMessage.getData().get("title");
             body=remoteMessage.getData().get("body");
-            documentid=remoteMessage.getData().get("Email");
+            documentid=remoteMessage.getData().get("DocumentId");
             Date date=new Date() ;
             NotiInfo notiInfo=new NotiInfo(title,body,documentid,date);
             mStore.collection("employee")

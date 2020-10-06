@@ -18,21 +18,7 @@ public class EmployeeModel {
     private String photo;
     private ArrayList<String> licenses;
     private String self_introduce;
-
-    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce) {
-        Email = email;
-        PassWord = passWord;
-        this.phonenumber = phonenumber;
-        this.name = name;
-        this.age = age;
-        this.adress = adress;
-        this.degree = degree;
-        this.latitude = latitude;
-        this.logtitude = logtitude;
-        this.photo = photo;
-        this.licenses = licenses;
-        this.self_introduce = self_introduce;
-    }
+    private String DocumentId;
 
     @Override
     public String toString() {
@@ -49,8 +35,34 @@ public class EmployeeModel {
                 ", photo='" + photo + '\'' +
                 ", licenses=" + licenses +
                 ", self_introduce='" + self_introduce + '\'' +
+                ", DocumentId='" + DocumentId + '\'' +
                 '}';
     }
+
+    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, String documentId) {
+        Email = email;
+        PassWord = passWord;
+        this.phonenumber = phonenumber;
+        this.name = name;
+        this.age = age;
+        this.adress = adress;
+        this.degree = degree;
+        this.latitude = latitude;
+        this.logtitude = logtitude;
+        this.photo = photo;
+        this.licenses = licenses;
+        this.self_introduce = self_introduce;
+        DocumentId = documentId;
+    }
+
+    public String getDocumentId() {
+        return DocumentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        DocumentId = documentId;
+    }
+
 
     public ArrayList<String> getLicenses() {
         return licenses;

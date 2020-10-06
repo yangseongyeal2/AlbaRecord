@@ -323,7 +323,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                         }
                                     });
 
-                            FirebaseMessaging.getInstance().subscribeToTopic(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Log.d("구독하기","성공");

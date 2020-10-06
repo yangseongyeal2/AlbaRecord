@@ -45,7 +45,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
     ImageView photo;
     Button setmyemployee,wish;
     private RequestQueue mRequesQue;
-    String email;
+    String email,DocumentId;
 
 
     @Override
@@ -88,6 +88,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                 Glide.with(photo)//
                                         .load(employeeModel.getPhoto())
                                         .into(photo);
+                                DocumentId=employeeModel.getDocumentId();
 
 
                                 Log.d(TAG,employeeModel.toString());
@@ -143,6 +144,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
+
                         sendNotification(email,"제목","내용");
                         startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
                         dialog.dismiss();
@@ -172,11 +174,12 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
         */
         JSONObject mainObj = new JSONObject();
         try {
-            mainObj.put("to", "/topics/" + Email);
+            mainObj.put("to", "/topics/" + DocumentId );
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", title + "에 댓글이 달렸습니다");
             notificationObj.put("body", "댓글:" + content);
             notificationObj.put("Email", Email);
+            Log.d("양성열",email);
 
 
             // mainObj.put("notification",notificationObj);
@@ -188,24 +191,28 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                     new com.android.volley.Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-
+                            Log.d("양성열",response.toString());
                         }
                     }, new com.android.volley.Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Log.d("양성열","onErrorResponse");
                 }
             }) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
-                    header.put("authorization", "key=AAAAkWD7qvM:APA91bHQt54EOO2qoqX68TPM8juIVVkm8kRUByCqQwbWHdEHArgBZTIpun-F3ryFKwY1zRKjFSGXNwPwpZaPUhGpdUIYdZi07doU2twSIvA9zKSy13hgEX3XTZb2oOCbanEcaAKqNfrp");
+                    header.put("authorization", "key=AAAARXzwbpI:APA91bGeGR-WB_570H5C2xeoal97SKyuO1Bj1aUgehYdHlH4Us5bbgsBrPsoQW7IzFItjSv1PJ2KT-TbPJb-ZCCoCD4DsnY5TCn9D6pkOijllp3qOqhQu1-YO3SccAHUpDaDpGJXDrOq");
+                    Log.d("양성열","getHeaders");
                     return header;
                 }
             };
+            Log.d("양성열","큐 전");
             mRequesQue.add(request);
+            Log.d("양성열","큐 후");
         } catch (JSONException e) {
+            Log.d("양성열","캐치");
             e.printStackTrace();
         }
 

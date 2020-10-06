@@ -355,7 +355,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     lon,
                                     downloadUri.toString(),
                                     contents,
-                                    selfintrobody.getText().toString().trim()
+                                    selfintrobody.getText().toString().trim(),
+                                    firebaseUser.getUid()
                             );
                             firebaseStore.collection("employee")
                                     .document(firebaseUser.getUid())
@@ -376,7 +377,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
 
                                         }
                                     });
-                            FirebaseMessaging.getInstance().subscribeToTopic(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Log.d("구독하기", "성공");
