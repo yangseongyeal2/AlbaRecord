@@ -23,7 +23,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.AlbaRecord.MainActivity;
+import com.AlbaRecord.BossMainActivity;
+import com.AlbaRecord.EmployMainActivity;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.CertificateAdapter;
@@ -42,7 +43,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,12 +75,12 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStore = FirebaseFirestore.getInstance();
 
-        if (firebaseAuth.getCurrentUser() != null) {
-            //이미 로그인 되었다면 이 액티비티를 종료함
-            finish();
-            //그리고 profile 액티비티를 연다.
-            startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
-        }
+//        if (firebaseAuth.getCurrentUser() != null) {
+//            //이미 로그인 되었다면 이 액티비티를 종료함
+//            finish();
+//            //그리고 profile 액티비티를 연다.
+//            startActivity(new Intent(getApplicationContext(), EmployMainActivity.class)); //추가해 줄 ProfileActivity
+//        }
 
         progressDialog = new ProgressDialog(this);
 

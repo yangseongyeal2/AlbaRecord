@@ -45,7 +45,7 @@ public class LogoutActivity extends AppCompatActivity implements View.OnClickLis
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginBossActivity.class));
         }
 
         //유저가 있다면, null이 아니면 계속 진행
@@ -64,7 +64,7 @@ public class LogoutActivity extends AppCompatActivity implements View.OnClickLis
         if (view == buttonLogout) {
             firebaseAuth.signOut();
             finish();
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginBossActivity.class));
         }
         //회원탈퇴를 클릭하면 회원정보를 삭제한다. 삭제전에 컨펌창을 하나 띄워야 겠다.
         if (view == textivewDelete) {
@@ -79,7 +79,7 @@ public class LogoutActivity extends AppCompatActivity implements View.OnClickLis
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(LogoutActivity.this, "계정이 삭제 되었습니다.", Toast.LENGTH_LONG).show();
                                             finish();
-                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                            startActivity(new Intent(getApplicationContext(), LoginBossActivity.class));
                                         }
                                     });
                         }

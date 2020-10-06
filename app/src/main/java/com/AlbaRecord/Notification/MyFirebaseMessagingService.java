@@ -1,12 +1,11 @@
 package com.AlbaRecord.Notification;
 
-import com.AlbaRecord.MainActivity;
+import com.AlbaRecord.BossMainActivity;
 import com.AlbaRecord.Model.NotiInfo;
 import com.AlbaRecord.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -74,11 +73,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, BossMainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("DocumentId",documentid);//이거없으면 디테일 안열림.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack( MainActivity.class );
+        stackBuilder.addParentStack( BossMainActivity.class );
         stackBuilder.addNextIntent(intent);
         Log.d("DocumentId",documentid);
 

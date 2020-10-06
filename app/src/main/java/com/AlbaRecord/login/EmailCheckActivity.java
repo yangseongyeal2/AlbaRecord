@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.AlbaRecord.MainActivity;
+import com.AlbaRecord.BossMainActivity;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,7 +46,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         if (view == emailCheckLogout) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, LoginBossActivity.class));
             finish();
         }
 
@@ -68,7 +68,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         if (firebaseUser.isEmailVerified() == true) {
             Toast.makeText(EmailCheckActivity.this, "인증 되었습니다", Toast.LENGTH_SHORT).show();
             String adress=getIntent().getStringExtra("주소");
-            Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+            Intent intent=new Intent(getApplicationContext(), BossMainActivity.class);
            // intent.putExtra("주소",adress);
             startActivity(intent);
             finish();

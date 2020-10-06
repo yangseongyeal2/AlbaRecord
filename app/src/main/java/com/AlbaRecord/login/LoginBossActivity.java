@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.AlbaRecord.MainActivity;
+import com.AlbaRecord.BossMainActivity;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginBossActivity extends AppCompatActivity implements View.OnClickListener {
 
     //define view objects
     EditText editTextEmail;
@@ -37,13 +37,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     Button Signupbtn, Loginbtn;
-    String flag;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        flag = getIntent().getStringExtra("Flag");
+        setContentView(R.layout.activity_login_boss);
+
 
 
         // 파이어베이스 초기화
@@ -51,16 +51,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseUser = firebaseAuth.getCurrentUser();
 
         // 이미 로그인이 된 경우
-        if (firebaseUser != null) {
-            //이미 로그인 되었다면 이 액티비티를 종료함
-            finish();
-            // 회원가입시 이메일 인증을 받지 않은경우
-            if (firebaseUser.isEmailVerified() == false) {
-                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
-            } else {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            }
-        }
+//        if (firebaseUser != null) {
+////            //이미 로그인 되었다면 이 액티비티를 종료함
+////            finish();
+////            // 회원가입시 이메일 인증을 받지 않은경우
+////            if (firebaseUser.isEmailVerified() == false) {
+////                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
+////            } else {
+////                startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+////            }
+////        }
 
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             if (firebaseUser.isEmailVerified() == false) {
                                 startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
                             } else {
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
                             }
                             finish();
 
@@ -123,11 +123,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             userLogin();
         }
         if (view == Signupbtn) {
-            if(flag.equals("사장")) {
-                startActivity(new Intent(this, BossSignupActivity.class));
-            }else if(flag.equals("직원")){
-                startActivity(new Intent(this, EmployeeSignupActivity.class));
-            }
+            startActivity(new Intent(this, BossSignupActivity.class));
 
         }
         if (view == textviewFindPassword) {

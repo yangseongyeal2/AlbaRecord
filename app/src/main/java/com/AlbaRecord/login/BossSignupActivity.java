@@ -1,7 +1,6 @@
 package com.AlbaRecord.login;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Address;
@@ -10,17 +9,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.AlbaRecord.MainActivity;
+import com.AlbaRecord.BossMainActivity;
 import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +32,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class BossSignupActivity extends AppCompatActivity implements View.OnClickListener {
@@ -82,7 +78,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
             //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
             //그리고 profile 액티비티를 연다.
-            startActivity(new Intent(getApplicationContext(), MainActivity.class)); //추가해 줄 ProfileActivity
+            startActivity(new Intent(getApplicationContext(), BossMainActivity.class)); //추가해 줄 ProfileActivity
         }
 
         progressDialog = new ProgressDialog(this);
