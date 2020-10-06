@@ -39,9 +39,10 @@
         app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="@+id/name" />
 
-    //오빠이거 뭔느낌인지알죠 !!!! 직접입력해놓고 나중에 수정가능하게 하고싶어요 !!
+
 
     <TextView
+        android:textSize="16sp"
         android:id="@+id/positionis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,10 +53,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:gravity="center"
         android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="알바/직원/매니저/등등"
+        android:hint="알바/직원/매니저/등등"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/positionis"
         app:layout_constraintStart_toEndOf="@+id/positionis"
@@ -66,39 +68,39 @@
         android:layout_width="50dp"
         android:layout_height="30dp"
         android:background="@drawable/btn_main"
-        android:text="수정"
+        android:text="저장"
         android:textSize="10dp"
+        android:layout_marginStart="5sp"
         app:layout_constraintBottom_toBottomOf="@+id/position"
         app:layout_constraintStart_toEndOf="@+id/position"
         app:layout_constraintTop_toTopOf="@+id/position" />
+
 
     <TextView
         android:id="@+id/worklongis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textSize="16sp"
         android:text="근무시작 :"
         app:layout_constraintStart_toStartOf="@+id/positionis"
         app:layout_constraintTop_toBottomOf="@+id/positionis"
         app:layout_constraintBottom_toBottomOf="@+id/workstart"/>
 
-    <EditText
+
+    <TextView
         android:id="@+id/workstart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:hint="2020/1/31"
+        android:hint="입력하려면 클릭"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/worklongis"
         app:layout_constraintTop_toTopOf="@+id/worklongis" />
 
 
-
-    //그만둔알바생은 밑에 표시할거임!!
-    //여기있는애들은 전부 현재까지 일하는중!
-
-
-
     <TextView
+        android:layout_marginTop="10dp"
         android:id="@+id/phoneis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,7 +108,7 @@
         app:layout_constraintStart_toStartOf="@+id/worklongis"
         app:layout_constraintTop_toBottomOf="@+id/workstart" />
 
-    //알바생이 등록해놓은 전화번호 가져오기
+
 
     <TextView
         android:id="@+id/phone"

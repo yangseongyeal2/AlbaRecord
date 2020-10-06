@@ -34,6 +34,7 @@
             android:layout_height="40dp"
             android:background="@drawable/textedge_orange"
             android:hint="  ID입력"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchEmployee" />
