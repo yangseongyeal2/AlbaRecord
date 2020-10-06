@@ -1,6 +1,7 @@
-package com.AlbaRecord;
+package com.AlbaRecord.Boss;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -12,8 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.R;
+import com.AlbaRecord.Employ.SalaryActivity;
 import com.AlbaRecord.login.LoginWayActivity;
-import com.AlbaRecord.searchemployee.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,7 +50,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, btn1,albaReserch;
+    private Button logout, salary, btn1,albaReserch,myalba;
     private MapView map_view;
     private NaverMap naverMap;
     List<UserModel> bosslist = new ArrayList<>();
@@ -62,11 +64,12 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         initViewId();
         //String adress=getIntent().getStringExtra("주소");
         Retreive_bosslist();
-
+        Log.d(TAG, TAG+"실행");
 
         salary.setOnClickListener(this);
         btn1.setOnClickListener(this);
         albaReserch.setOnClickListener(this);
+        myalba.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -163,6 +166,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         // map_view=(MapView) findViewById(R.id.map_view);
         btn1 = (Button) findViewById(R.id.btn1);
         albaReserch=(Button)findViewById(R.id.albaReserch);
+        myalba=(Button)findViewById(R.id.myalba);
 
     }
 
@@ -191,7 +195,9 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.albaReserch:
                 startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
-
+                break;
+            case R.id.myalba:
+                startActivity(new Intent(getApplicationContext(), MyEmployeeActivity.class));
                 break;
         }
 
@@ -216,17 +222,21 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void Retreive_bosslist() {
-        db.collection("boss").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        Log.d(TAG,"맵불러오기실행");
+        db.collection("users")
+                //.whereEqualTo("flag","0")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    Log.d(TAG,"접근성공");
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         UserModel userModel = document.toObject(UserModel.class);
                         bosslist.add(userModel);
-                        Log.d("TAG", document.getId() + " => " + document.getData());
+
 
                         Marker marker = new Marker();
-                        Log.d("위도경도설정", String.valueOf(userModel.getLatitude()));
+                        Log.d(TAG, String.valueOf(userModel.getLatitude()));
                         marker.setPosition(new LatLng(userModel.getLatitude(), userModel.getLongtitude()));
                         marker.setWidth(50);
                         marker.setHeight(80);

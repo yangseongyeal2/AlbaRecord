@@ -23,11 +23,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.AlbaRecord.BossMainActivity;
-import com.AlbaRecord.EmployMainActivity;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
-import com.AlbaRecord.CertificateAdapter;
+import com.AlbaRecord.Adapter.CertificateAdapter;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -357,7 +355,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     contents,
                                     selfintrobody.getText().toString().trim(),
                                     1,
-                                    firebaseUser.getUid()
+                                    firebaseUser.getUid(),
+                                    new ArrayList<String>()
                             );
                             firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())

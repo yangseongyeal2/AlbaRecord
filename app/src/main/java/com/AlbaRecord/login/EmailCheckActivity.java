@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.AlbaRecord.BossMainActivity;
+import com.AlbaRecord.Boss.BossMainActivity;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

@@ -1,4 +1,4 @@
-package com.AlbaRecord.searchemployee;
+package com.AlbaRecord.Boss;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.AlbaRecord.Model.EmployeeModel;
+import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -22,8 +23,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -46,6 +49,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
     Button setmyemployee,wish;
     private RequestQueue mRequesQue;
     String email,DocumentId;
+    UserModel userModel;
 
 
     @Override
@@ -59,6 +63,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
 
         List<EmployeeModel> list=new ArrayList<>();
         RetrieveEmployeeInfo();
+        RetrieveMyInfo();
 
 
         setmyemployee.setOnClickListener(this);
@@ -66,6 +71,15 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
 
 
 
+    }
+
+    private void RetrieveMyInfo() {
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                userModel=documentSnapshot.toObject(UserModel.class);
+            }
+        });
     }
 
     private void RetrieveEmployeeInfo() {
@@ -106,7 +120,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         finish();
-                                        startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
+                                        startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
                                         dialog.dismiss();
                                     }
                                 });
@@ -144,12 +158,10 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                 ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                       // finish();
+                        //startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
+                        sendNotification(DocumentId,"사장이보냄",userModel.getBrand());
 
-
-
-                        sendNotification(DocumentId,"제목","내용");
-                        startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
                         dialog.dismiss();
                     }
                 });
@@ -179,9 +191,10 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
         try {
             mainObj.put("to", "/topics/" + DocumentId );
             JSONObject notificationObj = new JSONObject();
-            notificationObj.put("title", title + "에 댓글이 달렸습니다");
-            notificationObj.put("body", "댓글:" + content);
-            notificationObj.put("DocumentId", DocumentId);
+            notificationObj.put("title", title );//사장이보냄
+            notificationObj.put("body", "사장");//브랜드네임
+            notificationObj.put("DocumentId", mAuth.getCurrentUser().getUid());//직원 도큐먼트ID
+            notificationObj.put("flag", "0");//사장이보낼때
 
 
 

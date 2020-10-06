@@ -1,4 +1,4 @@
-package com.AlbaRecord;
+package com.AlbaRecord.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.AlbaRecord.R;
 
 import java.util.ArrayList;
 import java.util.List;

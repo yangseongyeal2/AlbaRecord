@@ -10,6 +10,34 @@ public class NotiInfo {
     private String documentId;
     @ServerTimestamp
     private Date date;
+    private String flag;
+
+    @Override
+    public String toString() {
+        return "NotiInfo{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", documentId='" + documentId + '\'' +
+                ", date=" + date +
+                ", flag='" + flag + '\'' +
+                '}';
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public NotiInfo(String title, String content, String documentId, Date date, String flag) {
+        this.title = title;
+        this.content = content;
+        this.documentId = documentId;
+        this.date = date;
+        this.flag = flag;
+    }
 
     public NotiInfo(){}
     public NotiInfo(String title, String content, String documentId,Date date) {
@@ -25,16 +53,6 @@ public class NotiInfo {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "NotiInfo{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", documentId='" + documentId + '\'' +
-                ", date=" + date +
-                '}';
     }
 
     public String getTitle() {

@@ -14,8 +14,20 @@ public class UserModel {
     private double longtitude;
     int flag;//0 : 사장님 1: 직원 2: 관리자
     private String DocumentId;
+    private ArrayList<String>MyEmployee;
+    public ArrayList<String> getDocumentIdList() {
+        return MyEmployee;
+    }
 
-    public UserModel(String email, String password, String phoneNumber, String name, String brand, String address, String businessNum, double latitude, double longtitude, int flag, String documentId) {
+    public ArrayList<String> getMyEmployee() {
+        return MyEmployee;
+    }
+
+    public void setMyEmployee(ArrayList<String> myEmployee) {
+        MyEmployee = myEmployee;
+    }
+
+    public UserModel(String email, String password, String phoneNumber, String name, String brand, String address, String businessNum, double latitude, double longtitude, int flag, String documentId, ArrayList<String> myEmployee) {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -27,14 +39,7 @@ public class UserModel {
         this.longtitude = longtitude;
         this.flag = flag;
         DocumentId = documentId;
-    }
-
-    public String getDocumentId() {
-        return DocumentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        DocumentId = documentId;
+        MyEmployee = myEmployee;
     }
 
     @Override
@@ -51,8 +56,23 @@ public class UserModel {
                 ", longtitude=" + longtitude +
                 ", flag=" + flag +
                 ", DocumentId='" + DocumentId + '\'' +
+                ", MyEmployee=" + MyEmployee +
                 '}';
     }
+
+    public String getDocumentId() {
+        return DocumentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        DocumentId = documentId;
+    }
+
+    public void setDocumentIdList(ArrayList<String> documentIdList) {
+        MyEmployee = documentIdList;
+    }
+
+
 
     public double getLatitude() {
         return latitude;
