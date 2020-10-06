@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import com.AlbaRecord.Adapter.EmplyeeInfoAdapter;
 import com.AlbaRecord.Model.EmployeeModel;
@@ -21,14 +22,23 @@ import java.util.List;
 
 public class MyEmployeeActivity extends AppCompatActivity {
     RecyclerView myalba_recyclerview,lastAlba_recyclerview;
+
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_employee);
         initViewId();
+        RetreiveMyEmployee();
+
+
+
+    }
+
+    private void RetreiveMyEmployee() {
         db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -42,7 +52,7 @@ public class MyEmployeeActivity extends AppCompatActivity {
                             EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
                             myEmploy.add(employeeModel);
                             Log.d("for문","1번");
-                            EmplyeeInfoAdapter emplyeeInfoAdapter=new EmplyeeInfoAdapter(myEmploy);
+                            EmplyeeInfoAdapter emplyeeInfoAdapter=new EmplyeeInfoAdapter(myEmploy,MyEmployeeActivity.this);
                             myalba_recyclerview.setAdapter(emplyeeInfoAdapter);
                         }
                     });
@@ -50,8 +60,6 @@ public class MyEmployeeActivity extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 
