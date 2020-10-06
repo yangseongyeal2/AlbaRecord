@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Accept.AcceptActivity"></activity>
+        <activity android:name=".EvaluateEmployeeActivity"></activity>
+        <activity android:name=".Accept.AcceptActivity" />
         <activity android:name=".login.LoginEmployeeActivity" />
         <activity android:name=".login.LoginEmplyeeActivity" />
         <activity android:name=".Employ.EmployMainActivity" />
