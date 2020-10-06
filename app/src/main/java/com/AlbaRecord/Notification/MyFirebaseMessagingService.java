@@ -1,9 +1,8 @@
 package com.AlbaRecord.Notification;
 
-import com.AlbaRecord.BossMainActivity;
+import com.AlbaRecord.Accept.AcceptActivity;
 import com.AlbaRecord.Model.NotiInfo;
 import com.AlbaRecord.R;
-import com.AlbaRecord.login.LoginWayActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -31,8 +30,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public String title;
     public String body;
     public String documentid;
+    public String flag;
     private FirebaseFirestore mStore=FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "From: " + remoteMessage.getFrom());
@@ -42,9 +43,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             title=remoteMessage.getData().get("title");
             body=remoteMessage.getData().get("body");
             documentid=remoteMessage.getData().get("DocumentId");
+            flag=remoteMessage.getData().get("flag");
             Date date=new Date() ;
-            NotiInfo notiInfo=new NotiInfo(title,body,documentid,date);
-            mStore.collection("employee")
+            NotiInfo notiInfo=new NotiInfo(title,body,documentid,date,flag);
+            mStore.collection("users")
                     .document(firebaseUser.getUid())
                     .collection("notification")
                     .document()
@@ -63,7 +65,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         //
 
 
-        sendNotification();
+        sendNotification();//자기폰에 올리는 작업
     }
 
     @Override
@@ -74,11 +76,22 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification() {
-        Intent intent = new Intent(this, LoginWayActivity.class);
+        Intent intent = new Intent(this, AcceptActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("DocumentId",documentid);//이거없으면 디테일 안열림.
+
+
+
+
+        intent.putExtra("title",title);
+        intent.putExtra("body",body);
+        intent.putExtra("DocumentId",documentid);
+        intent.putExtra("flag",flag);
+
+
+
+
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack( LoginWayActivity.class );
+        stackBuilder.addParentStack( AcceptActivity.class );
         stackBuilder.addNextIntent(intent);
         Log.d("DocumentId",documentid);
 

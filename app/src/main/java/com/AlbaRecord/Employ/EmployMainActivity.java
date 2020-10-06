@@ -1,4 +1,4 @@
-package com.AlbaRecord;
+package com.AlbaRecord.Employ;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -8,22 +8,18 @@ import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
-import com.AlbaRecord.searchemployee.SearchEmployeeActivity;
+import com.AlbaRecord.Boss.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -40,7 +36,6 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.util.FusedLocationSource;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,37 +122,37 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
 
-        refreshLatLon();
+       // refreshLatLon();
 
 
 
     }
 
-    private void refreshLatLon() {
-        db.collection("employee").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
-                List<Address> list = null;
-                final Geocoder geocoder = new Geocoder(getApplicationContext());
-                double lat, lon;
-                try {
-                    list = geocoder.getFromLocationName(employeeModel.getAdress(), 10);
-                    Address addr = list.get(0);
-                    lat = addr.getLatitude();
-                    lon = addr.getLongitude();
-                    Log.d("위도", String.valueOf(lat));
-                    Log.d("경도", String.valueOf(lon));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.d("실패", "list.get(0).toString()");
-                    return;
-                }
-                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("latitude",lat);
-                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("logtitude",lon);
-            }
-        });
-    }
+//    private void refreshLatLon() {
+//        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+//                List<Address> list = null;
+//                final Geocoder geocoder = new Geocoder(getApplicationContext());
+//                double lat, lon;
+//                try {
+//                    list = geocoder.getFromLocationName(employeeModel.getAdress(), 10);
+//                    Address addr = list.get(0);
+//                    lat = addr.getLatitude();
+//                    lon = addr.getLongitude();
+//                    Log.d("위도", String.valueOf(lat));
+//                    Log.d("경도", String.valueOf(lon));
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                    Log.d("실패", "list.get(0).toString()");
+//                    return;
+//                }
+//                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("latitude",lat);
+//                db.collection("employee").document(mAuth.getCurrentUser().getUid()).update("logtitude",lon);
+//            }
+//        });
+//    }
 
 
     private void initViewId() {

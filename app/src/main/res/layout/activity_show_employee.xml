@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/short_background"
-        tools:context=".searchemployee.ShowEmployeeActivity">
+        tools:context=".Boss.ShowEmployeeActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

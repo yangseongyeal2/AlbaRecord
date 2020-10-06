@@ -20,9 +20,32 @@ public class EmployeeModel {
     private String self_introduce;
     int flag;
     private String DocumentId;
+    private ArrayList<String> MyBoss;
 
-    public int getFlag() {
-        return flag;
+    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, int flag, String documentId, ArrayList<String> myBoss) {
+        Email = email;
+        PassWord = passWord;
+        this.phonenumber = phonenumber;
+        this.name = name;
+        this.age = age;
+        this.adress = adress;
+        this.degree = degree;
+        this.latitude = latitude;
+        this.logtitude = logtitude;
+        this.photo = photo;
+        this.licenses = licenses;
+        this.self_introduce = self_introduce;
+        this.flag = flag;
+        DocumentId = documentId;
+        MyBoss = myBoss;
+    }
+
+    public String getDocumentId() {
+        return DocumentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        DocumentId = documentId;
     }
 
     @Override
@@ -42,52 +65,24 @@ public class EmployeeModel {
                 ", self_introduce='" + self_introduce + '\'' +
                 ", flag=" + flag +
                 ", DocumentId='" + DocumentId + '\'' +
+                ", MyBoss=" + MyBoss +
                 '}';
+    }
+
+    public int getFlag() {
+        return flag;
+    }
+
+    public ArrayList<String> getMyBoss() {
+        return MyBoss;
+    }
+
+    public void setMyBoss(ArrayList<String> myBoss) {
+        MyBoss = myBoss;
     }
 
     public void setFlag(int flag) {
         this.flag = flag;
-    }
-
-    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, int flag, String documentId) {
-        Email = email;
-        PassWord = passWord;
-        this.phonenumber = phonenumber;
-        this.name = name;
-        this.age = age;
-        this.adress = adress;
-        this.degree = degree;
-        this.latitude = latitude;
-        this.logtitude = logtitude;
-        this.photo = photo;
-        this.licenses = licenses;
-        this.self_introduce = self_introduce;
-        this.flag = flag;
-        DocumentId = documentId;
-    }
-
-    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, String documentId) {
-        Email = email;
-        PassWord = passWord;
-        this.phonenumber = phonenumber;
-        this.name = name;
-        this.age = age;
-        this.adress = adress;
-        this.degree = degree;
-        this.latitude = latitude;
-        this.logtitude = logtitude;
-        this.photo = photo;
-        this.licenses = licenses;
-        this.self_introduce = self_introduce;
-        DocumentId = documentId;
-    }
-
-    public String getDocumentId() {
-        return DocumentId;
-    }
-
-    public void setDocumentId(String documentId) {
-        DocumentId = documentId;
     }
 
 

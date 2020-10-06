@@ -17,14 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".login.LoginEmployeeActivity"></activity>
+        <activity android:name=".Accept.AcceptActivity"></activity>
+        <activity android:name=".login.LoginEmployeeActivity" />
         <activity android:name=".login.LoginEmplyeeActivity" />
-        <activity android:name=".EmployMainActivity" />
-        <activity android:name=".MyEmployee.MyEmployeeActivity" />
+        <activity android:name=".Employ.EmployMainActivity" />
+        <activity android:name=".Boss.MyEmployeeActivity" />
         <activity android:name=".searchemployee.ShowMoreEmployeeActivity" />
-        <activity android:name=".searchemployee.ShowEmployeeActivity" />
-        <activity android:name=".searchemployee.SearchEmployeeActivity" />
-        <activity android:name=".SalaryActivity" />
+        <activity android:name=".Boss.ShowEmployeeActivity" />
+        <activity android:name=".Boss.SearchEmployeeActivity" />
+        <activity android:name=".Employ.SalaryActivity" />
         <activity android:name=".login.DaumWebViewActivity" />
         <activity android:name=".login.LoginWayActivity">
             <intent-filter>
@@ -36,7 +37,7 @@
         <activity android:name=".login.EmployeeSignupActivity" />
         <activity android:name=".login.BossSignupActivity" />
         <activity android:name=".login.EmailCheckActivity" />
-        <activity android:name=".BossMainActivity" />
+        <activity android:name=".Boss.BossMainActivity" />
         <activity android:name=".login.FindActivity" />
         <activity android:name=".login.LoginBossActivity" />
 

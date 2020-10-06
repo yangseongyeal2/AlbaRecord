@@ -1,7 +1,6 @@
-package com.AlbaRecord;
+package com.AlbaRecord.Employ;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -11,15 +10,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
 
 import android.util.Log;
 import android.widget.Toast;
 
+
+import com.AlbaRecord.R;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;

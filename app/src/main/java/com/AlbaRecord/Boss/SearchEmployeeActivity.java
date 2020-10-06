@@ -1,4 +1,4 @@
-package com.AlbaRecord.searchemployee;
+package com.AlbaRecord.Boss;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +38,7 @@ public class SearchEmployeeActivity extends AppCompatActivity implements View.On
                 if(email.isEmpty()){
                     Toast.makeText(this, "이메일을입력해주시오", Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent showIntent=new Intent(getApplicationContext(),ShowEmployeeActivity.class);
+                    Intent showIntent=new Intent(getApplicationContext(), ShowEmployeeActivity.class);
                     showIntent.putExtra("Email",email);
                     startActivity(showIntent);
                     finish();

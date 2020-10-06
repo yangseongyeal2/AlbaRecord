@@ -17,7 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.AlbaRecord.BossMainActivity;
+import com.AlbaRecord.Boss.BossMainActivity;
 import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +32,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BossSignupActivity extends AppCompatActivity implements View.OnClickListener {
@@ -303,7 +304,8 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                                     lat,
                                     lon,
                                     0,//사장님
-                                    firebaseUser.getUid()
+                                    firebaseUser.getUid(),
+                                    new ArrayList<String>()
                             );
                             firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())
