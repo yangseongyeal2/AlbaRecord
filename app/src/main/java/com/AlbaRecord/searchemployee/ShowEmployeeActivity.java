@@ -69,8 +69,9 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void RetrieveEmployeeInfo() {
-        db.collection("employee")
+        db.collection("users")
                 .whereEqualTo("email", email)
+
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -145,7 +146,9 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
 
-                        sendNotification(email,"제목","내용");
+
+
+                        sendNotification(DocumentId,"제목","내용");
                         startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
                         dialog.dismiss();
                     }
@@ -162,7 +165,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
     }
-    private void sendNotification(String Email, String title, String content) {
+    private void sendNotification(String DocumentId, String title, String content) {
         /* our json object will lokk loke
         {
             "to": "topics/topic name",
@@ -178,8 +181,8 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", title + "에 댓글이 달렸습니다");
             notificationObj.put("body", "댓글:" + content);
-            notificationObj.put("Email", Email);
-            Log.d("양성열",email);
+            notificationObj.put("DocumentId", DocumentId);
+
 
 
             // mainObj.put("notification",notificationObj);
@@ -192,6 +195,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                         @Override
                         public void onResponse(JSONObject response) {
                             Log.d("양성열",response.toString());
+
                         }
                     }, new com.android.volley.Response.ErrorListener() {
                 @Override

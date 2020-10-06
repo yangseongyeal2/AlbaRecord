@@ -381,7 +381,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                             FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Log.d("구독하기", "성공");
+                                    Log.d("구독하기", firebaseUser.getUid());
                                     finish();
                                 }
                             });

@@ -3,6 +3,7 @@ package com.AlbaRecord.Notification;
 import com.AlbaRecord.BossMainActivity;
 import com.AlbaRecord.Model.NotiInfo;
 import com.AlbaRecord.R;
+import com.AlbaRecord.login.LoginWayActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -73,11 +74,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
     private void sendNotification() {
-        Intent intent = new Intent(this, BossMainActivity.class);
+        Intent intent = new Intent(this, LoginWayActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra("DocumentId",documentid);//이거없으면 디테일 안열림.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-        stackBuilder.addParentStack( BossMainActivity.class );
+        stackBuilder.addParentStack( LoginWayActivity.class );
         stackBuilder.addNextIntent(intent);
         Log.d("DocumentId",documentid);
 
