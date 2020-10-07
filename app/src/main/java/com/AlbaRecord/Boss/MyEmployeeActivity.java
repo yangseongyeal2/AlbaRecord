@@ -36,10 +36,16 @@ public class MyEmployeeActivity extends AppCompatActivity {
 
 
 
+
     }
 
+
+
     private void RetreiveMyEmployee() {
-        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 UserModel userModel=documentSnapshot.toObject(UserModel.class);
@@ -51,7 +57,6 @@ public class MyEmployeeActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
                             myEmploy.add(employeeModel);
-                            Log.d("for문","1번");
                             EmplyeeInfoAdapter emplyeeInfoAdapter=new EmplyeeInfoAdapter(myEmploy,MyEmployeeActivity.this);
                             myalba_recyclerview.setAdapter(emplyeeInfoAdapter);
                         }
@@ -60,7 +65,6 @@ public class MyEmployeeActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void initViewId() {

@@ -28,6 +28,7 @@ import com.AlbaRecord.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -76,6 +77,25 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
     @Override
     public void onBindViewHolder(@NonNull EmplyeeInfoAdapter.EmplyeeInfoViewHolder holder, int position) {
         EmployeeModel employeeModel = employeeModels.get(position);
+
+        //저장되있던 정보 불러오기
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .collection("MyEmployeeInfo")
+                .document(employeeModel.getDocumentId())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Map<String, Object> data=documentSnapshot.getData();
+                        Log.d("어댑터",data.toString());
+                        holder.workstart.setText(data.get("근무시작시간").toString());
+                        holder.position.setText(data.get("직급").toString());
+                    }
+                });
+
+
+
         //employeeModel에서 가져올수 있는 정보
         Glide.with(holder.photo)
                 .load(employeeModel.getPhoto())
@@ -150,6 +170,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(mContext, EvaluateEmployeeActivity.class);
+                intent.putExtra("DocumentId",employeeModel.getDocumentId());
                 mContext.startActivity(intent);
             }
         });
@@ -169,6 +190,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
     public EmplyeeInfoAdapter.EmplyeeInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new EmplyeeInfoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_employ_info, parent, false));
     }
+
 
 
 }

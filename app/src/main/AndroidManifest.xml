@@ -20,7 +20,6 @@
         <activity android:name=".Boss.EvaluateEmployeeActivity"></activity>
         <activity android:name=".Accept.AcceptActivity" />
         <activity android:name=".login.LoginEmployeeActivity" />
-        <activity android:name=".login.LoginEmplyeeActivity" />
         <activity android:name=".Employ.EmployMainActivity" />
         <activity android:name=".Boss.MyEmployeeActivity" />
         <activity android:name=".searchemployee.ShowMoreEmployeeActivity" />
