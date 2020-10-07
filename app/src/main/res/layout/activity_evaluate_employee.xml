@@ -23,8 +23,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="374dp"
+                android:layout_height="184dp"
                 android:background="@drawable/grayedgebox"
                 android:padding="16dp"
                 app:layout_constraintStart_toStartOf="parent"
