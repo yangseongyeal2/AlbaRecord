@@ -13,7 +13,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="72dp"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,8 +22,8 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
+            android:layout_width="97dp"
+            android:layout_height="28dp"
             android:background="@drawable/btn_main"
             android:gravity="center_horizontal"
             android:text="기본정보"
@@ -102,7 +102,7 @@
             android:layout_marginStart="12dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView15"
             app:layout_constraintEnd_toEndOf="@+id/editText3"
-            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toTopOf="@+id/textView15"
             app:layout_constraintVertical_bias="0.0" />
@@ -120,42 +120,9 @@
             android:id="@+id/editText4"
             android:layout_width="106dp"
             android:layout_height="21dp"
-            android:layout_marginStart="12dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+
             app:layout_constraintEnd_toEndOf="@+id/editText3"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toTopOf="@+id/textView18"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/graybox"
-            android:text="검색"
-            app:layout_constraintEnd_toEndOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:text="학력 :"
-            app:layout_constraintEnd_toEndOf="@+id/textView17"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
-
-        <EditText
-
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/textView16"
-            app:layout_constraintStart_toStartOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/button4"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/textView18" />
 
         <TextView
             android:id="@+id/textView17"
@@ -175,6 +142,35 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@+id/textView17"
             app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/graybox"
+            android:text="검색"
+            app:layout_constraintEnd_toEndOf="@+id/editText3"
+            app:layout_constraintTop_toBottomOf="@+id/editText3">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="38dp"
+            android:layout_height="21dp"
+            android:text="학력 :"
+            app:layout_constraintEnd_toEndOf="@+id/textView17"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView17"
+            app:layout_constraintTop_toBottomOf="@+id/button4" />
+
+        <EditText
+
+            android:layout_width="150dp"
+            android:layout_height="21dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="@+id/editText3"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
