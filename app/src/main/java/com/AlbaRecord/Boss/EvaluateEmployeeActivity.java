@@ -2,16 +2,180 @@ package com.AlbaRecord.Boss;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.AlbaRecord.Model.EmployeeModel;
+import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
+import com.bumptech.glide.Glide;
+import com.crystal.crystalrangeseekbar.interfaces.OnSeekbarFinalValueListener;
+import com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-public class EvaluateEmployeeActivity extends AppCompatActivity {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
+
+public class EvaluateEmployeeActivity extends AppCompatActivity implements View.OnClickListener {
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    TextView position, workstart, phone, name, age;
+    ImageView photo;
+    String employeeDocumentId;
+    CrystalSeekbar diligenceseekBar,flexibilityseekBar,masteryseekBar,attitudeseekBar,communicationseekBar;
+    int diligence=0,flexibility=0,mastery=0,attitude=0,communication=0;
+    Button addevaluation;
+    EditText hashtag,hashtagdetail;
+    TextView today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluate_employee);
-        
+        initViewId();
+        employeeDocumentId = getIntent().getStringExtra("DocumentId");
+        Date currenttime= Calendar.getInstance().getTime();
+        String date_text=new SimpleDateFormat("yyyy년 MM월 dd일 ", Locale.getDefault()).format(currenttime);
+        today.setText(date_text);
+
+
+
+       //직원정보 불러오기
+        RetrieveEmployInfo();
+        //직원디테일 불러오기
+        RetrieveEmployInfo_detail();
+        //버튼클릭
+        addevaluation.setOnClickListener(this);
+        //평가점수
+        diligenceseekBar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                diligence=value.intValue();
+            }
+        });
+        flexibilityseekBar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                flexibility=value.intValue();
+            }
+        });
+        masteryseekBar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                mastery=value.intValue();
+            }
+        });
+        attitudeseekBar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                attitude=value.intValue();
+            }
+        });
+        communicationseekBar.setOnSeekbarFinalValueListener(new OnSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number value) {
+                communication=value.intValue();
+            }
+        });
+
+
+
+
     }
+
+    private void RetrieveEmployInfo_detail() {
+
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .collection("MyEmployeeInfo")
+                .document(employeeDocumentId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Map<String, Object> data=documentSnapshot.getData();
+                        Log.d("어댑터",data.toString());
+                        workstart.setText(data.get("근무시작시간").toString());
+                        position.setText(data.get("직급").toString());
+                    }
+                });
+    }
+
+    private void RetrieveEmployInfo() {
+        db.collection("users").document(employeeDocumentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+                assert employeeModel != null;
+                phone.setText(employeeModel.getPhonenumber());
+                name.setText(employeeModel.getName());
+                age.setText(employeeModel.getAge());
+                Glide.with(photo).load(employeeModel.getPhoto()).into(photo);
+
+            }
+        });
+    }
+
+    private void initViewId() {
+        photo=(ImageView)findViewById(R.id.photo);
+        position = (TextView) findViewById(R.id.position);
+        workstart = (TextView) findViewById(R.id.workstart);
+        phone = (TextView) findViewById(R.id.phone);
+        name = (TextView) findViewById(R.id.name);
+        age = (TextView) findViewById(R.id.age);
+        diligenceseekBar=(CrystalSeekbar)findViewById(R.id.diligenceseekBar);
+        flexibilityseekBar=(CrystalSeekbar)findViewById(R.id.flexibilityseekBar);
+        masteryseekBar=(CrystalSeekbar)findViewById(R.id.masteryseekBar);
+        attitudeseekBar=(CrystalSeekbar)findViewById(R.id.attitudeseekBar);
+        communicationseekBar=(CrystalSeekbar)findViewById(R.id.communicationseekBar);
+        addevaluation=(Button)findViewById(R.id.addevaluation);
+        hashtag=(EditText)findViewById(R.id.hashtag);
+        hashtagdetail=(EditText)findViewById(R.id.hashtagdetail);
+        today=(TextView)findViewById(R.id.today);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.addevaluation:
+                Date currenttime= Calendar.getInstance().getTime();
+                String date_text=new SimpleDateFormat("yyyy년 MM월 dd일 ", Locale.getDefault()).format(currenttime);
+                String hashtag_str=hashtag.getText().toString();
+                String hashtagdetail_str=hashtagdetail.getText().toString();
+                EvaluateModel evaluateModel=new EvaluateModel(diligence,flexibility,mastery,attitude,communication,hashtag_str,hashtagdetail_str,date_text);
+
+                db.collection("users")
+                        .document(employeeDocumentId)
+                        .collection("Evaluate")
+                        .document(date_text)
+                        .set(evaluateModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d("평가성공","업로드성공");
+                        finish();
+                        startActivity(new Intent(getApplicationContext(),MyEmployeeActivity.class));
+                    }
+                });
+
+
+                break;
+        }
+    }
+
+
+
 }

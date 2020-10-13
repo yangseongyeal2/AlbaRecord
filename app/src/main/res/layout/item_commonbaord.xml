@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/boarder_layout"
+    android:padding="3dp">
+
+    <TextView
+        android:id="@+id/normal_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ellipsize="end"
+        android:ems="20"
+        android:textColor="@color/colorBlack"
+        android:maxLines="2"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/colorBlack"
+        android:id="@+id/normal_name_date_viewcont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/normal_item_title" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="290dp" />
+
+    <ImageView
+        android:id="@+id/normal_Imageview"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/message"
+        app:layout_constraintStart_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/message"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/message"
+        app:layout_constraintStart_toEndOf="@+id/normal_Imageview"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textColor="@color/colorBlack"
+        android:id="@+id/normal_reply"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@+id/message"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/viewcountimage"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/like"
+        app:layout_constraintStart_toEndOf="@+id/normal_Imageview"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
+
+    <TextView
+        android:textColor="@color/colorBlack"
+        android:id="@+id/viewcounttext"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toEndOf="@+id/viewcountimage"
+        app:layout_constraintTop_toBottomOf="@+id/normal_reply" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,11 +17,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".Employ.EmployeeMypageActivity"></activity>
+
+        <activity android:name=".Board.BoardActivity"></activity>
+
         <activity android:name=".Boss.EvaluateEmployeeActivity" />
         <activity android:name=".Accept.AcceptActivity" />
         <activity android:name=".login.LoginEmployeeActivity" />
-        <activity android:name=".login.LoginEmplyeeActivity" />
         <activity android:name=".Employ.EmployMainActivity" />
         <activity android:name=".Boss.MyEmployeeActivity" />
         <activity android:name=".searchemployee.ShowMoreEmployeeActivity" />
@@ -41,7 +44,10 @@
         <activity android:name=".login.EmailCheckActivity" />
         <activity android:name=".Boss.BossMainActivity" />
         <activity android:name=".login.FindActivity" />
+        <activity android:name=".Board.WriteActivity" />
+        <activity android:name=".Board.SearchActivity" />
         <activity android:name=".login.LoginBossActivity" />
+        <activity android:name=".Board.DetailActivity" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

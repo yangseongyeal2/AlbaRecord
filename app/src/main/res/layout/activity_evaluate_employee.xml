@@ -70,7 +70,7 @@
                     app:layout_constraintStart_toEndOf="@+id/photo"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
+                <TextView
                     android:id="@+id/position"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -170,53 +170,61 @@
                     android:padding="4dp"
                     android:text="평가기간"
                     android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
+                    app:layout_constraintEnd_toEndOf="@+id/today"
                     app:layout_constraintHorizontal_bias="0.494"
-                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+                    app:layout_constraintStart_toStartOf="@+id/today"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout4"
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:id="@+id/constraintLayout4"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="4dp"-->
+<!--                    android:background="@drawable/graybox"-->
+<!--                    android:padding="8dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView4">-->
+
+<!--                    //가장 최근에 남긴 리뷰 날짜-->
+<!--                    //(부터 현재까지의 평가!)-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/lastevaluation"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="2020/05/1"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/textView2"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text=" ~ "-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/lastevaluation"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/lastevaluation" />-->
+
+<!--                    //(가장 최근에 남긴 리뷰 날짜)-->
+<!--                    //부터 현재까지의 평가!-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/today"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="2020/10/6"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/textView2"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/textView2" />-->
+
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <TextView
+                    android:id="@+id/today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/graybox"
-                    android:padding="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                    //가장 최근에 남긴 리뷰 날짜
-                    //(부터 현재까지의 평가!)
-
-                    <TextView
-                        android:id="@+id/lastevaluation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2020/05/1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" ~ "
-                        app:layout_constraintStart_toEndOf="@+id/lastevaluation"
-                        app:layout_constraintTop_toTopOf="@+id/lastevaluation" />
-
-                    //(가장 최근에 남긴 리뷰 날짜)
-                    //부터 현재까지의 평가!
-
-                    <TextView
-                        android:id="@+id/today"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2020/10/6"
-                        app:layout_constraintStart_toEndOf="@+id/textView2"
-                        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toBottomOf="@+id/textView4"
+                    />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -227,9 +235,9 @@
                     android:padding="4dp"
                     android:text="평가"
                     android:textAlignment="center"
-                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
-                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+                    app:layout_constraintEnd_toEndOf="@+id/today"
+                    app:layout_constraintStart_toStartOf="@+id/today"
+                    app:layout_constraintTop_toBottomOf="@+id/today" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
@@ -244,18 +252,19 @@
                     <TextView
                         android:id="@+id/diligence"
                         android:layout_width="80dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/grayedgebox"
+                        android:layout_height="wrap_content"
+
                         android:text="근면성\n(책임감)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                       />
 
 
-                    <SeekBar
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/diligenceseekBar"
                         android:layout_width="200dp"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/diligence"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/diligence"
@@ -264,19 +273,19 @@
                     <TextView
                         android:id="@+id/flexibility"
                         android:layout_width="80dp"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/grayedgebox"
+
                         android:text="상황대처능력\n(임기응변)\n(분석판단)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/diligence" />
 
 
-                    <SeekBar
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/flexibilityseekBar"
                         android:layout_width="200dp"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/flexibility"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/flexibility"
@@ -285,18 +294,18 @@
                     <TextView
                         android:id="@+id/mastery"
                         android:layout_width="80dp"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/grayedgebox"
+
                         android:text="업무습득력\n(업무지식)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/flexibility" />
 
-                    <SeekBar
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/masteryseekBar"
                         android:layout_width="200dp"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/mastery"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/mastery"
@@ -305,18 +314,18 @@
                     <TextView
                         android:id="@+id/attitude"
                         android:layout_width="80dp"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/grayedgebox"
+
                         android:text="근무태도\n(실천력)\n(기획창의력)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/mastery" />
 
-                    <SeekBar
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/attitudeseekBar"
                         android:layout_width="200dp"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/attitude"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/attitude"
@@ -325,19 +334,19 @@
                     <TextView
                         android:id="@+id/communication"
                         android:layout_width="80dp"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/grayedgebox"
+
                         android:text="커뮤니케이션\n(협동심)\n(업무개선)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/attitude" />
 
 
-                    <SeekBar
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/communicationseekBar"
                         android:layout_width="200dp"
-                        android:layout_height="15dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="@+id/communication"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/communication"
