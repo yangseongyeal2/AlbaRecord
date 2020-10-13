@@ -18,6 +18,15 @@ public class UserModel {
     public ArrayList<String> getDocumentIdList() {
         return MyEmployee;
     }
+    private ArrayList<BoardInfo> boardInfoList;
+
+    public ArrayList<BoardInfo> getBoardInfoList() {
+        return boardInfoList;
+    }
+
+    public void setBoardInfoList(ArrayList<BoardInfo> boardInfoList) {
+        this.boardInfoList = boardInfoList;
+    }
 
     public ArrayList<String> getMyEmployee() {
         return MyEmployee;

@@ -73,13 +73,13 @@
                 android:text="스케쥴\n" />
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/Board"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="pay\n조회" />
+                android:text="Q&amp;A\n게시판" />
 
             <Button
                 android:id="@+id/btn2"

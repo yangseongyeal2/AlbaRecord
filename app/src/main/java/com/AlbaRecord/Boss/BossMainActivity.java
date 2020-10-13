@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import com.AlbaRecord.Board.BoardActivity;
 import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.Employ.SalaryActivity;
@@ -50,7 +51,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, btn1,albaReserch,myalba;
+    private Button logout, salary, btn1,albaReserch,myalba,Board;
     private MapView map_view;
     private NaverMap naverMap;
     List<UserModel> bosslist = new ArrayList<>();
@@ -67,9 +68,10 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         Log.d(TAG, TAG+"실행");
 
         salary.setOnClickListener(this);
-        btn1.setOnClickListener(this);
+
         albaReserch.setOnClickListener(this);
         myalba.setOnClickListener(this);
+        Board.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -167,6 +169,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         btn1 = (Button) findViewById(R.id.btn1);
         albaReserch=(Button)findViewById(R.id.albaReserch);
         myalba=(Button)findViewById(R.id.myalba);
+        Board=(Button)findViewById(R.id.Board);
 
     }
 
@@ -198,6 +201,9 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.myalba:
                 startActivity(new Intent(getApplicationContext(), MyEmployeeActivity.class));
+                break;
+            case R.id.Board:
+                startActivity(new Intent(getApplicationContext(), BoardActivity.class));
                 break;
         }
 
