@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/short_background"
+        tools:context=".Employ.EmployeeMypageActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="375dp"
+        android:layout_height="299dp"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="27dp">
+
+        <TextView
+            android:id="@+id/textViewbasicinfo"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/btn_main"
+            android:gravity="center_horizontal"
+            android:text="기본정보"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="80dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="28dp"
+            android:text="비밀번호 :"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="115dp" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="130dp"
+            android:layout_height="21dp"
+            android:layout_marginEnd="121dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:text="비밀번호확인 :"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            tools:layout_editor_absoluteY="151dp" />
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="182dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            tools:layout_editor_absoluteY="151dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="휴대폰 :"
+            app:layout_constraintStart_toStartOf="@+id/textView2"
+            tools:layout_editor_absoluteY="196dp" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:layout_width="182dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/editText1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/editText1"
+            app:layout_constraintTop_toBottomOf="@+id/editText1" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/graybox"
+            android:text="수정"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="242dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/constraintLayout2"
+        android:layout_width="374dp"
+        android:layout_height="328dp"
+        android:padding="16dp"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout1"
+        tools:layout_editor_absoluteY="332dp">
+
+        <TextView
+            android:id="@+id/textView_bossinfo"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:background="@drawable/btn_main"
+            android:gravity="center_horizontal"
+            android:text="사장님 정보"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="80dp"
+            android:layout_height="21dp"
+            android:layout_margin="30dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="8dp"
+            android:text="이름 :"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_bossinfo"
+            tools:layout_editor_absoluteX="137dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="80dp"
+            android:layout_height="21dp"
+            android:text="상호명 :"
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="67dp" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="180dp"
+            android:layout_height="21dp"
+            tools:layout_editor_absoluteX="137dp"
+            tools:layout_editor_absoluteY="68dp" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="주소 :"
+            tools:layout_editor_absoluteX="28dp"
+            tools:layout_editor_absoluteY="133dp" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="@+id/editText6"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/editText6" />
+
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/graybox"
+            android:text="검색"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="168dp" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="사업자등록번호 :"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            tools:layout_editor_absoluteY="230dp" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="@+id/editText7" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/graybox"
+            android:text="검색"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="265dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="86dp"
+        android:layout_height="29dp"
+        android:background="@drawable/graybox"
+        android:text="수정완료"
+        tools:layout_editor_absoluteX="309dp"
+        tools:layout_editor_absoluteY="675dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
