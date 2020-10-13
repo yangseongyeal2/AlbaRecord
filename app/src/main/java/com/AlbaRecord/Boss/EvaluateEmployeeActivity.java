@@ -108,8 +108,13 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         Map<String, Object> data=documentSnapshot.getData();
                         Log.d("어댑터",data.toString());
-                        workstart.setText(data.get("근무시작시간").toString());
-                        position.setText(data.get("직급").toString());
+                        try {
+                            workstart.setText(data.get("근무시작시간").toString());
+                            position.setText(data.get("직급").toString());
+                        }catch (NullPointerException e){
+                            e.printStackTrace();
+                        }
+
                     }
                 });
     }

@@ -75,10 +75,12 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.accept:
                 sendNotification(documentId,"수락","수락","1");
                 mStore.collection("users").document(firebaseUser.getUid()).update("MyEmployee", FieldValue.arrayUnion(documentId));
+                finish();
 
                 break;
             case R.id.deny:
                 sendNotification(documentId,"거절","수락","2");
+                finish();
                 break;
         }
     }

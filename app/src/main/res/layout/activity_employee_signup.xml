@@ -307,6 +307,52 @@
                     app:layout_constraintEnd_toEndOf="@+id/image"
                     app:layout_constraintStart_toStartOf="@+id/image"
                     app:layout_constraintTop_toBottomOf="@+id/image" />
+                <TextView
+                    android:id="@+id/Account"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:text="계좌번호:"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/Account_edit"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="@+id/Account_edit" />
+
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/Account_edit"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Account"
+                    app:layout_constraintTop_toBottomOf="@+id/education_edittext" />
+                <TextView
+                    android:id="@+id/Bank"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:text="계좌은행:"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/Bank_edit"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintTop_toTopOf="@+id/Bank_edit" />
+                <EditText
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/Bank_edit"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/login_edittext"
+                    android:ems="10"
+                    android:hint="국민은행"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/Account"
+                    app:layout_constraintTop_toBottomOf="@+id/Account_edit" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,67 @@ public class EmployeeModel {
     int flag;
     private String DocumentId;
     private ArrayList<String> MyBoss;
+    private String Account;
+    private String Bank;
+
+    public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, int flag, String documentId, ArrayList<String> myBoss, String account, String bank) {
+        Email = email;
+        PassWord = passWord;
+        this.phonenumber = phonenumber;
+        this.name = name;
+        this.age = age;
+        this.adress = adress;
+        this.degree = degree;
+        this.latitude = latitude;
+        this.logtitude = logtitude;
+        this.photo = photo;
+        this.licenses = licenses;
+        this.self_introduce = self_introduce;
+        this.flag = flag;
+        DocumentId = documentId;
+        MyBoss = myBoss;
+        Account = account;
+        Bank = bank;
+    }
+
+    public String getAccount() {
+        return Account;
+    }
+
+    public void setAccount(String account) {
+        Account = account;
+    }
+
+    public String getBank() {
+        return Bank;
+    }
+
+    public void setBank(String bank) {
+        Bank = bank;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeModel{" +
+                "Email='" + Email + '\'' +
+                ", PassWord='" + PassWord + '\'' +
+                ", phonenumber='" + phonenumber + '\'' +
+                ", name='" + name + '\'' +
+                ", age='" + age + '\'' +
+                ", adress='" + adress + '\'' +
+                ", degree='" + degree + '\'' +
+                ", latitude=" + latitude +
+                ", logtitude=" + logtitude +
+                ", photo='" + photo + '\'' +
+                ", licenses=" + licenses +
+                ", self_introduce='" + self_introduce + '\'' +
+                ", flag=" + flag +
+                ", DocumentId='" + DocumentId + '\'' +
+                ", MyBoss=" + MyBoss +
+                ", Account='" + Account + '\'' +
+                ", Bank='" + Bank + '\'' +
+                '}';
+    }
 
     public EmployeeModel(String email, String passWord, String phonenumber, String name, String age, String adress, String degree, double latitude, double logtitude, String photo, ArrayList<String> licenses, String self_introduce, int flag, String documentId, ArrayList<String> myBoss) {
         Email = email;
@@ -46,27 +107,6 @@ public class EmployeeModel {
 
     public void setDocumentId(String documentId) {
         DocumentId = documentId;
-    }
-
-    @Override
-    public String toString() {
-        return "EmployeeModel{" +
-                "Email='" + Email + '\'' +
-                ", PassWord='" + PassWord + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
-                ", name='" + name + '\'' +
-                ", age='" + age + '\'' +
-                ", adress='" + adress + '\'' +
-                ", degree='" + degree + '\'' +
-                ", latitude=" + latitude +
-                ", logtitude=" + logtitude +
-                ", photo='" + photo + '\'' +
-                ", licenses=" + licenses +
-                ", self_introduce='" + self_introduce + '\'' +
-                ", flag=" + flag +
-                ", DocumentId='" + DocumentId + '\'' +
-                ", MyBoss=" + MyBoss +
-                '}';
     }
 
     public int getFlag() {

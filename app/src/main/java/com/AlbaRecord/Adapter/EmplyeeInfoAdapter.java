@@ -1,10 +1,14 @@
 package com.AlbaRecord.Adapter;
 
 import android.app.DatePickerDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -17,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 
 import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
@@ -36,6 +41,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+
 public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.EmplyeeInfoViewHolder> {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -51,12 +58,11 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
     }
 
 
-
     public class EmplyeeInfoViewHolder extends RecyclerView.ViewHolder {
         ImageView photo;
-        TextView name, age, phone,workstart;
+        TextView name, age, phone, workstart,AccountInfo;
         EditText position;
-        Button setposition, evaluate, fire;
+        Button setposition, evaluate, fire,call,account_save;
 
         public EmplyeeInfoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -68,7 +74,10 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
             setposition = (Button) itemView.findViewById(R.id.setposition);
             evaluate = (Button) itemView.findViewById(R.id.evaluate);
             fire = (Button) itemView.findViewById(R.id.fire);
-            workstart=(TextView)itemView.findViewById(R.id.workstart);
+            workstart = (TextView) itemView.findViewById(R.id.workstart);
+            call=(Button)itemView.findViewById(R.id.call);
+            AccountInfo=(TextView)itemView.findViewById(R.id.AccountInfo);
+            account_save=(Button)itemView.findViewById(R.id.account_save);
 
         }
 
@@ -87,13 +96,22 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Map<String, Object> data=documentSnapshot.getData();
-                        Log.d("어댑터",data.toString());
-                        holder.workstart.setText(data.get("근무시작시간").toString());
-                        holder.position.setText(data.get("직급").toString());
+                        if (documentSnapshot.exists()) {
+                            Map<String, Object> data = documentSnapshot.getData();
+
+                            Log.d("어댑터", data.toString());
+                            try {
+                                holder.workstart.setText(data.get("근무시작시간").toString());
+                                holder.position.setText(data.get("직급").toString());
+                            }catch (NullPointerException e){
+                                e.printStackTrace();
+                            }
+
+                        }
+
+
                     }
                 });
-
 
 
         //employeeModel에서 가져올수 있는 정보
@@ -107,7 +125,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         holder.setposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(holder.position.getText().toString().trim().isEmpty()){
+                if (holder.position.getText().toString().trim().isEmpty()) {
                     AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
                     ad.setIcon(R.mipmap.ic_launcher);
                     ad.setTitle("직원의 직급");
@@ -119,17 +137,17 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                         }
                     });
                     ad.show();
-                }else {
-                    String pos=holder.position.getText().toString().trim();
+                } else {
+                    String pos = holder.position.getText().toString().trim();
                     Map<String, Object> docData = new HashMap<>();
-                    docData.put("직급",pos);
+                    docData.put("직급", pos);
                     db.collection("users")
                             .document(mAuth.getCurrentUser().getUid())
                             .collection("MyEmployeeInfo")
                             .document(employeeModel.getDocumentId()).set(docData, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Log.d("업데이트옵션","성공");
+                            Log.d("업데이트옵션", "성공");
                         }
                     });
                     holder.position.clearFocus();
@@ -141,21 +159,19 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         holder.workstart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callbackMethod = new DatePickerDialog.OnDateSetListener()
-                {
+                callbackMethod = new DatePickerDialog.OnDateSetListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-                    {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         holder.workstart.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
                         Map<String, Object> docData = new HashMap<>();
-                        docData.put("근무시작시간",year + "년" + monthOfYear + "월" + dayOfMonth + "일");
+                        docData.put("근무시작시간", year + "년" + monthOfYear + "월" + dayOfMonth + "일");
                         db.collection("users")
                                 .document(mAuth.getCurrentUser().getUid())
                                 .collection("MyEmployeeInfo")
                                 .document(employeeModel.getDocumentId()).set(docData, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Log.d("업데이트옵션","성공");
+                                Log.d("업데이트옵션", "성공");
                             }
                         });
 
@@ -169,12 +185,30 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         holder.evaluate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext, EvaluateEmployeeActivity.class);
-                intent.putExtra("DocumentId",employeeModel.getDocumentId());
+                Intent intent = new Intent(mContext, EvaluateEmployeeActivity.class);
+                intent.putExtra("DocumentId", employeeModel.getDocumentId());
                 mContext.startActivity(intent);
             }
         });
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel="tel:"+employeeModel.getPhonenumber();
+                mContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
+            }
+        });
+        String AccountInfo=employeeModel.getAccount()+" "+employeeModel.getBank();
+        holder.AccountInfo.setText(AccountInfo);
 
+        holder.account_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //클립보드 사용 코드
+                ClipboardManager clipboardManager = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
+                ClipData clipData = ClipData.newPlainText("Account",AccountInfo); //클립보드에 ID라는 이름표로 id 값을 복사하여 저장
+                clipboardManager.setPrimaryClip(clipData);
+            }
+        });
 
 
     }
@@ -190,7 +224,6 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
     public EmplyeeInfoAdapter.EmplyeeInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new EmplyeeInfoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_employ_info, parent, false));
     }
-
 
 
 }

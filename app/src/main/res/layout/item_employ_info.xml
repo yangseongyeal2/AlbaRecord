@@ -119,6 +119,39 @@
         app:layout_constraintStart_toEndOf="@+id/phoneis"
         app:layout_constraintTop_toTopOf="@+id/phoneis" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="계좌정보"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/phoneis"
+        app:layout_constraintTop_toBottomOf="@+id/phoneis" />
+
+    <TextView
+        android:id="@+id/AccountInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="77880204189882 국민은행"
+
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/account_save"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/btn_main"
+        android:text="복사하기"
+       android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/AccountInfo" />
+
     <Button
         android:id="@+id/call"
         android:layout_width="20dp"
@@ -134,11 +167,11 @@
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/btn_main"
         android:text="평가하기"
         app:layout_constraintStart_toEndOf="@+id/photo"
-        app:layout_constraintTop_toBottomOf="@+id/phoneis" />
+        app:layout_constraintTop_toBottomOf="@+id/account_save" />
 
     <Button
         android:id="@+id/fire"

@@ -61,6 +61,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     ImageView image;
     ArrayList<String> contents = new ArrayList<>();
     RecyclerView certificate_recyclerView;
+    EditText Bank_edit,Account_edit;
 
 
     @Override
@@ -110,6 +111,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         license1 = (EditText) findViewById(R.id.license1);
         certificate_recyclerView = (RecyclerView) findViewById(R.id.certificate_recyclerView);
         selfintrobody = (EditText) findViewById(R.id.selfintrobody);
+        Bank_edit=(EditText)findViewById(R.id.Bank_edit);
+        Account_edit=(EditText)findViewById(R.id.Account_edit);
     }
 
     private void takeTempoInfo() {
@@ -132,6 +135,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         address_result.setText(arg1);
         String degree = pref.getString("degree", "");
         education_edittext.setText(degree);
+        String Bank = pref.getString("Bank", "");
+        education_edittext.setText(Bank);
+        String Account = pref.getString("Account", "");
+        education_edittext.setText(Account);
 
     }
 
@@ -203,7 +210,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                         @Override
                         public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
                             if (!task.isSuccessful()) {
+                                Log.d("스토리지업로드성공", task.getResult().toString());
                                 throw task.getException();
+
                             }
 
                             // Continue with the task to get the download URL
@@ -248,6 +257,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         String age = age_edittext.getText().toString().trim();
         String address = arg1;
         String degree = education_edittext.getText().toString().trim();
+        String Account=Account_edit.getText().toString().trim();
+        String Bank=Bank_edit.getText().toString().trim();
 
         SharedPreferences pref = getSharedPreferences("EmployUserModel", 0);
         SharedPreferences.Editor editor = pref.edit();
@@ -259,6 +270,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         editor.putString("age", age);
         editor.putString("address", address);
         editor.putString("degree", degree);
+        editor.putString("Account",Account);
+        editor.putString("Bank",Bank);
         //editor.commit();
         editor.apply();
     }
@@ -268,6 +281,8 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         String email = email_edittext.getText().toString().trim();
         String password = password_edittext.getText().toString().trim();
         String passwordRe = password_re_edittext.getText().toString().trim();
+        String Bank=Bank_edit.getText().toString().trim();
+        String Account=Account_edit.getText().toString().trim();
 
 
         //email과 password가 비었는지 아닌지를 체크 한다.
@@ -294,6 +309,14 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
             return;
         }
 
+        if (TextUtils.isEmpty(Bank)) {
+            Toast.makeText(this, "은행이름을 입력해 주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (TextUtils.isEmpty(Account)) {
+            Toast.makeText(this, "계좌번호를 입력해 주세요", Toast.LENGTH_SHORT).show();
+            return;
+        }
         signupFunc(email, password);
     }
 
@@ -356,7 +379,9 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     selfintrobody.getText().toString().trim(),
                                     1,
                                     firebaseUser.getUid(),
-                                    new ArrayList<String>()
+                                    new ArrayList<String>(),
+                                    Account_edit.getText().toString().trim(),
+                                    Bank_edit.getText().toString().trim()
                             );
                             firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())
