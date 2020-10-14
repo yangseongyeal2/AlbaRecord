@@ -17,7 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Boss.EvaluateEmployeeActivity"></activity>
+        <activity android:name=".Employ.EvaluateBossActivity"></activity>
+        <activity android:name=".Employ.ShowBossActivity" />
+        <activity android:name=".Employ.SearchBossActivity" />
+        <activity android:name=".Boss.EvaluateEmployeeActivity" />
         <activity android:name=".Accept.AcceptActivity" />
         <activity android:name=".login.LoginEmployeeActivity" />
         <activity android:name=".Employ.EmployMainActivity" />

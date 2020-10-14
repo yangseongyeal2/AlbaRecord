@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/short_background"
+        tools:context=".Boss.ShowEmployeeActivity">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:padding="16dp"
+            android:id="@+id/basicinform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="144dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/grayedgebox"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:textSize="30dp"
+                android:id="@+id/brand"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:gravity="center_horizontal"
+                android:text="이름"
+                app:layout_constraintStart_toEndOf="@+id/photo"
+                app:layout_constraintTop_toTopOf="@+id/photo" />
+
+            <Button
+                android:id="@+id/setmyboss"
+                android:layout_width="161dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/btn_main"
+                android:text="나의 사장님 등록"
+                app:layout_constraintBottom_toBottomOf="@+id/photo"
+                app:layout_constraintStart_toEndOf="@+id/photo" />
+
+            <Button
+                android:id="@+id/wish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/btn_main"
+                android:text="찜하기"
+                app:layout_constraintBottom_toBottomOf="@+id/setmyboss"
+                app:layout_constraintStart_toEndOf="@+id/setmyboss" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/carrerlayout1"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/grayedgebox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/basicinform">
+
+
+            <TextView
+                android:id="@+id/carrer1"
+                android:layout_width="70dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/graybox"
+                android:gravity="center_horizontal"
+                android:text="경력1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/brandnameis1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="상호명:"
+                app:layout_constraintBottom_toBottomOf="@+id/carrer1"
+                app:layout_constraintStart_toEndOf="@+id/carrer1"
+                app:layout_constraintTop_toTopOf="@+id/carrer1" />
+
+            <TextView
+                android:id="@+id/brandname1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="ex)재은커피"
+                app:layout_constraintBottom_toBottomOf="@+id/carrer1"
+                app:layout_constraintStart_toEndOf="@+id/brandnameis1"
+                app:layout_constraintTop_toTopOf="@+id/carrer1"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/brandnavermap1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/navermap"
+                app:layout_constraintBottom_toBottomOf="@+id/carrer1"
+                app:layout_constraintStart_toEndOf="@+id/brandname1"
+                app:layout_constraintTop_toTopOf="@+id/carrer1"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/branddivis1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="직종분류:"
+                app:layout_constraintStart_toStartOf="@+id/carrer1"
+                app:layout_constraintTop_toBottomOf="@+id/carrer1" />
+
+            <TextView
+                android:id="@+id/branddiv1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="ex)카페"
+                app:layout_constraintStart_toEndOf="@+id/branddivis1"
+                app:layout_constraintTop_toTopOf="@+id/branddivis1" />
+
+
+            <TextView
+                android:id="@+id/carrerlong1"
+                android:layout_width="201dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:text="근무기간"
+                app:layout_constraintStart_toStartOf="@+id/carrer1"
+                app:layout_constraintTop_toBottomOf="@+id/branddivis1" />
+
+            <TextView
+                android:id="@+id/careerthing1"
+                android:layout_width="201dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="4dp"
+                android:text="담당업무"
+                app:layout_constraintStart_toStartOf="@+id/carrer1"
+                app:layout_constraintTop_toBottomOf="@+id/carrerlong1" />
+
+            <ImageView
+                android:id="@+id/carrerpentagon1"
+                android:layout_width="138dp"
+                android:layout_height="101dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/carrer1"
+                app:srcCompat="@drawable/pentagon" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@drawable/btn_main"
+                android:text="자세히보기"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/carrerpentagon1"
+                app:layout_constraintTop_toBottomOf="@+id/carrerpentagon1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
