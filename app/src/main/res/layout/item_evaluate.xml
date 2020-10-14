@@ -63,23 +63,7 @@
             app:layout_constraintTop_toTopOf="@+id/carrer"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/branddivis1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="직종분류:"
-            app:layout_constraintStart_toStartOf="@+id/carrer"
-            app:layout_constraintTop_toBottomOf="@+id/carrer" />
 
-        <TextView
-            android:id="@+id/branddiv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="ex)카페"
-            app:layout_constraintStart_toEndOf="@+id/branddivis1"
-            app:layout_constraintTop_toTopOf="@+id/branddivis1" />
 
 
         <TextView
@@ -89,7 +73,7 @@
             android:layout_marginTop="4dp"
             android:text="근무기간"
             app:layout_constraintStart_toStartOf="@+id/carrer"
-            app:layout_constraintTop_toBottomOf="@+id/branddivis1" />
+            app:layout_constraintTop_toBottomOf="@+id/carrer" />
 
         <TextView
             android:id="@+id/careerthing"

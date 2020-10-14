@@ -213,7 +213,9 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         holder.evaluate_ex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
+                Intent intent_ex=new Intent(mContext, ShowEmployeeDetailActivity.class);
+                intent_ex.putExtra("DocumentId",employeeModel.getDocumentId());
+                mContext.startActivity(intent_ex);
             }
         });
 

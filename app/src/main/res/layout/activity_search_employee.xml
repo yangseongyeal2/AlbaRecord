@@ -59,7 +59,7 @@
             android:background="@drawable/qrcode"
             app:layout_constraintBottom_toBottomOf="@+id/searchemployeebutton"
             app:layout_constraintStart_toEndOf="@+id/searchemployeebutton"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/searchEmployeeEdit" />
 
         <TextView
             android:id="@+id/qrbackground"

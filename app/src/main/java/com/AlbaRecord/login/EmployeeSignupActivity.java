@@ -280,7 +280,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         editor.putString("degree", degree);
         editor.putString("Account",Account);
         editor.putString("Bank",Bank);
-        editor.putString("Image",downloadUri.toString());
+        if(downloadUri!=null){
+            editor.putString("Image",downloadUri.toString());
+        }
+
         //editor.commit();
         editor.apply();
     }
