@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Boss.BossMainActivity">
+    >
 
 
     <include
@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include">
 
@@ -37,58 +38,67 @@
             android:scrollbarAlwaysDrawHorizontalTrack="true">
 
             <Button
-                android:id="@+id/albaReserch"
+                android:id="@+id/myhome"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="알바조회" />
+                android:text="마이홈\n" />
 
             <Button
-                android:id="@+id/myalba"
+                android:id="@+id/myshop"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="나의 알바생" />
+                android:text="우리\n가게" />
 
             <Button
-                android:id="@+id/salary"
+                android:id="@+id/myboss"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
 
                 android:foreground="?attr/selectableItemBackground"
-                android:text="일당\n입력" />
+                android:text="우리\n사장님" />
 
             <Button
-                android:id="@+id/schedule"
+                android:id="@+id/Q_A"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="스케쥴\n" />
+                android:text="Q&amp;A\n" />
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/searchBoss"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="pay\n조회" />
+                android:text="사장님\검색" />
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/counsel"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="pay\n조회" />
+                android:text="알바\n상담" />
+
+            <Button
+                android:id="@+id/settings"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/btn_main"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="설정\n" />
 
         </LinearLayout>
 
@@ -107,3 +117,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

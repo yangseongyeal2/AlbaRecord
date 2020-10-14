@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
@@ -40,6 +41,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
     Button addevaluation;
     EditText hashtag,hashtagdetail;
     TextView today;
+    String brandname="";
+    String careerthing="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +60,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         RetrieveEmployInfo();
         //직원디테일 불러오기
         RetrieveEmployInfo_detail();
+        //사장 정보 가져오기
+        RetrieveBossInfo();
         //버튼클릭
         addevaluation.setOnClickListener(this);
         //평가점수
@@ -96,6 +101,18 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
 
     }
 
+    private void RetrieveBossInfo() {
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                BossModel bossModel=documentSnapshot.toObject(BossModel.class);
+                brandname=bossModel.getBrand();
+
+
+            }
+        });
+    }
+
     private void RetrieveEmployInfo_detail() {
 
         db.collection("users")
@@ -110,6 +127,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                         Log.d("어댑터",data.toString());
                         try {
                             workstart.setText(data.get("근무시작시간").toString());
+                            careerthing=data.get("직급").toString();
                             position.setText(data.get("직급").toString());
                         }catch (NullPointerException e){
                             e.printStackTrace();
@@ -118,6 +136,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                     }
                 });
     }
+
 
     private void RetrieveEmployInfo() {
         db.collection("users").document(employeeDocumentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -158,10 +177,14 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         switch(v.getId()){
             case R.id.addevaluation:
                 Date currenttime= Calendar.getInstance().getTime();
-                String date_text=new SimpleDateFormat("yyyy년 MM월 dd일 ", Locale.getDefault()).format(currenttime);
+                String date_text=new SimpleDateFormat("yyyy년 MM월", Locale.getDefault()).format(currenttime);
                 String hashtag_str=hashtag.getText().toString();
                 String hashtagdetail_str=hashtagdetail.getText().toString();
-                EvaluateModel evaluateModel=new EvaluateModel(diligence,flexibility,mastery,attitude,communication,hashtag_str,hashtagdetail_str,date_text);
+
+
+
+
+                EvaluateModel evaluateModel=new EvaluateModel(diligence,flexibility,mastery,attitude,communication,hashtag_str,hashtagdetail_str,date_text,brandname,careerthing);
 
                 db.collection("users")
                         .document(employeeDocumentId)

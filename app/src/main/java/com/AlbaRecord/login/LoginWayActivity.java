@@ -10,7 +10,7 @@ import android.util.Log;
 
 import com.AlbaRecord.Boss.BossMainActivity;
 import com.AlbaRecord.Employ.EmployMainActivity;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,9 +40,9 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     //Log.d("로그인웨이",documentSnapshot.toString());
-                    UserModel userModel=documentSnapshot.toObject(UserModel.class);
-                    Log.d("로그인웨이",userModel.toString());
-                    if(userModel.getFlag()==1){
+                    BossModel bossModel =documentSnapshot.toObject(BossModel.class);
+                    Log.d("로그인웨이", bossModel.toString());
+                    if(bossModel.getFlag()==1){
                         startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
                     }else{
                         startActivity(new Intent(getApplicationContext(), BossMainActivity.class));

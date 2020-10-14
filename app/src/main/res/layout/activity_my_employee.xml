@@ -32,22 +32,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
-    <Button
-        android:id="@+id/lastAlba"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btn_main"
-        android:text="▼지난알바생"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myalba_recyclerview" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/lastAlba_recyclerview"
-        app:layout_constraintTop_toBottomOf="@+id/lastAlba"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>

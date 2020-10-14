@@ -1,7 +1,6 @@
 package com.AlbaRecord.Boss;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import com.AlbaRecord.Board.BoardActivity;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.Employ.SalaryActivity;
 import com.AlbaRecord.login.LoginWayActivity;
@@ -54,7 +53,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private Button logout, salary, btn1,albaReserch,myalba,Board;
     private MapView map_view;
     private NaverMap naverMap;
-    List<UserModel> bosslist = new ArrayList<>();
+    List<BossModel> bosslist = new ArrayList<>();
 
 
     @Override
@@ -166,7 +165,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private void initViewId() {
         salary = findViewById(R.id.salary);
         // map_view=(MapView) findViewById(R.id.map_view);
-        btn1 = (Button) findViewById(R.id.btn1);
+//        btn1 = (Button) findViewById(R.id.btn1);
         albaReserch=(Button)findViewById(R.id.albaReserch);
         myalba=(Button)findViewById(R.id.myalba);
         Board=(Button)findViewById(R.id.Board);
@@ -237,13 +236,13 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                 if (task.isSuccessful()) {
                     Log.d(TAG,"접근성공");
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        UserModel userModel = document.toObject(UserModel.class);
-                        bosslist.add(userModel);
+                        BossModel bossModel = document.toObject(BossModel.class);
+                        bosslist.add(bossModel);
 
 
                         Marker marker = new Marker();
-                        Log.d(TAG, String.valueOf(userModel.getLatitude()));
-                        marker.setPosition(new LatLng(userModel.getLatitude(), userModel.getLongtitude()));
+                        Log.d(TAG, String.valueOf(bossModel.getLatitude()));
+                        marker.setPosition(new LatLng(bossModel.getLatitude(), bossModel.getLongtitude()));
                         marker.setWidth(50);
                         marker.setHeight(80);
                         marker.setIconTintColor(Color.RED);

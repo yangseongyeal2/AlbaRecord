@@ -3,8 +3,9 @@ package com.AlbaRecord.Model;
 public class EvaluateModel {
     private int diligence,flexibility,mastery,attitude,communication;
     private String hashtag,hashtagdetail,date_text;
+    private String brandname,careerthing;
 
-    public EvaluateModel(int diligence, int flexibility, int mastery, int attitude, int communication, String hashtag, String hashtagdetail, String date_text) {
+    public EvaluateModel(int diligence, int flexibility, int mastery, int attitude, int communication, String hashtag, String hashtagdetail, String date_text, String brandname, String careerthing) {
         this.diligence = diligence;
         this.flexibility = flexibility;
         this.mastery = mastery;
@@ -13,6 +14,44 @@ public class EvaluateModel {
         this.hashtag = hashtag;
         this.hashtagdetail = hashtagdetail;
         this.date_text = date_text;
+        this.brandname = brandname;
+        this.careerthing = careerthing;
+    }
+
+    public EvaluateModel() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "EvaluateModel{" +
+                "diligence=" + diligence +
+                ", flexibility=" + flexibility +
+                ", mastery=" + mastery +
+                ", attitude=" + attitude +
+                ", communication=" + communication +
+                ", hashtag='" + hashtag + '\'' +
+                ", hashtagdetail='" + hashtagdetail + '\'' +
+                ", date_text='" + date_text + '\'' +
+                ", brandname='" + brandname + '\'' +
+                ", careerthing='" + careerthing + '\'' +
+                '}';
+    }
+
+    public String getBrandname() {
+        return brandname;
+    }
+
+    public void setBrandname(String brandname) {
+        this.brandname = brandname;
+    }
+
+    public String getCareerthing() {
+        return careerthing;
+    }
+
+    public void setCareerthing(String careerthing) {
+        this.careerthing = careerthing;
     }
 
     public int getDiligence() {
@@ -80,17 +119,4 @@ public class EvaluateModel {
         this.date_text = date_text;
     }
 
-    @Override
-    public String toString() {
-        return "EvaluateModel{" +
-                "diligence=" + diligence +
-                ", flexibility=" + flexibility +
-                ", mastery=" + mastery +
-                ", attitude=" + attitude +
-                ", communication=" + communication +
-                ", hashtag='" + hashtag + '\'' +
-                ", hashtagdetail='" + hashtagdetail + '\'' +
-                ", date_text='" + date_text + '\'' +
-                '}';
-    }
 }

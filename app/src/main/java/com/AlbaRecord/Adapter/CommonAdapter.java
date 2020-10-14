@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.AlbaRecord.Interface.OnItemClick;
 import com.AlbaRecord.Model.BoardInfo;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -102,7 +102,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.BoardViewH
             @SuppressLint("SetTextI18n")
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                UserModel fm = documentSnapshot.toObject(UserModel.class);
+                BossModel fm = documentSnapshot.toObject(BossModel.class);
                 assert fm != null;
                 try {
                     holder.mSubinfo.setText(fm.getName() + " " + finaldate + " ");

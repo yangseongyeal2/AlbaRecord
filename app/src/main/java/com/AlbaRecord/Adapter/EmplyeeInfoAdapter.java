@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,7 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -25,15 +23,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
 import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
-import com.AlbaRecord.Boss.SearchEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeActivity;
+import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
 import com.AlbaRecord.Model.EmployeeModel;
-import com.AlbaRecord.Model.UserModel;
 import com.AlbaRecord.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
@@ -62,7 +60,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         ImageView photo;
         TextView name, age, phone, workstart,AccountInfo;
         EditText position;
-        Button setposition, evaluate, fire,call,account_save;
+        Button setposition, evaluate, fire,call,account_save,evaluate_ex;
 
         public EmplyeeInfoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +76,8 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
             call=(Button)itemView.findViewById(R.id.call);
             AccountInfo=(TextView)itemView.findViewById(R.id.AccountInfo);
             account_save=(Button)itemView.findViewById(R.id.account_save);
+            evaluate_ex=(Button)itemView.findViewById(R.id.evaluate_ex);
+
 
         }
 
@@ -207,6 +207,23 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                 ClipboardManager clipboardManager = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
                 ClipData clipData = ClipData.newPlainText("Account",AccountInfo); //클립보드에 ID라는 이름표로 id 값을 복사하여 저장
                 clipboardManager.setPrimaryClip(clipData);
+            }
+        });
+
+        holder.evaluate_ex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
+            }
+        });
+
+        holder.fire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("users").document(mAuth.getCurrentUser().getUid()).update("MyEmployee", FieldValue.arrayRemove(employeeModel.getDocumentId()));
+                mContext.notify();
+
+
             }
         });
 

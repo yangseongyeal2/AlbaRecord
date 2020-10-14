@@ -13,7 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Board.BoardActivity;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.AlbaRecord.Boss.SearchEmployeeActivity;
@@ -45,10 +46,10 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, btn1,albaReserch;
+    private Button myhome,myshop,myboss,Q_A,searchBoss,logout;
     private MapView map_view;
     private NaverMap naverMap;
-    List<UserModel> bosslist = new ArrayList<>();
+    List<BossModel> bosslist = new ArrayList<>();
 
 
     @Override
@@ -59,11 +60,17 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         initViewId();
         //String adress=getIntent().getStringExtra("주소");
         Retreive_bosslist();
+        myhome.setOnClickListener(this);
+        myshop.setOnClickListener(this);
+        myboss.setOnClickListener(this);
+        Q_A.setOnClickListener(this);
+        searchBoss.setOnClickListener(this);
+        logout.setOnClickListener(this);
 
 
-        salary.setOnClickListener(this);
-        btn1.setOnClickListener(this);
-        albaReserch.setOnClickListener(this);
+
+
+
 
 
 //        try{      //해쉬키 얻는 코드
@@ -156,10 +163,12 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
 
 
     private void initViewId() {
-        salary = findViewById(R.id.salary);
-        // map_view=(MapView) findViewById(R.id.map_view);
-        btn1 = (Button) findViewById(R.id.btn1);
-        albaReserch=(Button)findViewById(R.id.albaReserch);
+        myhome=(Button)findViewById(R.id.myhome);
+        myshop=(Button)findViewById(R.id.myshop);
+        myboss=(Button)findViewById(R.id.myboss);
+        Q_A=(Button)findViewById(R.id.Q_A);
+        searchBoss=(Button)findViewById(R.id.searchBoss);
+
 
     }
 
@@ -176,20 +185,29 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-
+        // myhome,myshop,myboss,Q_A,searchBoss,logout;
         switch (v.getId()) {
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
                 finish();
                 break;
-            case R.id.salary:
+            case R.id.myhome:
                 startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
                 break;
-            case R.id.albaReserch:
+            case R.id.myshop:
                 startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
-
                 break;
+            case R.id.myboss:
+                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
+                break;
+            case R.id.Q_A:
+                startActivity(new Intent(getApplicationContext(), BoardActivity.class));
+                break;
+            case R.id.searchBoss:
+                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
+                break;
+
         }
 
     }
@@ -218,13 +236,13 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        UserModel userModel = document.toObject(UserModel.class);
-                        bosslist.add(userModel);
+                        BossModel bossModel = document.toObject(BossModel.class);
+                        bosslist.add(bossModel);
                         Log.d("TAG", document.getId() + " => " + document.getData());
 
                         Marker marker = new Marker();
-                        Log.d("위도경도설정", String.valueOf(userModel.getLatitude()));
-                        marker.setPosition(new LatLng(userModel.getLatitude(), userModel.getLongtitude()));
+                        Log.d("위도경도설정", String.valueOf(bossModel.getLatitude()));
+                        marker.setPosition(new LatLng(bossModel.getLatitude(), bossModel.getLongtitude()));
                         marker.setWidth(50);
                         marker.setHeight(80);
                         marker.setIconTintColor(Color.RED);
