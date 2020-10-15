@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.AlbaRecord.Board.BoardActivity;
+import com.AlbaRecord.Board.SearchActivity;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
@@ -205,7 +207,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(getApplicationContext(), BoardActivity.class));
                 break;
             case R.id.searchBoss:
-                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
+                startActivity(new Intent(getApplicationContext(), EmployeeBossSearchActivity.class));
                 break;
 
         }

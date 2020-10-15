@@ -37,9 +37,9 @@ public class EmployeeMyshop extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
                 ArrayList<BossModel>list=new ArrayList<>();
-                Log.d("MyShop","for문전");
+
                 for(String boss:employeeModel.getMyBoss()){
-                    Log.d("MyShop","for문안");
+
                     db.collection("users").document(boss).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -50,7 +50,7 @@ public class EmployeeMyshop extends AppCompatActivity {
                         }
                     });
                 }
-                Log.d("MyShop","for문후");
+
 
 
             }

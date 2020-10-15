@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Boss.SearchEmployeeActivity"
+    android:background="@drawable/short_background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/information"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="176dp"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/searchEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상호명검색"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/searchEmployeeEdit"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:background="@drawable/textedge_orange"
+            android:hint="  ID입력"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchEmployee" />
+
+        <Button
+            android:id="@+id/searchemployeebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_main"
+            android:text="조회"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchEmployeeEdit" />
+
+        <Button
+            android:id="@+id/searchemployeeqrcode"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/qrcode"
+            app:layout_constraintBottom_toBottomOf="@+id/searchemployeebutton"
+            app:layout_constraintStart_toEndOf="@+id/searchemployeebutton"
+            app:layout_constraintTop_toBottomOf="@+id/searchEmployeeEdit" />
+
+        <TextView
+            android:id="@+id/qrbackground"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_main"
+            app:layout_constraintBottom_toBottomOf="@+id/searchemployeeqrcode"
+            app:layout_constraintEnd_toEndOf="@+id/searchemployeeqrcode"
+            app:layout_constraintStart_toStartOf="@+id/searchemployeeqrcode"
+            app:layout_constraintTop_toTopOf="@+id/searchemployeeqrcode" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lastsearch"
+        android:layout_width="409dp"
+        android:layout_height="382dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="여기따가이제 최근기록뜨게할꺼임"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

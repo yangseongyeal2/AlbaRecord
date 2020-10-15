@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Employ.EmployeeMyshop"></activity>
+        <activity android:name=".Employ.ShowBossActivity"></activity>
+        <activity android:name=".Employ.EmployeeBossSearchActivity" />
+        <activity android:name=".Employ.EmployeeMyshop" />
         <activity android:name=".Employ.EmployeeMyhomeActivity" />
         <activity android:name=".Boss.ShowEmployeeDetailActivity" />
         <activity android:name=".Employ.EmployeeMypageActivity" />

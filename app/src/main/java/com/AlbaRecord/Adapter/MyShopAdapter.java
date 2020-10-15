@@ -21,13 +21,14 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.MyShopView
 
 
     public class MyShopViewHolder extends RecyclerView.ViewHolder {
-        TextView name, phonenum, email;
+        TextView name, phonenum, email,brand;
 
         public MyShopViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             phonenum = itemView.findViewById(R.id.phonenum);
             email = itemView.findViewById(R.id.email);
+            brand=itemView.findViewById(R.id.brandName);
 
         }
     }
@@ -43,6 +44,7 @@ public class MyShopAdapter extends RecyclerView.Adapter<MyShopAdapter.MyShopView
         holder.name.setText(bossModel.getName());
         holder.phonenum.setText(bossModel.getPhoneNumber());
         holder.email.setText(bossModel.getEmail());
+        holder.brand.setText(bossModel.getBrand());
 
     }
 
