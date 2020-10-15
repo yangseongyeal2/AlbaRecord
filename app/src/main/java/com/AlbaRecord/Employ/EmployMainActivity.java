@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.AlbaRecord.Board.BoardActivity;
 import com.AlbaRecord.Board.SearchActivity;
 import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.AlbaRecord.Boss.SearchEmployeeActivity;
@@ -48,7 +49,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button myhome,myshop,myboss,Q_A,searchBoss,logout;
+    private Button myhome,myshop,myboss,Q_A,searchBoss,logout,Alram;
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
@@ -68,6 +69,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         Q_A.setOnClickListener(this);
         searchBoss.setOnClickListener(this);
         logout.setOnClickListener(this);
+        Alram.setOnClickListener(this);
 
 
 
@@ -170,6 +172,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         myboss=(Button)findViewById(R.id.myboss);
         Q_A=(Button)findViewById(R.id.Q_A);
         searchBoss=(Button)findViewById(R.id.searchBoss);
+        Alram=(Button)findViewById(R.id.Alram);
 
 
     }
@@ -208,6 +211,9 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.searchBoss:
                 startActivity(new Intent(getApplicationContext(), EmployeeBossSearchActivity.class));
+                break;
+            case R.id.Alram:
+                startActivity(new Intent(getApplicationContext(), AlramActivity.class));
                 break;
 
         }

@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.AlbaRecord.Board.BoardActivity;
 import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
 import com.AlbaRecord.Employ.SalaryActivity;
 import com.AlbaRecord.login.LoginWayActivity;
@@ -50,7 +51,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, btn1,albaReserch,myalba,Board;
+    private Button logout, salary, alram,albaReserch,myalba,Board;
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
@@ -71,6 +72,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         albaReserch.setOnClickListener(this);
         myalba.setOnClickListener(this);
         Board.setOnClickListener(this);
+        alram.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -169,6 +171,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         albaReserch=(Button)findViewById(R.id.albaReserch);
         myalba=(Button)findViewById(R.id.myalba);
         Board=(Button)findViewById(R.id.Board);
+        alram=(Button)findViewById(R.id.alram);
 
     }
 
@@ -203,6 +206,9 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.Board:
                 startActivity(new Intent(getApplicationContext(), BoardActivity.class));
+                break;
+            case R.id.alram:
+                startActivity(new Intent(getApplicationContext(), AlramActivity.class));
                 break;
         }
 

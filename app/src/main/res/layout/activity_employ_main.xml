@@ -83,13 +83,13 @@
                 android:text="사장님\검색" />
 
             <Button
-                android:id="@+id/counsel"
+                android:id="@+id/Alram"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="알바\n상담" />
+                android:text="알람\n" />
 
             <Button
                 android:id="@+id/settings"
