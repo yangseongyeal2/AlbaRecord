@@ -1,5 +1,6 @@
 package com.AlbaRecord.login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,12 +11,15 @@ import android.util.Log;
 
 import com.AlbaRecord.Boss.BossMainActivity;
 import com.AlbaRecord.Employ.EmployMainActivity;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginWayActivity extends AppCompatActivity implements View.OnClickListener {
     private Button boss,employee;
@@ -34,19 +38,26 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
 
         if (mAuth.getCurrentUser() != null) {
             //이미 로그인 되었다면 이 액티비티를 종료함
-            finish();
+
             //그리고 profile 액티비티를 연다.
             mStore.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     //Log.d("로그인웨이",documentSnapshot.toString());
-                    UserModel userModel=documentSnapshot.toObject(UserModel.class);
-                    Log.d("로그인웨이",userModel.toString());
-                    if(userModel.getFlag()==1){
+                    BossModel bossModel =documentSnapshot.toObject(BossModel.class);
+                    Log.d("로그인웨이", bossModel.toString());
+                    if(bossModel.getFlag()==1){
                         startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
                     }else{
                         startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
                     }
+                    finish();
+                }
+            });
+            FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Log.d("구독하기","성공");
                 }
             });
 

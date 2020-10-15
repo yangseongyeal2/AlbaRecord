@@ -20,7 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.AlbaRecord.Model.BoardInfo;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.github.irshulx.Editor;
 import com.github.irshulx.EditorListener;
@@ -139,7 +139,7 @@ public class WriteActivity extends AppCompatActivity {
     }
 
     // upload any type of class, I hope to combine with method uploadStore
-    private void uploadStoreUserModel(final UserModel model, final BoardInfo boardInfo){
+    private void uploadStoreUserModel(final BossModel model, final BoardInfo boardInfo){
         ArrayList<BoardInfo> boardInfoList = new ArrayList<>();
 
         if(model.getBoardInfoList() != null){
@@ -336,7 +336,7 @@ public class WriteActivity extends AppCompatActivity {
                 db.collection("users").document(firebaseUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        UserModel fm = documentSnapshot.toObject(UserModel.class);
+                        BossModel fm = documentSnapshot.toObject(BossModel.class);
                         assert fm != null;
                         try {
 

@@ -1,7 +1,9 @@
 package com.AlbaRecord.Boss;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.AlbaRecord.Adapter.EvaluateAdapter;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
@@ -40,6 +44,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
     Button addevaluation;
     EditText hashtag,hashtagdetail;
     TextView today;
+    String brandname="";
+    String careerthing="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         RetrieveEmployInfo();
         //직원디테일 불러오기
         RetrieveEmployInfo_detail();
+        //사장 정보 가져오기
+        RetrieveBossInfo();
         //버튼클릭
         addevaluation.setOnClickListener(this);
         //평가점수
@@ -96,6 +104,18 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
 
     }
 
+    private void RetrieveBossInfo() {
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                BossModel bossModel=documentSnapshot.toObject(BossModel.class);
+                brandname=bossModel.getBrand();
+
+
+            }
+        });
+    }
+
     private void RetrieveEmployInfo_detail() {
 
         db.collection("users")
@@ -110,6 +130,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                         Log.d("어댑터",data.toString());
                         try {
                             workstart.setText(data.get("근무시작시간").toString());
+                            careerthing=data.get("직급").toString();
                             position.setText(data.get("직급").toString());
                         }catch (NullPointerException e){
                             e.printStackTrace();
@@ -118,6 +139,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                     }
                 });
     }
+
 
     private void RetrieveEmployInfo() {
         db.collection("users").document(employeeDocumentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -157,24 +179,49 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.addevaluation:
-                Date currenttime= Calendar.getInstance().getTime();
-                String date_text=new SimpleDateFormat("yyyy년 MM월 dd일 ", Locale.getDefault()).format(currenttime);
-                String hashtag_str=hashtag.getText().toString();
-                String hashtagdetail_str=hashtagdetail.getText().toString();
-                EvaluateModel evaluateModel=new EvaluateModel(diligence,flexibility,mastery,attitude,communication,hashtag_str,hashtagdetail_str,date_text);
-
-                db.collection("users")
-                        .document(employeeDocumentId)
-                        .collection("Evaluate")
-                        .document(date_text)
-                        .set(evaluateModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder ad = new AlertDialog.Builder(EvaluateEmployeeActivity.this);
+                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setTitle("직원 평가");
+                ad.setMessage("직원 평가를 저장하시겠습니까 ?\n(한달내에 수정 가능합니다.)");
+                ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d("평가성공","업로드성공");
-                        finish();
+                    public void onClick(DialogInterface dialog, int which) {
+                         finish();
                         startActivity(new Intent(getApplicationContext(),MyEmployeeActivity.class));
+                        Date currenttime= Calendar.getInstance().getTime();
+                        String date_text=new SimpleDateFormat("yyyy년 MM월", Locale.getDefault()).format(currenttime);
+                        String hashtag_str=hashtag.getText().toString();
+                        String hashtagdetail_str=hashtagdetail.getText().toString();
+                        EvaluateModel evaluateModel=new EvaluateModel(diligence,flexibility,mastery,attitude,communication,hashtag_str,hashtagdetail_str,date_text,brandname,careerthing);
+
+                        db.collection("users")
+                                .document(employeeDocumentId)
+                                .collection("Evaluate")
+                                .document(date_text)
+                                .set(evaluateModel).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d("평가성공","업로드성공");
+                                finish();
+                                startActivity(new Intent(getApplicationContext(),MyEmployeeActivity.class));
+                            }
+                        });
+
+
+                        dialog.dismiss();
                     }
                 });
+                ad.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+                ad.show();
+
+
+
 
 
                 break;

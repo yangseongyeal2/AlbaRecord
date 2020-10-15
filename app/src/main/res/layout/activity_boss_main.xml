@@ -64,13 +64,13 @@
                 android:text="일당\n입력" />
 
             <Button
-                android:id="@+id/schedule"
+                android:id="@+id/MyPage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="스케쥴\n" />
+                android:text="My\nPage" />
 
             <Button
                 android:id="@+id/Board"

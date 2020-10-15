@@ -30,7 +30,7 @@ import com.AlbaRecord.Adapter.ReplyAdapter;
 import com.AlbaRecord.Interface.OnItemClick;
 import com.AlbaRecord.Model.BoardInfo;
 import com.AlbaRecord.Model.ReplyInfo;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -636,8 +636,8 @@ public class DetailActivity extends AppCompatActivity implements OnItemClick {
         mStore.collection("users").document(userUid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                UserModel userModel = documentSnapshot.toObject(UserModel.class);
-                assert userModel != null;
+                BossModel bossModel = documentSnapshot.toObject(BossModel.class);
+                assert bossModel != null;
 //                try{
 //                    userModel.getReplyList().add(replyActModel);
 //                }catch (Exception e){
@@ -646,7 +646,7 @@ public class DetailActivity extends AppCompatActivity implements OnItemClick {
 //                    userModel.setReplyList(replyList);
 //                }
 
-                mStore.collection("users").document(userUid).set(userModel, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                mStore.collection("users").document(userUid).set(bossModel, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("DetailActivity", "UploadStoreUserModel update Success");

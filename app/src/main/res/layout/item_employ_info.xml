@@ -162,27 +162,48 @@
         app:layout_constraintStart_toEndOf="@+id/phone"
         app:layout_constraintTop_toTopOf="@+id/phone" />
 
-    <Button
-        android:id="@+id/evaluate"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_main"
-        android:text="평가하기"
-        app:layout_constraintStart_toEndOf="@+id/photo"
-        app:layout_constraintTop_toBottomOf="@+id/account_save" />
-
-    <Button
-        android:id="@+id/fire"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/btn_main"
-        android:text="해고하기"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/evaluate"
-        app:layout_constraintTop_toTopOf="@+id/evaluate" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/account_save">
+
+        <Button
+
+            android:id="@+id/evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_main"
+            android:text="평가하기" />
+
+        <Button
+            android:id="@+id/evaluate_ex"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_main"
+            android:text="지난 평가"
+
+            />
+
+        <Button
+            android:id="@+id/fire"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_main"
+            android:text="해고하기" />
+
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.AlbaRecord.Boss;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,8 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.AlbaRecord.Adapter.EvaluateAdapter;
 import com.AlbaRecord.Model.EmployeeModel;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -33,6 +36,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +53,8 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
     Button setmyemployee,wish;
     private RequestQueue mRequesQue;
     String email,DocumentId;
-    UserModel userModel;
+    BossModel bossModel;
+    RecyclerView evaluate_recyclerview;
 
 
     @Override
@@ -63,6 +68,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
 
         List<EmployeeModel> list=new ArrayList<>();
         RetrieveEmployeeInfo();
+
         RetrieveMyInfo();
 
 
@@ -71,13 +77,17 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
 
 
 
+
+
     }
+
+
 
     private void RetrieveMyInfo() {
         db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                userModel=documentSnapshot.toObject(UserModel.class);
+                bossModel =documentSnapshot.toObject(BossModel.class);
             }
         });
     }
@@ -104,9 +114,22 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                         .load(employeeModel.getPhoto())
                                         .into(photo);
                                 DocumentId=employeeModel.getDocumentId();
-
+                                db.collection("users").document(DocumentId).collection("Evaluate").get()
+                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                        ArrayList<EvaluateModel> evaluateModels=new ArrayList<>();
+                                        for (QueryDocumentSnapshot document : task.getResult()){
+                                            EvaluateModel evaluateModel=document.toObject(EvaluateModel.class);
+                                            evaluateModels.add(evaluateModel);
+                                        }
+                                        EvaluateAdapter evaluateAdapter=new EvaluateAdapter(evaluateModels,getApplicationContext());
+                                        evaluate_recyclerview.setAdapter(evaluateAdapter);
+                                    }
+                                });
 
                                 Log.d(TAG,employeeModel.toString());
+
 
                             }
                             if(!flag){
@@ -143,6 +166,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
         wish=(Button)findViewById(R.id.wish);
         mRequesQue = Volley.newRequestQueue(this);
         selfintrobody=(TextView)findViewById(R.id.selfintrobody);
+        evaluate_recyclerview=(RecyclerView)findViewById(R.id.evaluate_recyclerview);
     }
 
     @Override
@@ -160,7 +184,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                     public void onClick(DialogInterface dialog, int which) {
                        // finish();
                         //startActivity(new Intent(getApplicationContext(),SearchEmployeeActivity.class));
-                        sendNotification(DocumentId,"사장이보냄",userModel.getBrand());
+                        sendNotification(DocumentId,"사장이보냄", bossModel.getBrand());
 
                         dialog.dismiss();
                     }

@@ -18,7 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.AlbaRecord.Boss.BossMainActivity;
-import com.AlbaRecord.Model.UserModel;
+import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -195,6 +195,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
         editor.putString("brand", brand);
         editor.putString("address", address);
         editor.putString("businessNum", businessNum);
+
         //editor.commit();
         editor.apply();
     }
@@ -292,7 +293,7 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             firebaseUser = firebaseAuth.getCurrentUser();
-                            UserModel userModel = new UserModel(
+                            BossModel bossModel = new BossModel(
                                     email_edittext.getText().toString().trim(),
                                     password_edittext.getText().toString().trim(),
                                     phone_edittext.getText().toString().trim(),
@@ -309,13 +310,15 @@ public class BossSignupActivity extends AppCompatActivity implements View.OnClic
                             );
                             firebaseStore.collection("users")
                                     .document(firebaseUser.getUid())
-                                    .set(userModel)
+                                    .set(bossModel)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             // 이메일 인증 확인 메일을 전송합니다.
                                             sendEmail();
                                             finish();
+                                            Intent intent=new Intent(getApplicationContext(), EmailCheckActivity.class);
+                                            intent.putExtra("Flag","사장");
                                             startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
                                         }
                                     })

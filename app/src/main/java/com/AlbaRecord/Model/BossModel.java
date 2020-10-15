@@ -2,7 +2,7 @@ package com.AlbaRecord.Model;
 
 import java.util.ArrayList;
 
-public class UserModel {
+public class BossModel {
     private String email ;
     private String password ;
     private String phoneNumber;
@@ -36,7 +36,7 @@ public class UserModel {
         MyEmployee = myEmployee;
     }
 
-    public UserModel(String email, String password, String phoneNumber, String name, String brand, String address, String businessNum, double latitude, double longtitude, int flag, String documentId, ArrayList<String> myEmployee) {
+    public BossModel(String email, String password, String phoneNumber, String name, String brand, String address, String businessNum, double latitude, double longtitude, int flag, String documentId, ArrayList<String> myEmployee) {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -108,16 +108,16 @@ public class UserModel {
         this.flag = flag;
     }
 
-    public UserModel(String email
+    public BossModel(String email
             , String password
             , String phoneNumber
             , String name
             , String brand
             , String address
             , String businessNum
-            ,int flag
-            ,double latitude
-            ,double longtitude) {
+            , int flag
+            , double latitude
+            , double longtitude) {
         this.email = email;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -129,7 +129,7 @@ public class UserModel {
         this.latitude=latitude;
         this.longtitude=longtitude;
     }
-    public UserModel(){}
+    public BossModel(){}
 
 
     public String getEmail() {

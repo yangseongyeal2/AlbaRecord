@@ -139,6 +139,13 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         education_edittext.setText(Bank);
         String Account = pref.getString("Account", "");
         education_edittext.setText(Account);
+        String Image = pref.getString("Image", "");
+        Uri downloadUri=Uri.parse(Image);
+        Glide.with(image)
+                .load(downloadUri)
+                .into(image);
+
+
 
     }
 
@@ -260,6 +267,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         String Account=Account_edit.getText().toString().trim();
         String Bank=Bank_edit.getText().toString().trim();
 
+
         SharedPreferences pref = getSharedPreferences("EmployUserModel", 0);
         SharedPreferences.Editor editor = pref.edit();
         editor.putString("email", email);
@@ -272,6 +280,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         editor.putString("degree", degree);
         editor.putString("Account",Account);
         editor.putString("Bank",Bank);
+        if(downloadUri!=null){
+            editor.putString("Image",downloadUri.toString());
+        }
+
         //editor.commit();
         editor.apply();
     }
@@ -393,6 +405,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                             sendEmail();
                                             Intent emailIntent=new Intent(getApplicationContext(), EmailCheckActivity.class);
                                           //  emailIntent.putExtra("주소",arg1);
+                                            emailIntent.putExtra("Flag","직원");
                                             startActivity(emailIntent);
                                         }
                                     })

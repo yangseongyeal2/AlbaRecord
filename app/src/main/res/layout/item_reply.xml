@@ -30,7 +30,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_margin="10sp"
-                android:src="@drawable/back"
+                android:src="@drawable/ic_baseline_attach_money_35"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

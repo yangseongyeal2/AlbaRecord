@@ -239,21 +239,20 @@
             <TextView
                 android:id="@+id/address_result"
                 android:layout_width="150dp"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
 
                 app:layout_constraintStart_toEndOf="@+id/address"
-                app:layout_constraintTop_toBottomOf="@+id/brand_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/brand_edittext"/>
 
             <Button
                 android:id="@+id/address_button"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:text="검색"
-                app:layout_constraintBottom_toTopOf="@+id/business_edittext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/address_result"
-                app:layout_constraintTop_toBottomOf="@+id/brand_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/address_result" />
 
 
             <TextView
@@ -277,7 +276,7 @@
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/business"
-                app:layout_constraintTop_toBottomOf="@+id/address_result" />
+                app:layout_constraintTop_toBottomOf="@+id/address_button" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

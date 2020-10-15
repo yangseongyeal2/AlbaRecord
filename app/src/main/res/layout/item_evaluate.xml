@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/carrerlayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:background="@drawable/grayedgebox"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/basicinform"
+    android:padding="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    >
+
+
+        <TextView
+            android:id="@+id/carrer"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/graybox"
+            android:gravity="center_horizontal"
+            android:text="경력1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/brandnameis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="상호명:"
+            app:layout_constraintBottom_toBottomOf="@+id/carrer"
+            app:layout_constraintStart_toEndOf="@+id/carrer"
+            app:layout_constraintTop_toTopOf="@+id/carrer" />
+
+        <TextView
+            android:id="@+id/brandname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="ex)재은커피"
+            app:layout_constraintBottom_toBottomOf="@+id/carrer"
+            app:layout_constraintStart_toEndOf="@+id/brandnameis"
+            app:layout_constraintTop_toTopOf="@+id/carrer"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/brandnavermap1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/navermap"
+            app:layout_constraintBottom_toBottomOf="@+id/carrer"
+            app:layout_constraintStart_toEndOf="@+id/brandname"
+            app:layout_constraintTop_toTopOf="@+id/carrer"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+        <TextView
+            android:id="@+id/carrerlong"
+            android:layout_width="201dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:text="근무기간"
+            app:layout_constraintStart_toStartOf="@+id/carrer"
+            app:layout_constraintTop_toBottomOf="@+id/carrer" />
+
+        <TextView
+            android:id="@+id/careerthing"
+            android:layout_width="201dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="4dp"
+            android:text="담당업무"
+            app:layout_constraintStart_toStartOf="@+id/carrer"
+            app:layout_constraintTop_toBottomOf="@+id/carrerlong" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/carrerpentagon1"-->
+<!--            android:layout_width="138dp"-->
+<!--            android:layout_height="101dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/carrer"-->
+<!--            app:srcCompat="@drawable/pentagon" />-->
+        <com.anychart.AnyChartView
+            android:id="@+id/carrerpentagon1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/careerthing"
+            android:layout_margin="10dp"
+           />
+
+        <Button
+            android:id="@+id/evaluate_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/btn_main"
+            android:text="자세히보기"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/carrerpentagon1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+

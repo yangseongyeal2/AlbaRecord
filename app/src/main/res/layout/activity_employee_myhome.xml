@@ -4,34 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/short_background"
-    tools:context=".Boss.MyEmployeeActivity">
-
-
+    tools:context=".Boss.ShowEmployeeDetailActivity">
     <TextView
         android:id="@+id/myalba"
-        android:layout_width="90dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15sp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
-        android:textSize="13sp"
+        android:textSize="15sp"
         android:background="@drawable/btn_main"
         android:gravity="center_vertical"
-        android:text=" ▼나의알바생"
+        android:text=" ▼지난평가"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_margin="20dp"
-        android:padding="10dp"
-        android:id="@+id/myalba_recyclerview"
-        app:layout_constraintTop_toBottomOf="@+id/myalba"
-        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myalba"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_margin="20dp"/>
 
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

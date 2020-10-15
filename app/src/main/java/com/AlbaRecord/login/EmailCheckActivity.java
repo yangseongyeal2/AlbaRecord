@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.AlbaRecord.Boss.BossMainActivity;
+import com.AlbaRecord.Employ.EmployMainActivity;
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -67,11 +69,19 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         // 회원가입시 이메일 인증을 받은 경우
         if (firebaseUser.isEmailVerified() == true) {
             Toast.makeText(EmailCheckActivity.this, "인증 되었습니다", Toast.LENGTH_SHORT).show();
-            String adress=getIntent().getStringExtra("주소");
-            Intent intent=new Intent(getApplicationContext(), BossMainActivity.class);
-           // intent.putExtra("주소",adress);
-            startActivity(intent);
-            finish();
+            String flag=getIntent().getStringExtra("Flag");
+            if (flag.equals("사장")){
+                Intent intent=new Intent(getApplicationContext(), BossMainActivity.class);
+                // intent.putExtra("주소",adress);
+                startActivity(intent);
+                finish();
+            }else {
+                Intent intent=new Intent(getApplicationContext(), EmployMainActivity.class);
+                // intent.putExtra("주소",adress);
+                startActivity(intent);
+                finish();
+            }
+
 
         } else {
             Toast.makeText(EmailCheckActivity.this, "메일 인증이 이루어지지 않았습니다. \n다시 한번 확인해주세요!", Toast.LENGTH_SHORT).show();

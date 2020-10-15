@@ -73,7 +73,7 @@ public class DaumWebViewActivity extends AppCompatActivity {
 
         // webview url load.
 
-        //daum_webView.loadUrl("file:///android_asset/daumad.html");
+
         daum_webView.loadUrl("https://IcyCompatiblePlane.seongyeolyang7.repl.co");
 
     }
