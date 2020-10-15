@@ -193,10 +193,10 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 finish();
                 break;
             case R.id.myhome:
-                startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
+                startActivity(new Intent(getApplicationContext(), EmployeeMyhomeActivity.class));
                 break;
             case R.id.myshop:
-                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
+                startActivity(new Intent(getApplicationContext(), EmployeeMyshop.class));
                 break;
             case R.id.myboss:
                 startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));

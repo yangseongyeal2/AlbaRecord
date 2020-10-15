@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.AlbaRecord.Boss.MyEmployeeActivity;
+import com.AlbaRecord.Employ.EmployeeMyshop;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -73,8 +74,11 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.accept:
+
                 sendNotification(documentId,"수락","수락","1");
-                mStore.collection("users").document(firebaseUser.getUid()).update("MyEmployee", FieldValue.arrayUnion(documentId));
+                mStore.collection("users").document(firebaseUser.getUid()).update("myBoss", FieldValue.arrayUnion(documentId));
+
+                startActivity(new Intent(getApplicationContext(), EmployeeMyshop.class));
                 finish();
 
                 break;
@@ -96,6 +100,7 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
         */
         JSONObject mainObj = new JSONObject();
         try {
+            Log.d("양성열",DocumentId);
             mainObj.put("to", "/topics/" + DocumentId );
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", title );//사장이보냄
