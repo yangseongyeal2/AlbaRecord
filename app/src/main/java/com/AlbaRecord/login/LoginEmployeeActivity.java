@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.AlbaRecord.Boss.BossMainActivity;
+import com.AlbaRecord.Employ.EmployMainActivity;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -103,7 +104,7 @@ public class LoginEmployeeActivity extends AppCompatActivity implements View.OnC
                             if (firebaseUser.isEmailVerified() == false) {
                                 startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
                             } else {
-                                startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
                             }
                             finish();
 

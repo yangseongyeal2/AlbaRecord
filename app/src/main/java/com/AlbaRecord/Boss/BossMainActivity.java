@@ -51,7 +51,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button logout, salary, alram,albaReserch,myalba,Board;
+    private Button logout, salary, alram,albaReserch,myalba,Board,MyPage;
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
@@ -73,6 +73,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         myalba.setOnClickListener(this);
         Board.setOnClickListener(this);
         alram.setOnClickListener(this);
+        MyPage.setOnClickListener(this);
 
 
 //        try{      //해쉬키 얻는 코드
@@ -172,6 +173,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         myalba=(Button)findViewById(R.id.myalba);
         Board=(Button)findViewById(R.id.Board);
         alram=(Button)findViewById(R.id.alram);
+        MyPage=(Button)findViewById(R.id.MyPage);
 
     }
 
@@ -209,6 +211,9 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.alram:
                 startActivity(new Intent(getApplicationContext(), AlramActivity.class));
+                break;
+            case R.id.MyPage:
+                startActivity(new Intent(getApplicationContext(), BossMypageActivity.class));
                 break;
         }
 

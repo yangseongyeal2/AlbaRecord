@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.AlbaRecord.Employ.EmployeeMypageActivity;
 import com.AlbaRecord.R;
 
 public class DaumWebViewActivity extends AppCompatActivity {
@@ -112,6 +113,11 @@ public class DaumWebViewActivity extends AppCompatActivity {
                         startActivity(intent);
                     }else if(flag.equals("직원")){
                         Intent intent=new Intent(DaumWebViewActivity.this,EmployeeSignupActivity.class);
+                        //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
+                        intent.putExtra("주소",arg2+arg3);
+                        startActivity(intent);
+                    }else if(flag.equals("직원MyPage")){
+                        Intent intent=new Intent(DaumWebViewActivity.this, EmployeeMypageActivity.class);
                         //intent.putExtra("주소","("+arg1+")"+arg2+arg3);
                         intent.putExtra("주소",arg2+arg3);
                         startActivity(intent);

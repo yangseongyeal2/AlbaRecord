@@ -43,7 +43,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="마이홈\n" />
+                android:text="지난\n평가" />
 
             <Button
                 android:id="@+id/myshop"
@@ -92,13 +92,13 @@
                 android:text="알람\n" />
 
             <Button
-                android:id="@+id/settings"
+                android:id="@+id/MyPage"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="설정\n" />
+                android:text="MyPage" />
 
         </LinearLayout>
 

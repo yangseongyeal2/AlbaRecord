@@ -13,7 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Notification.AlramActivity"></activity>
+        <activity android:name=".Employ.AccountPopUpActivity" android:theme="@android:style/Theme.Dialog"
+            >
+
+        </activity>
+        <activity android:name=".Boss.BossMypageActivity" />
+        <activity android:name=".Notification.AlramActivity" />
         <activity android:name=".Employ.ShowBossActivity" />
         <activity android:name=".Employ.EmployeeBossSearchActivity" />
         <activity android:name=".Employ.EmployeeMyshop" />
@@ -26,7 +31,7 @@
         <activity android:name=".login.LoginEmployeeActivity" />
         <activity android:name=".Employ.EmployMainActivity" />
         <activity android:name=".Boss.MyEmployeeActivity" />
-        <activity android:name=".searchemployee.ShowMoreEmployeeActivity" />
+
         <activity android:name=".Boss.ShowEmployeeActivity" />
         <activity android:name=".Boss.SearchEmployeeActivity" />
         <activity android:name=".Employ.SalaryActivity" />
