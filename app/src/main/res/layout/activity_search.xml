@@ -29,6 +29,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/serch_TextInputEditText"
+            android:hint="제목을 입력하시오"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>

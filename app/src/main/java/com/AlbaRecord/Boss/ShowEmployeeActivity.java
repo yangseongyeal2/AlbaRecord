@@ -211,12 +211,13 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
             }
         }
         */
+
         JSONObject mainObj = new JSONObject();
         try {
             mainObj.put("to", "/topics/" + DocumentId );
             JSONObject notificationObj = new JSONObject();
-            notificationObj.put("title", title );//사장이보냄
-            notificationObj.put("body", "사장");//브랜드네임
+            notificationObj.put("title", bossModel.getBrand());//사장이보냄
+            notificationObj.put("body", bossModel.getBrand()+" 님이 고용을 원합니다 수락하시겠습니까?");//브랜드네임
             notificationObj.put("DocumentId", mAuth.getCurrentUser().getUid());//직원 도큐먼트ID
             notificationObj.put("flag", "0");//사장이보낼때
 

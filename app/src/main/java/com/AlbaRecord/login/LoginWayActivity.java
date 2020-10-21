@@ -3,6 +3,7 @@ package com.AlbaRecord.login;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,8 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
     private Button boss,employee;
     private FirebaseAuth mAuth=FirebaseAuth.getInstance();;
     private FirebaseFirestore mStore=FirebaseFirestore.getInstance();
+    ProgressDialog progressDialog;
+
 
 
     @Override
@@ -35,8 +38,10 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
         employee=findViewById(R.id.employeewaybutton);
         boss.setOnClickListener(this);
         employee.setOnClickListener(this);
-
+        progressDialog = new ProgressDialog(this);
         if (mAuth.getCurrentUser() != null) {
+            progressDialog.setMessage("자동 로그인중입니다. 잠시기다려주세요...");
+            progressDialog.show();
             //이미 로그인 되었다면 이 액티비티를 종료함
 
             //그리고 profile 액티비티를 연다.
@@ -51,6 +56,7 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
                     }else{
                         startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
                     }
+                    progressDialog.dismiss();
                     finish();
                 }
             });

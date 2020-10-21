@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout3"
@@ -21,42 +20,64 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="홍길동"
+        android:text="이름:"
         app:layout_constraintStart_toStartOf="@+id/photo"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
     <TextView
-        android:id="@+id/age"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:text="나이"
-        app:layout_constraintBottom_toBottomOf="@+id/name"
-        app:layout_constraintStart_toEndOf="@+id/name"
-        app:layout_constraintTop_toTopOf="@+id/name" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:text="홍길동"
+        app:layout_constraintStart_toEndOf="@+id/name_text"
+        app:layout_constraintTop_toBottomOf="@+id/photo" />
 
+    <TextView
+        android:id="@+id/age_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="나이:"
+
+        app:layout_constraintStart_toStartOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
 
     <TextView
-        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="나이"
+        app:layout_constraintStart_toEndOf="@+id/age_text"
+        app:layout_constraintTop_toBottomOf="@+id/name_text" />
+
+    <TextView
         android:id="@+id/positionis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="직급 :"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:gravity="center"
         android:id="@+id/position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:hint="알바/직원/매니저/등등"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/positionis"
@@ -67,10 +88,10 @@
         android:id="@+id/setposition"
         android:layout_width="50dp"
         android:layout_height="30dp"
+        android:layout_marginStart="5sp"
         android:background="@drawable/btn_main"
         android:text="저장"
         android:textSize="10dp"
-        android:layout_marginStart="5sp"
         app:layout_constraintBottom_toBottomOf="@+id/position"
         app:layout_constraintStart_toEndOf="@+id/position"
         app:layout_constraintTop_toTopOf="@+id/position" />
@@ -81,11 +102,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textSize="16sp"
         android:text="근무시작 :"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/workstart"
         app:layout_constraintStart_toStartOf="@+id/positionis"
-        app:layout_constraintTop_toBottomOf="@+id/positionis"
-        app:layout_constraintBottom_toBottomOf="@+id/workstart"/>
+        app:layout_constraintTop_toBottomOf="@+id/positionis" />
 
 
     <TextView
@@ -100,14 +121,13 @@
 
 
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/phoneis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="연락처 :"
         app:layout_constraintStart_toStartOf="@+id/worklongis"
         app:layout_constraintTop_toBottomOf="@+id/workstart" />
-
 
 
     <TextView
@@ -145,9 +165,9 @@
         android:id="@+id/account_save"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/btn_main"
         android:text="복사하기"
-       android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/photo"
         app:layout_constraintTop_toBottomOf="@+id/AccountInfo" />
@@ -202,8 +222,6 @@
             android:text="해고하기" />
 
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -72,7 +72,7 @@ public class BoardActivity extends AppCompatActivity implements OnItemClick {
             }
         });
         mBoardTitleName=findViewById(R.id.normal_title_constraint1);
-        mBoardTitleName.setText(mBoardName);
+       // mBoardTitleName.setText(mBoardName);
         refresh=findViewById(R.id.refresh);
         refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.AlbaRecord.Adapter;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 
 import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
+import com.AlbaRecord.Boss.MyEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
 import com.AlbaRecord.Model.EmployeeModel;
@@ -45,14 +47,16 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DatePickerDialog.OnDateSetListener callbackMethod;
+    private Activity activity;
 
 
     private List<EmployeeModel> employeeModels;
     private Context mContext;
 
-    public EmplyeeInfoAdapter(List<EmployeeModel> employeeModels, Context mContext) {
+    public EmplyeeInfoAdapter(List<EmployeeModel> employeeModels, Context mContext,Activity activity) {
         this.employeeModels = employeeModels;
         this.mContext = mContext;
+        this.activity=activity;
     }
 
 
@@ -177,7 +181,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
 
                     }
                 };
-                DatePickerDialog dialog = new DatePickerDialog(mContext, callbackMethod, 2019, 5, 24);
+                DatePickerDialog dialog = new DatePickerDialog(mContext, callbackMethod, 2020, 10, 25);
                 dialog.show();
             }
         });
@@ -222,8 +226,18 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
         holder.fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("users").document(mAuth.getCurrentUser().getUid()).update("MyEmployee", FieldValue.arrayRemove(employeeModel.getDocumentId()));
-                mContext.notify();
+                db.collection("users")
+                        .document(mAuth.getCurrentUser().getUid())
+                        .update("MyEmployee", FieldValue.arrayRemove(employeeModel.getDocumentId()))
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        mContext.startActivity(new Intent(mContext, MyEmployeeActivity.class));
+                        activity.finish();
+                    }
+                });
+
+//                mContext.notify();
 
 
             }

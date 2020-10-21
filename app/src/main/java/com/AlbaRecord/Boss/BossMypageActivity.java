@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
+import com.AlbaRecord.login.DaumWebViewActivity;
 import com.AlbaRecord.login.FindActivity;
 import com.AlbaRecord.login.LoginBossActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,15 +30,29 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText brand,phone;
-    Button setbrand,setpassword,setphone;
-    TextView email;
+    Button setbrand,setpassword,setphone,setaddress;
+    TextView email,adress;
     String emailAddress="";
+    String chagedAdress="";
     private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_mypage);
+        chagedAdress=getIntent().getStringExtra("주소");
+        try {
+            if(!chagedAdress.isEmpty()){
+                db.collection("users").document(mAuth.getCurrentUser().getUid()).update("address",chagedAdress).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(),"주소변경이 완료되었습니다",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         initViewID();
         RetreiveBossInfo();
     }
@@ -53,6 +68,9 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
         setphone.setOnClickListener(this);
         phone=(EditText) findViewById(R.id.phone);
         progressDialog= progressDialog = new ProgressDialog(this);
+        adress=findViewById(R.id.adress);
+        setaddress=findViewById(R.id.setaddress);
+        setaddress.setOnClickListener(this);
     }
 
     private void RetreiveBossInfo() {
@@ -64,6 +82,7 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
                 emailAddress=bossModel.getEmail();
                 email.setText(bossModel.getEmail());
                 phone.setText(bossModel.getPhoneNumber());
+                adress.setText(bossModel.getAddress());
 
             }
         });
@@ -126,6 +145,12 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
                         Toast.makeText(getApplicationContext(),"휴대폰번호정보가 수정되었습니다",Toast.LENGTH_SHORT).show();
                     }
                 });
+                break;
+            case R.id.setaddress:
+                Intent intent=new Intent(this, DaumWebViewActivity.class);
+                intent.putExtra("flag","사장MyPage");
+                startActivity(intent); //추가해 줄 로그인 액티비티
+                finish();
                 break;
         }
     }

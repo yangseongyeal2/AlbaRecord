@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,7 +79,8 @@ public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.Evalu
         holder.evaluate_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
+               // mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
+                Toast.makeText(mContext,"아직 기능구현이 안된 버튼입니다",Toast.LENGTH_SHORT).show();
             }
         });
 

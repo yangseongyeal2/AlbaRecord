@@ -65,23 +65,46 @@
 
 
 
-
         <TextView
-            android:id="@+id/carrerlong"
-            android:layout_width="201dp"
-            android:layout_height="20dp"
+            android:id="@+id/carrerlong_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="근무기간"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="근무기간:"
             app:layout_constraintStart_toStartOf="@+id/carrer"
             app:layout_constraintTop_toBottomOf="@+id/carrer" />
+        <TextView
+            android:id="@+id/carrerlong"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="근무기간"
+            app:layout_constraintStart_toEndOf="@+id/carrerlong_text"
+            app:layout_constraintTop_toBottomOf="@+id/carrer" />
+        <TextView
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/careerthing_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="담당업무:"
+            app:layout_constraintStart_toStartOf="@+id/carrer"
+            app:layout_constraintTop_toBottomOf="@+id/carrerlong" />
 
         <TextView
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:id="@+id/careerthing"
-            android:layout_width="201dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="담당업무"
-            app:layout_constraintStart_toStartOf="@+id/carrer"
+            app:layout_constraintStart_toEndOf="@+id/careerthing_text"
             app:layout_constraintTop_toBottomOf="@+id/carrerlong" />
 
 <!--        <ImageView-->

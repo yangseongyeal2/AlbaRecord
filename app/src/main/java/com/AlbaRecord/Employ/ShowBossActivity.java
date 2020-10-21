@@ -1,12 +1,17 @@
 package com.AlbaRecord.Employ;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.AlbaRecord.Adapter.MyShopAdapter;
+import com.AlbaRecord.Boss.SearchEmployeeActivity;
+import com.AlbaRecord.Boss.ShowEmployeeActivity;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,13 +47,32 @@ public class ShowBossActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<BossModel>list =new ArrayList<>();
                 if (task.isSuccessful()) {
+                    boolean flag=false;
                     for (QueryDocumentSnapshot document : task.getResult()) {
+                        flag=true;
                         BossModel bossModel=document.toObject(BossModel.class);
                         list.add(bossModel);
                         myShopAdapter=new MyShopAdapter(list,getApplicationContext());
                         recyclerView.setAdapter(myShopAdapter);
                     }
+                    if(!flag){
+                        //다이어로그 추가
+                        AlertDialog.Builder ad = new AlertDialog.Builder(ShowBossActivity.this);
+                        ad.setIcon(R.mipmap.ic_launcher);
+                        ad.setTitle("상호명이 존재하지않습니다");
+                        ad.setMessage("상호명을 다시한번 확인해서 작성해주십시오");
+                        ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                startActivity(new Intent(getApplicationContext(), EmployeeBossSearchActivity.class));
+                                dialog.dismiss();
+                            }
+                        });
+                        ad.show();
+                    }
                 }
+
             }
         });
 

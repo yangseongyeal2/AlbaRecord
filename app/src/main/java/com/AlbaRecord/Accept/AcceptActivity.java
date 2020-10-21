@@ -11,14 +11,17 @@ import android.widget.Toast;
 
 import com.AlbaRecord.Boss.MyEmployeeActivity;
 import com.AlbaRecord.Employ.EmployeeMyshop;
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -35,11 +38,13 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
     private FirebaseFirestore mStore=FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
     String documentId;
+    EmployeeModel employeeModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accept);
+        RetreiveMyEmployeeModel();
         accept=(Button)findViewById(R.id.accept);
         deny=(Button)findViewById(R.id.deny);
         mRequesQue = Volley.newRequestQueue(this);
@@ -70,12 +75,23 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    private void RetreiveMyEmployeeModel() {
+        mStore.collection("users")
+                .document(firebaseUser.getUid()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+            }
+        });
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.accept:
 
-                sendNotification(documentId,"수락","수락","1");
+                sendNotification(documentId,employeeModel.getName(),employeeModel.getName()+" 님이 수락하셨습니다","1");
                 mStore.collection("users").document(firebaseUser.getUid()).update("myBoss", FieldValue.arrayUnion(documentId));
 
                 startActivity(new Intent(getApplicationContext(), EmployeeMyshop.class));
@@ -83,7 +99,7 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
 
                 break;
             case R.id.deny:
-                sendNotification(documentId,"거절","수락","2");
+                sendNotification(documentId,employeeModel.getName(),employeeModel.getName()+" 님이 거절 하셨습니다","2");
                 finish();
                 break;
         }
@@ -104,7 +120,7 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
             mainObj.put("to", "/topics/" + DocumentId );
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", title );//사장이보냄
-            notificationObj.put("body", "사장");//브랜드네임
+            notificationObj.put("body", content);//브랜드네임
             notificationObj.put("DocumentId",firebaseUser.getUid() );//직원 도큐먼트ID
             notificationObj.put("flag", flag);//사장이보낼때
 
