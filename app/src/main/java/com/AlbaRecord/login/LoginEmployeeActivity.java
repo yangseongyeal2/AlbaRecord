@@ -49,17 +49,17 @@ public class LoginEmployeeActivity extends AppCompatActivity implements View.OnC
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
-        // 이미 로그인이 된 경우
-//        if (firebaseUser != null) {
-//            //이미 로그인 되었다면 이 액티비티를 종료함
-//            finish();
-//            // 회원가입시 이메일 인증을 받지 않은경우
-//            if (firebaseUser.isEmailVerified() == false) {
-//                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
-//            } else {
-//                startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
-//            }
-//        }
+//         이미 로그인이 된 경우
+        if (firebaseUser != null) {
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            finish();
+            // 회원가입시 이메일 인증을 받지 않은경우
+            if (firebaseUser.isEmailVerified() == false) {
+                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class));
+            } else {
+                startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+            }
+        }
 
         //initializing views
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);

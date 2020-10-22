@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/carrerlayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="5dp"
+    android:background="@drawable/grayedgebox"
+    android:padding="10dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/basicinform">
+
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/carrer"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/graybox"
+        android:gravity="center_horizontal"
+        android:text="경력1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/brandnameis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="상호명:"
+        app:layout_constraintBottom_toBottomOf="@+id/carrer"
+        app:layout_constraintStart_toEndOf="@+id/carrer"
+        app:layout_constraintTop_toTopOf="@+id/carrer" />
+
+    <TextView
+        android:id="@+id/brandname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="ex)재은커피"
+        app:layout_constraintBottom_toBottomOf="@+id/carrer"
+        app:layout_constraintStart_toEndOf="@+id/brandnameis"
+        app:layout_constraintTop_toTopOf="@+id/carrer"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/brandnavermap1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/navermap"
+        app:layout_constraintBottom_toBottomOf="@+id/carrer"
+        app:layout_constraintStart_toEndOf="@+id/brandname"
+        app:layout_constraintTop_toTopOf="@+id/carrer" />
+
+
+    <TextView
+        android:id="@+id/carrerlong_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="평가일자:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/carrer" />
+
+    <TextView
+        android:id="@+id/carrerlong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="근무기간"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/carrerlong_text"
+        app:layout_constraintTop_toBottomOf="@+id/carrer" />
+
+    <TextView
+        android:id="@+id/careerthing_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="담당업무:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/carrerlong" />
+
+    <TextView
+        android:id="@+id/careerthing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="담당업무"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/careerthing_text"
+        app:layout_constraintTop_toBottomOf="@+id/carrerlong" />
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/carrerpentagon1"-->
+    <!--            android:layout_width="138dp"-->
+    <!--            android:layout_height="101dp"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="@+id/carrer"-->
+    <!--            app:srcCompat="@drawable/pentagon" />-->
+<!--    <com.anychart.AnyChartView-->
+<!--        android:id="@+id/carrerpentagon1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_margin="10dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/careerthing" />-->
+
+    <TextView
+        android:id="@+id/diligence_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="근면성:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/careerthing_text" />
+
+    <TextView
+        android:id="@+id/diligence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="근면성정보"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/diligence_text"
+        app:layout_constraintStart_toEndOf="@+id/diligence_text"
+        app:layout_constraintTop_toTopOf="@+id/diligence_text" />
+    <TextView
+        android:id="@+id/flexibility_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="상황대처능력:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/diligence_text" />
+    <TextView
+        android:id="@+id/flexibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상황대처능력정보"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/flexibility_text"
+        app:layout_constraintStart_toEndOf="@+id/flexibility_text"
+        app:layout_constraintTop_toTopOf="@+id/flexibility_text" />
+    <TextView
+        android:id="@+id/mastery_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="업무습득력:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/flexibility_text" />
+    <TextView
+        android:id="@+id/mastery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업무습득력정보"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/mastery_text"
+        app:layout_constraintStart_toEndOf="@+id/mastery_text"
+        app:layout_constraintTop_toTopOf="@+id/mastery_text" />
+    <TextView
+        android:id="@+id/attitude_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="근무태도:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/mastery_text" />
+    <TextView
+        android:id="@+id/attitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업무습득력정보"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/attitude_text"
+        app:layout_constraintStart_toEndOf="@+id/attitude_text"
+        app:layout_constraintTop_toTopOf="@+id/attitude_text" />
+    <TextView
+        android:id="@+id/communication_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="커뮤니케이션:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/carrer"
+        app:layout_constraintTop_toBottomOf="@+id/attitude_text" />
+    <TextView
+        android:id="@+id/communication"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="업무습득력정보"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/communication_text"
+        app:layout_constraintStart_toEndOf="@+id/communication_text"
+        app:layout_constraintTop_toTopOf="@+id/communication_text" />
+
+
+
+
+    <TextView
+        android:id="@+id/detail_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_textview"
+        android:text="자세한 사항"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/communication_text" />
+    <TextView
+        android:id="@+id/SelfIntroduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자세한 사항"
+        android:textSize="20sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_text" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+

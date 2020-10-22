@@ -46,7 +46,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button myhome,myshop,myboss,Q_A,searchBoss,logout,Alram,MyPage;
+    private Button myhome,myshop,myboss,Q_A,searchBoss,logout,Alram,MyPage,salary;
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
@@ -68,6 +68,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         logout.setOnClickListener(this);
         Alram.setOnClickListener(this);
         MyPage.setOnClickListener(this);
+        salary.setOnClickListener(this);
 
 
 
@@ -172,6 +173,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         searchBoss=(Button)findViewById(R.id.searchBoss);
         Alram=(Button)findViewById(R.id.Alram);
         MyPage=(Button)findViewById(R.id.MyPage);
+        salary=(Button)findViewById(R.id.salary);
 
 
 
@@ -217,6 +219,9 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.MyPage:
                 startActivity(new Intent(getApplicationContext(), EmployeeMypageActivity.class));
+                break;
+            case R.id.salary:
+                startActivity(new Intent(getApplicationContext(), SalaryActivity.class));
                 break;
 
 
