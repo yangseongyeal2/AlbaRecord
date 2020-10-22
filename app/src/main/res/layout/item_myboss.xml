@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bossinformation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/information">
+
+    <TextView
+        android:id="@+id/bossinformation_textview"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:background="#ED6432"
+        android:text="우리가게"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:layout_marginTop="16dp"
+        android:text="이름:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />
+
+    <TextView
+        android:id="@+id/brandname"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/name"
+        app:layout_constraintTop_toTopOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/showphone"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="전화:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/phonenum"
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/showphone"
+        app:layout_constraintTop_toTopOf="@+id/showphone" />
+
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="주소:"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/showphone"
+        app:layout_constraintStart_toStartOf="@+id/showphone"
+        app:layout_constraintTop_toBottomOf="@+id/showphone" />
+
+
+    <TextView
+        android:id="@+id/address_result"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/address"
+        app:layout_constraintTop_toTopOf="@+id/address" />
+
+    <Button
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+
+        android:text="지도보기"
+        app:layout_constraintStart_toStartOf="@+id/address_result"
+        app:layout_constraintTop_toBottomOf="@+id/address_result" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

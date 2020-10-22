@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,13 +14,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.AlbaRecord.Board.BoardActivity;
-import com.AlbaRecord.Board.SearchActivity;
-import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
-import com.AlbaRecord.Boss.SearchEmployeeActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -208,7 +204,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(getApplicationContext(), MyBrandActivity.class));
                 break;
             case R.id.myboss:
-                startActivity(new Intent(getApplicationContext(), EvaluateBossActivity.class));
+                startActivity(new Intent(getApplicationContext(), BossExEvaluateActivity.class));
                 break;
             case R.id.Q_A:
                 startActivity(new Intent(getApplicationContext(), BoardActivity.class));

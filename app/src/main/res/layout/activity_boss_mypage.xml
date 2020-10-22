@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -43,10 +42,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_marginTop="10dp"
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
+            android:layout_marginTop="10dp"
             android:text="상호명 : "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -128,6 +127,7 @@
             android:text="변경"
             app:layout_constraintStart_toEndOf="@+id/phone"
             app:layout_constraintTop_toTopOf="@+id/phone" />
+
         <TextView
             android:id="@+id/textView26"
             android:layout_width="wrap_content"
@@ -136,6 +136,7 @@
             android:text="주소 : "
             app:layout_constraintStart_toStartOf="@+id/setpassword"
             app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
         <TextView
             android:id="@+id/adress"
             android:layout_width="wrap_content"
@@ -156,232 +157,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constraintLayout8"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:background="@drawable/grayedgebox"-->
-<!--        android:padding="16dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/textView26"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:background="@drawable/btn_main"-->
-<!--            android:padding="4dp"-->
-<!--            android:text=" 내가 받은 후기 ▼ "-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:background="@drawable/grayedgebox"-->
-<!--            android:padding="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/textView26">-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="아직 미구현 !! 뭔가 잘못됨 ㅠㅠㅠ 재은에게 연락요망"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:padding="16dp"-->
-<!--        android:background="@drawable/grayedgebox"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" >-->
-
-<!--        <Button-->
-<!--            android:id="@+id/button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:background="@drawable/btn_main"-->
-<!--            android:padding="4dp"-->
-<!--            android:text=" 내가 작성한 후기 ▼ "-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:background="@drawable/grayedgebox"-->
-<!--            android:padding="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/button">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/photo1"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:srcCompat="@tools:sample/avatars" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/name1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="이재은"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/photo1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/rank1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:text="알바생"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/name1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/name1" />-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView27"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:text="여기따 오각형 !!"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView29"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="평균"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/average1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView27" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/average1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="(평균점수)"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/textView30"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/textView29" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView30"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="점"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/textView27"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/average1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:text="근면성: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/photo1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/diligence1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="상황대처능력: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/flexibility1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content2"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="업무습득력: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/mastery1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content3"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="근무태도: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/attitude1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content4"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView28"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="커뮤니케이션: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/communication1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/textView28"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/textView28" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:background="@drawable/grayedgebox"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

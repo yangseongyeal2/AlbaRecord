@@ -19,8 +19,123 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/constraintLayout8"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:background="@drawable/grayedgebox"-->
+    <!--        android:padding="16dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/textView13">-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/bossinformation_textview"-->
+    <!--            android:layout_width="80dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="#ED6432"-->
+    <!--            android:text="우리가게"-->
+    <!--            android:textAlignment="center"-->
+    <!--            android:textColor="#ffffff"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/bossinformation"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:padding="20dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="1.0"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/information">-->
+
+    <!--          -->
+
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/name"-->
+    <!--                android:layout_width="50dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10sp"-->
+    <!--                android:layout_marginTop="16dp"-->
+    <!--                android:text="이름:"-->
+    <!--                android:textColor="#000000"-->
+    <!--                android:textStyle="bold"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/brandname"-->
+    <!--                android:layout_width="150dp"-->
+    <!--                android:layout_height="20dp"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/name"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/showphone"-->
+    <!--                android:layout_width="50dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="8dp"-->
+    <!--                android:text="전화:"-->
+    <!--                android:textColor="#000000"-->
+    <!--                android:textStyle="bold"-->
+    <!--                app:layout_constraintStart_toStartOf="@+id/name"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/name" />-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/phonenum"-->
+    <!--                android:layout_width="150dp"-->
+    <!--                android:layout_height="20dp"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/showphone"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/showphone" />-->
+
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/address"-->
+    <!--                android:layout_width="50dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_margin="10sp"-->
+    <!--                android:layout_marginStart="20dp"-->
+    <!--                android:layout_marginTop="16dp"-->
+    <!--                android:text="주소:"-->
+    <!--                android:textColor="#000000"-->
+    <!--                android:textStyle="bold"-->
+    <!--                app:layout_constraintEnd_toEndOf="@+id/showphone"-->
+    <!--                app:layout_constraintStart_toStartOf="@+id/showphone"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/showphone" />-->
+
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/address_result"-->
+    <!--                android:layout_width="150dp"-->
+    <!--                android:layout_height="wrap_content"-->
+
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                app:layout_constraintStart_toEndOf="@+id/address"-->
+    <!--                app:layout_constraintTop_toTopOf="@+id/address" />-->
+
+    <!--            <Button-->
+    <!--                android:id="@+id/map"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="8dp"-->
+
+    <!--                android:text="지도보기"-->
+    <!--                app:layout_constraintStart_toStartOf="@+id/address_result"-->
+    <!--                app:layout_constraintTop_toBottomOf="@+id/address_result" />-->
+
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/constraintLayout8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,117 +146,8 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bossinformation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/information">
-
-            <TextView
-                android:id="@+id/bossinformation_textview"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:background="#ED6432"
-                android:text="우리가게"
-                android:textAlignment="center"
-                android:textColor="#ffffff"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:layout_marginTop="16dp"
-                android:text="이름:"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/imageView3"
-                app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />
-
-            <TextView
-                android:id="@+id/brandname"
-                android:layout_width="150dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toTopOf="@+id/name" />
-
-            <TextView
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:id="@+id/showphone"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="전화:"
-                app:layout_constraintStart_toStartOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/name" />
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/showphone"
-                app:layout_constraintTop_toTopOf="@+id/showphone" />
-
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="16dp"
-                android:text="주소:"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/showphone"
-                app:layout_constraintStart_toStartOf="@+id/showphone"
-                app:layout_constraintTop_toBottomOf="@+id/showphone" />
-
-
-            <TextView
-                android:id="@+id/address_result"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="8dp"
-                app:layout_constraintStart_toEndOf="@+id/address"
-                app:layout_constraintTop_toTopOf="@+id/address" />
-
-            <Button
-                android:layout_width="80dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/graybox"
-                android:text="지도보기"
-                app:layout_constraintStart_toStartOf="@+id/address_result"
-                app:layout_constraintTop_toBottomOf="@+id/address" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -169,110 +175,110 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:padding="8dp"-->
-<!--            android:background="@drawable/grayedgebox"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/mycolleagueinformation_textview" >-->
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:padding="8dp"-->
+        <!--            android:background="@drawable/grayedgebox"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="16dp"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            android:layout_marginEnd="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/mycolleagueinformation_textview" >-->
 
 
-<!--            <ImageView-->
-<!--                android:id="@+id/Photo1"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="120dp"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:srcCompat="@tools:sample/avatars" />-->
+        <!--            <ImageView-->
+        <!--                android:id="@+id/Photo1"-->
+        <!--                android:layout_width="100dp"-->
+        <!--                android:layout_height="120dp"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                tools:srcCompat="@tools:sample/avatars" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/showolleaguename1"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="10sp"-->
-<!--                android:layout_marginTop="130dp"-->
-<!--                android:text="이름:"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/Photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/Photo1" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/showolleaguename1"-->
+        <!--                android:layout_width="50dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="10sp"-->
+        <!--                android:layout_marginTop="130dp"-->
+        <!--                android:text="이름:"-->
+        <!--                android:textColor="#000000"-->
+        <!--                android:textStyle="bold"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/Photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/Photo1" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/colleaguename1"-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/showolleaguename1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/showolleaguename1" />-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/showcolleagueage1"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="10sp"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="나이:"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/showolleaguename1"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/showolleaguename1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/showolleaguename1" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/colleaguename1"-->
+        <!--                android:layout_width="150dp"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="8dp"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/showolleaguename1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/showolleaguename1" />-->
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/colleagueage1"-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:layout_marginStart="8dp"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/showcolleagueage1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/showcolleagueage1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/showcolleaguephone1"-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_margin="10sp"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:text="전화:"-->
-<!--                android:textColor="#000000"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/showcolleagueage1"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/showcolleagueage1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/showcolleagueage1" />-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/showcolleagueage1"-->
+        <!--                android:layout_width="50dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="10sp"-->
+        <!--                android:layout_marginStart="20dp"-->
+        <!--                android:layout_marginTop="16dp"-->
+        <!--                android:text="나이:"-->
+        <!--                android:textColor="#000000"-->
+        <!--                android:textStyle="bold"-->
+        <!--                app:layout_constraintEnd_toEndOf="@+id/showolleaguename1"-->
+        <!--                app:layout_constraintStart_toStartOf="@+id/showolleaguename1"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/showolleaguename1" />-->
 
 
-<!--            <TextView-->
-<!--                android:id="@+id/colleaguephone1"-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="wrap_content"-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/colleagueage1"-->
+        <!--                android:layout_width="150dp"-->
+        <!--                android:layout_height="wrap_content"-->
 
-<!--                android:layout_marginStart="8dp"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/showcolleaguephone1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/showcolleaguephone1" />-->
+        <!--                android:layout_marginStart="8dp"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/showcolleagueage1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/showcolleagueage1" />-->
 
-<!--            <com.anychart.AnyChartView-->
-<!--                android:id="@+id/carrerpentagon1"-->
-<!--                android:layout_width="150dp"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:layout_margin="10dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/showcolleaguephone1" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--            <TextView-->
+        <!--                android:id="@+id/showcolleaguephone1"-->
+        <!--                android:layout_width="50dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_margin="10sp"-->
+        <!--                android:layout_marginStart="20dp"-->
+        <!--                android:layout_marginTop="16dp"-->
+        <!--                android:text="전화:"-->
+        <!--                android:textColor="#000000"-->
+        <!--                android:textStyle="bold"-->
+        <!--                app:layout_constraintEnd_toEndOf="@+id/showcolleagueage1"-->
+        <!--                app:layout_constraintStart_toStartOf="@+id/showcolleagueage1"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/showcolleagueage1" />-->
+
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/colleaguephone1"-->
+        <!--                android:layout_width="150dp"-->
+        <!--                android:layout_height="wrap_content"-->
+
+        <!--                android:layout_marginStart="8dp"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/showcolleaguephone1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/showcolleaguephone1" />-->
+
+        <!--            <com.anychart.AnyChartView-->
+        <!--                android:id="@+id/carrerpentagon1"-->
+        <!--                android:layout_width="150dp"-->
+        <!--                android:layout_height="150dp"-->
+        <!--                android:layout_margin="10dp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/showcolleaguephone1" />-->
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

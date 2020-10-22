@@ -3,17 +3,26 @@ package com.AlbaRecord.Boss;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.AlbaRecord.Adapter.BossEvaluateAdapter;
+import com.AlbaRecord.Adapter.BossEvalute_detailAdapter;
+import com.AlbaRecord.Adapter.CommonAdapter;
+import com.AlbaRecord.Board.BoardActivity;
+import com.AlbaRecord.Board.DetailActivity;
+import com.AlbaRecord.Model.BoardInfo;
+import com.AlbaRecord.Model.BossEvaluateModel;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.DaumWebViewActivity;
@@ -25,6 +34,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class BossMypageActivity extends AppCompatActivity implements View.OnClickListener {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -35,6 +48,8 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
     String emailAddress="";
     String chagedAdress="";
     private ProgressDialog progressDialog;
+    RecyclerView recyclerView;
+    BossEvaluateAdapter bossEvaluateAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +58,10 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
         chagedAdress=getIntent().getStringExtra("주소");
         try {
             if(!chagedAdress.isEmpty()){
-                db.collection("users").document(mAuth.getCurrentUser().getUid()).update("address",chagedAdress).addOnSuccessListener(new OnSuccessListener<Void>() {
+                db.collection("users")
+                        .document(mAuth.getCurrentUser().getUid())
+                        .update("address",chagedAdress)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(getApplicationContext(),"주소변경이 완료되었습니다",Toast.LENGTH_SHORT).show();
@@ -55,6 +73,33 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
         }
         initViewID();
         RetreiveBossInfo();
+        RetreiveBossEvaluateInfo();
+    }
+
+    private void RetreiveBossEvaluateInfo() {
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .collection("Evaluate")
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful() && task.getResult() != null) {
+                    ArrayList<BossEvaluateModel>arr=new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        BossEvaluateModel bossEvaluateModel = document.toObject(BossEvaluateModel.class);
+                        arr.add(bossEvaluateModel);
+
+
+                    }
+                    bossEvaluateAdapter=new BossEvaluateAdapter(arr);
+                    recyclerView.setAdapter(bossEvaluateAdapter);
+
+
+                } else {
+
+                }
+            }
+        });
     }
 
     private void initViewID() {
@@ -71,6 +116,7 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
         adress=findViewById(R.id.adress);
         setaddress=findViewById(R.id.setaddress);
         setaddress.setOnClickListener(this);
+        recyclerView=findViewById(R.id.recyclerView);
     }
 
     private void RetreiveBossInfo() {

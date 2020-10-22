@@ -25,10 +25,12 @@ import java.util.ArrayList;
 
 public class EmployeeMyhomeActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    String DocumentId;;
+    String DocumentId;
+    ;
     RecyclerView recyclerView;
+    EmployeeModel employeeModel;
     BossModel bossModel;
 
     @Override
@@ -36,30 +38,49 @@ public class EmployeeMyhomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_myhome);
         //DocumentId=getIntent().getStringExtra("DocumentId");
-        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
         RetreiveMyInfo();
-        RetrieveEvaluateInfo();
+
 
     }
+
     private void RetreiveMyInfo() {
-        db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                bossModel=documentSnapshot.toObject(BossModel.class);
-            }
-        });
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        employeeModel = documentSnapshot.toObject(EmployeeModel.class);
+                        assert employeeModel != null;
+                        ArrayList<String> bosses = employeeModel.getMyBoss();
+                        for (String boss : bosses) {
+                            db.collection("users")
+                                    .document(boss)
+                                    .get()
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            bossModel = documentSnapshot.toObject(BossModel.class);
+                                            RetrieveEvaluateInfo();
+                                        }
+                                    });
+                        }
+                    }
+                });
     }
-    private void RetrieveEvaluateInfo(){
+
+    private void RetrieveEvaluateInfo() {
         db.collection("users").document(firebaseAuth.getCurrentUser().getUid()).collection("Evaluate").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        ArrayList<EvaluateModel> evaluateModels=new ArrayList<>();
-                        for (QueryDocumentSnapshot document : task.getResult()){
-                            EvaluateModel evaluateModel=document.toObject(EvaluateModel.class);
+                        ArrayList<EvaluateModel> evaluateModels = new ArrayList<>();
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            EvaluateModel evaluateModel = document.toObject(EvaluateModel.class);
                             evaluateModels.add(evaluateModel);
                         }
-                        EvaluateAdapter evaluateAdapter=new EvaluateAdapter(evaluateModels,getApplicationContext(),bossModel);
+                        EvaluateAdapter evaluateAdapter = new EvaluateAdapter(evaluateModels, getApplicationContext(), bossModel);
                         recyclerView.setAdapter(evaluateAdapter);
                     }
                 });
