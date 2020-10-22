@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="8dp"
+        android:background="@drawable/grayedgebox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mycolleagueinformation_textview" >
+
+
+        <ImageView
+            android:id="@+id/Photo1"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/showolleaguename1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:layout_marginTop="130dp"
+            android:text="이름:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/Photo1"
+            app:layout_constraintTop_toTopOf="@+id/Photo1" />
+
+        <TextView
+            android:id="@+id/colleaguename1"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/showolleaguename1"
+            app:layout_constraintTop_toTopOf="@+id/showolleaguename1" />
+
+
+        <TextView
+            android:id="@+id/showcolleagueage1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:text="나이:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/showolleaguename1"
+            app:layout_constraintStart_toStartOf="@+id/showolleaguename1"
+            app:layout_constraintTop_toBottomOf="@+id/showolleaguename1" />
+
+
+        <TextView
+            android:id="@+id/colleagueage1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/showcolleagueage1"
+            app:layout_constraintTop_toTopOf="@+id/showcolleagueage1" />
+
+        <TextView
+            android:id="@+id/showcolleaguephone1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:text="전화:"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/showcolleagueage1"
+            app:layout_constraintStart_toStartOf="@+id/showcolleagueage1"
+            app:layout_constraintTop_toBottomOf="@+id/showcolleagueage1" />
+
+
+        <TextView
+            android:id="@+id/colleaguephone1"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/showcolleaguephone1"
+            app:layout_constraintTop_toTopOf="@+id/showcolleaguephone1" />
+
+       >
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

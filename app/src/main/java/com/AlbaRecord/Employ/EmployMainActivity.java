@@ -16,6 +16,7 @@ import android.widget.Button;
 
 import com.AlbaRecord.Board.BoardActivity;
 import com.AlbaRecord.Board.SearchActivity;
+import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
@@ -204,10 +205,10 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(getApplicationContext(), EmployeeMyhomeActivity.class));
                 break;
             case R.id.myshop:
-                startActivity(new Intent(getApplicationContext(), EmployeeMyshop.class));
+                startActivity(new Intent(getApplicationContext(), MyBrandActivity.class));
                 break;
             case R.id.myboss:
-                startActivity(new Intent(getApplicationContext(), SearchEmployeeActivity.class));
+                startActivity(new Intent(getApplicationContext(), EvaluateBossActivity.class));
                 break;
             case R.id.Q_A:
                 startActivity(new Intent(getApplicationContext(), BoardActivity.class));

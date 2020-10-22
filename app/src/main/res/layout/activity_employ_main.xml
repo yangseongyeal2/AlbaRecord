@@ -62,7 +62,7 @@
                 android:background="@drawable/btn_main"
 
                 android:foreground="?attr/selectableItemBackground"
-                android:text="우리\n사장님" />
+                android:text="사장님\n평가" />
 
             <Button
                 android:id="@+id/Q_A"

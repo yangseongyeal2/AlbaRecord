@@ -13,10 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Map.NaverMapActivity"></activity>
+        <activity android:name=".Employ.MyBrandActivity"></activity>
+        <activity android:name=".Employ.EvaluateBossActivity" />
+        <activity android:name=".Map.NaverMapActivity" />
         <activity
             android:name=".Employ.AccountPopUpActivity"
-            android:theme="@android:style/Theme.Dialog"></activity>
+            android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".Boss.BossMypageActivity" />
         <activity android:name=".Notification.AlramActivity" />
         <activity android:name=".Employ.ShowBossActivity" />
