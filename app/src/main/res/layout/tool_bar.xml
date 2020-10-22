@@ -20,7 +20,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
-            android:text="알바굼"
+            android:text="알바생활기록부"
             android:textColor="@color/colorWhite"
             android:textSize="30dp"
             android:layout_gravity="center"

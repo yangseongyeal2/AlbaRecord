@@ -9,9 +9,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.AlbaRecord.Adapter.MyBossAdapter;
 import com.AlbaRecord.Adapter.MyShopAdapter;
 import com.AlbaRecord.Boss.SearchEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeActivity;
+import com.AlbaRecord.Interface.OnItemClick;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,11 +27,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ShowBossActivity extends AppCompatActivity {
+public class ShowBossActivity extends AppCompatActivity implements OnItemClick {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String brandName;
     MyShopAdapter myShopAdapter;
+    MyBossAdapter myBossAdapter;
     RecyclerView recyclerView;
 
     @Override
@@ -52,8 +55,9 @@ public class ShowBossActivity extends AppCompatActivity {
                         flag=true;
                         BossModel bossModel=document.toObject(BossModel.class);
                         list.add(bossModel);
-                        myShopAdapter=new MyShopAdapter(list,getApplicationContext());
-                        recyclerView.setAdapter(myShopAdapter);
+                        //myShopAdapter=new MyShopAdapter(list,getApplicationContext());
+                        myBossAdapter=new MyBossAdapter(list,getApplicationContext(),ShowBossActivity.this,ShowBossActivity.this);
+                        recyclerView.setAdapter(myBossAdapter);
                     }
                     if(!flag){
                         //다이어로그 추가
@@ -75,6 +79,11 @@ public class ShowBossActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onClick(String value) {
 
     }
 }
