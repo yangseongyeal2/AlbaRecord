@@ -67,7 +67,7 @@ public class MyBossAdapter extends RecyclerView.Adapter<MyBossAdapter.MyBossView
         holder.ex_evalute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.finish();
+                //mActivity.finish();
                 Intent intent=new Intent(mContext, ShowBossDetailActivity.class);
                 intent.putExtra("DocumentId",bossModel.getDocumentId());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

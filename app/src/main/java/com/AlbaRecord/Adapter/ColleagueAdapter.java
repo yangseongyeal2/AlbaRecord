@@ -1,8 +1,12 @@
 package com.AlbaRecord.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +22,7 @@ import java.util.List;
 
 public class ColleagueAdapter extends RecyclerView.Adapter<ColleagueAdapter.ColleagueViewHolder> {
     List<EmployeeModel> employeeModels=new ArrayList<>();
+    private Context mContext;
 
 
 
@@ -30,16 +35,26 @@ public class ColleagueAdapter extends RecyclerView.Adapter<ColleagueAdapter.Coll
         Glide.with(holder.Photo1)
                 .load(employeeModel.getPhoto())
                 .into(holder.Photo1);
+        holder.call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tel="tel:"+employeeModel.getPhonenumber();
+                mContext.startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
+            }
+        });
+
 
     }
 
-    public ColleagueAdapter(List<EmployeeModel> employeeModels) {
+    public ColleagueAdapter(List<EmployeeModel> employeeModels, Context mContext) {
         this.employeeModels = employeeModels;
+        this.mContext = mContext;
     }
 
     public class ColleagueViewHolder extends RecyclerView.ViewHolder {
         private TextView colleaguename1,colleagueage1,colleaguephone1;
         private ImageView Photo1;
+        private Button call;
 
         public ColleagueViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -47,6 +62,8 @@ public class ColleagueAdapter extends RecyclerView.Adapter<ColleagueAdapter.Coll
             colleagueage1=itemView.findViewById(R.id.colleagueage1);
             colleaguephone1=itemView.findViewById(R.id.colleaguephone1);
             Photo1=itemView.findViewById(R.id.Photo1);
+            call=itemView.findViewById(R.id.call);
+
 
         }
     }

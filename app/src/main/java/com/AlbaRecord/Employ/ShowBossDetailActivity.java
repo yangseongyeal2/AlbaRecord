@@ -1,13 +1,18 @@
 package com.AlbaRecord.Employ;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.AlbaRecord.Adapter.BossEvaluateAdapter;
 import com.AlbaRecord.Adapter.EvaluateAdapter;
+import com.AlbaRecord.Boss.ShowEmployeeActivity;
+import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
 import com.AlbaRecord.Model.BossEvaluateModel;
 import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
@@ -40,10 +45,28 @@ public class ShowBossDetailActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 ArrayList<BossEvaluateModel> evaluateModels=new ArrayList<>();
+                boolean flag=false;
                 for (QueryDocumentSnapshot document : task.getResult()){
+                    flag=true;
                     bossEvaluateModel=document.toObject(BossEvaluateModel.class);
                     evaluateModels.add(bossEvaluateModel);
 
+                }
+                if(!flag) {
+                    //다이어로그 추가
+                    AlertDialog.Builder ad = new AlertDialog.Builder(ShowBossDetailActivity.this);
+                    ad.setIcon(R.mipmap.ic_launcher);
+                    ad.setTitle("사장 평가");
+                    ad.setMessage("아직 사장님에 대한 평가가 이루어지지 않았습니다.");
+                    ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+
+                            dialog.dismiss();
+                        }
+                    });
+                    ad.show();
                 }
                 bossEvaluateAdapter=new BossEvaluateAdapter(evaluateModels);
                 recyclerView.setAdapter(bossEvaluateAdapter);

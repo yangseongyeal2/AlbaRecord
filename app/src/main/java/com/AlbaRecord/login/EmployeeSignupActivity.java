@@ -54,7 +54,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     EditText email_edittext, password_edittext, password_re_edittext, phone_edittext, name_edittext, age_edittext, education_edittext, license1, selfintrobody;
     Button address_button, buttonSignup, setimage_button, licenseplus, licensedelete;
     TextView address_result, textviewMessage;
-    String arg1 = "주소를입력해주시오";
+    String arg1 ="";
     ProgressDialog progressDialog;
     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     Uri downloadUri;
@@ -74,12 +74,16 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseStore = FirebaseFirestore.getInstance();
 
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            //이미 로그인 되었다면 이 액티비티를 종료함
-//            finish();
-//            //그리고 profile 액티비티를 연다.
-//            startActivity(new Intent(getApplicationContext(), EmployMainActivity.class)); //추가해 줄 ProfileActivity
-//        }
+        if (firebaseAuth.getCurrentUser() != null) {
+            //이미 로그인 되었다면 이 액티비티를 종료함
+            if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                finish();
+                //그리고 profile 액티비티를 연다.
+                startActivity(new Intent(getApplicationContext(), LoginWayActivity.class)); //추가해 줄 ProfileActivity
+            }else{
+                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class)); //추가해 줄 ProfileActivity
+            }
+        }
 
         progressDialog = new ProgressDialog(this);
 
@@ -140,10 +144,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         String Account = pref.getString("Account", "");
         education_edittext.setText(Account);
         String Image = pref.getString("Image", "");
-        Uri downloadUri=Uri.parse(Image);
-        Glide.with(image)
-                .load(downloadUri)
-                .into(image);
+       // Uri downloadUri=Uri.parse(Image);
+//        Glide.with(image)
+//                .load(downloadUri)
+//                .into(image);
 
 
 
@@ -153,6 +157,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonSignup:
+                buttonSignup.setClickable(false);
                 registerUser();
                 break;
             case R.id.address_button:
@@ -163,14 +168,19 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                 startActivity(intent1); //추가해 줄 로그인 액티비티
                 break;
             case R.id.setimage_button:
-                Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
-                mIntent.setAction(Intent.ACTION_GET_CONTENT);
-                mIntent.setType("image/*");
+                if(arg1==null){
+                    Toast.makeText(getApplicationContext(),"주소를 먼저 입력 바랍니다.",Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent mIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("content://media/internal/images/media"));
+                    mIntent.setAction(Intent.ACTION_GET_CONTENT);
+                    mIntent.setType("image/*");
 //                startActivity(mIntent);
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(mIntent, 1);
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(mIntent, 1);
+                }
+
 
                 break;
             case R.id.licenseplus:
@@ -280,15 +290,16 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
         editor.putString("degree", degree);
         editor.putString("Account",Account);
         editor.putString("Bank",Bank);
-        if(downloadUri!=null){
-            editor.putString("Image",downloadUri.toString());
-        }
+//        if(downloadUri!=null){
+//            editor.putString("Image",downloadUri.toString());
+//        }
 
         //editor.commit();
         editor.apply();
     }
 
     private void registerUser() {
+        progressDialog.show();
         //사용자가 입력하는 email, password를 가져온다.
         String email = email_edittext.getText().toString().trim();
         String password = password_edittext.getText().toString().trim();
@@ -316,10 +327,15 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
             return;
         }
 
-        if (address_result.getText().toString().equals("주소를입력하시오")) {
+        if (address_result.getText()==null) {
+
             Toast.makeText(this, "주소를 입력해주세요.", Toast.LENGTH_SHORT).show();
             return;
         }
+//        else{
+//            arg1=address_result.getText().toString();
+//        }
+
 
         if (TextUtils.isEmpty(Bank)) {
             Toast.makeText(this, "은행이름을 입력해 주세요", Toast.LENGTH_SHORT).show();
@@ -376,52 +392,59 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             firebaseUser = firebaseAuth.getCurrentUser();
-                            EmployeeModel userModel = new EmployeeModel(
-                                    email_edittext.getText().toString().trim(),
-                                    password_edittext.getText().toString().trim(),
-                                    phone_edittext.getText().toString().trim(),
-                                    name_edittext.getText().toString().trim(),
-                                    age_edittext.getText().toString().trim(),
-                                    arg1,
-                                    education_edittext.getText().toString().trim(),
-                                    lat,
-                                    lon,
-                                    downloadUri.toString(),
-                                    contents,
-                                    selfintrobody.getText().toString().trim(),
-                                    1,
-                                    firebaseUser.getUid(),
-                                    new ArrayList<String>(),
-                                    Account_edit.getText().toString().trim(),
-                                    Bank_edit.getText().toString().trim()
-                            );
-                            firebaseStore.collection("users")
-                                    .document(firebaseUser.getUid())
-                                    .set(userModel)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            // 이메일 인증 확인 메일을 전송합니다.
-                                            sendEmail();
-                                            Intent emailIntent=new Intent(getApplicationContext(), EmailCheckActivity.class);
-                                          //  emailIntent.putExtra("주소",arg1);
-                                            emailIntent.putExtra("Flag","직원");
-                                            startActivity(emailIntent);
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                        Log.d("시발","스토어업로드실패");
-                                        }
-                                    });
-                            FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Log.d("구독하기", firebaseUser.getUid());
-                                    finish();
-                                }
-                            });
+                            try{
+                                EmployeeModel userModel = new EmployeeModel(
+                                        email_edittext.getText().toString().trim(),
+                                        password_edittext.getText().toString().trim(),
+                                        phone_edittext.getText().toString().trim(),
+                                        name_edittext.getText().toString().trim(),
+                                        age_edittext.getText().toString().trim(),
+                                        arg1,
+                                        education_edittext.getText().toString().trim(),
+                                        lat,
+                                        lon,
+                                        downloadUri.toString(),
+                                        contents,
+                                        selfintrobody.getText().toString().trim(),
+                                        1,
+                                        firebaseUser.getUid(),
+                                        new ArrayList<String>(),
+                                        Account_edit.getText().toString().trim(),
+                                        Bank_edit.getText().toString().trim()
+                                );
+                                firebaseStore.collection("users")
+                                        .document(firebaseUser.getUid())
+                                        .set(userModel)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                // 이메일 인증 확인 메일을 전송합니다.
+                                                sendEmail();
+                                                Intent emailIntent=new Intent(getApplicationContext(), EmailCheckActivity.class);
+                                                //  emailIntent.putExtra("주소",arg1);
+                                                emailIntent.putExtra("Flag","직원");
+                                                startActivity(emailIntent);
+
+                                                progressDialog.dismiss();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.d("시발","스토어업로드실패");
+                                            }
+                                        });
+                                FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Log.d("구독하기", firebaseUser.getUid());
+                                        finish();
+                                    }
+                                });
+                            }catch (Exception e){
+
+                            }
+
 
 
                         } else {

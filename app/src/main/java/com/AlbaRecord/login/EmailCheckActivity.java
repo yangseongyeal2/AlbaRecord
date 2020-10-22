@@ -37,7 +37,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         buttonAuthCheck = (Button) findViewById(R.id.buttonAuthCheck);
         textviewResend = (TextView) findViewById(R.id.textviewResend);
         emailCheckLogout = (Button) findViewById(R.id.emailCheckLogout);
-        String adress=getIntent().getStringExtra("주소");
+        //String adress=getIntent().getStringExtra("주소");
 
         buttonAuthCheck.setOnClickListener(this);
         textviewResend.setOnClickListener(this);
@@ -48,7 +48,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         if (view == emailCheckLogout) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(this, LoginBossActivity.class));
+            startActivity(new Intent(this, LoginWayActivity.class));
             finish();
         }
 
@@ -70,17 +70,19 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
         if (firebaseUser.isEmailVerified() == true) {
             Toast.makeText(EmailCheckActivity.this, "인증 되었습니다", Toast.LENGTH_SHORT).show();
             String flag=getIntent().getStringExtra("Flag");
-            if (flag.equals("사장")){
-                Intent intent=new Intent(getApplicationContext(), BossMainActivity.class);
-                // intent.putExtra("주소",adress);
-                startActivity(intent);
-                finish();
-            }else {
-                Intent intent=new Intent(getApplicationContext(), EmployMainActivity.class);
-                // intent.putExtra("주소",adress);
-                startActivity(intent);
-                finish();
-            }
+//            if (flag.equals("사장")){
+//                Intent intent=new Intent(getApplicationContext(), BossMainActivity.class);
+//                // intent.putExtra("주소",adress);
+//                startActivity(intent);
+//                finish();
+//            }else {
+//                Intent intent=new Intent(getApplicationContext(), EmployMainActivity.class);
+//                // intent.putExtra("주소",adress);
+//                startActivity(intent);
+//                finish();
+//            }
+            startActivity(new Intent(getApplicationContext(),LoginWayActivity.class));
+            finish();
 
 
         } else {

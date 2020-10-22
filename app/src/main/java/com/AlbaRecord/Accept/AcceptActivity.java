@@ -10,7 +10,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.AlbaRecord.Boss.MyEmployeeActivity;
+import com.AlbaRecord.Employ.EmployMainActivity;
 import com.AlbaRecord.Employ.EmployeeMyshop;
+import com.AlbaRecord.Employ.MyBrandActivity;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
 import com.android.volley.AuthFailureError;
@@ -94,12 +96,13 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
                 sendNotification(documentId,employeeModel.getName(),employeeModel.getName()+" 님이 수락하셨습니다","1");
                 mStore.collection("users").document(firebaseUser.getUid()).update("myBoss", FieldValue.arrayUnion(documentId));
 
-                startActivity(new Intent(getApplicationContext(), EmployeeMyshop.class));
+                startActivity(new Intent(getApplicationContext(), MyBrandActivity.class));
                 finish();
 
                 break;
             case R.id.deny:
                 sendNotification(documentId,employeeModel.getName(),employeeModel.getName()+" 님이 거절 하셨습니다","2");
+                startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
                 finish();
                 break;
         }

@@ -56,6 +56,7 @@ public class BossExEvaluateActivity extends AppCompatActivity implements OnItemC
                                     myBossAdapter.setOnIemlClickListner(new CommonAdapter.OnItemClickListener() {
                                         @Override
                                         public void onitemClick(View v, int pos) {
+                                            finish();
                                             Intent intent=new Intent(getApplicationContext(), EvaluateBossActivity.class);
                                             intent.putExtra("DocumentId",boss);
                                             startActivity(intent);

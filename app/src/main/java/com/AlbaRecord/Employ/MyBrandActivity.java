@@ -81,7 +81,7 @@ public class MyBrandActivity extends AppCompatActivity implements OnItemClick {
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 EmployeeModel employeeModel1=documentSnapshot.toObject(EmployeeModel.class);
                                                 employeeModels.add(employeeModel1);
-                                                colleagueAdapter=new ColleagueAdapter(employeeModels);
+                                                colleagueAdapter=new ColleagueAdapter(employeeModels,MyBrandActivity.this);
                                                 recyclerView.setAdapter(colleagueAdapter);
                                             }
                                         });

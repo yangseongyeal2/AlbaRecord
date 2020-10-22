@@ -23,49 +23,54 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class LoginWayActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button boss,employee;
-    private FirebaseAuth mAuth=FirebaseAuth.getInstance();;
-    private FirebaseFirestore mStore=FirebaseFirestore.getInstance();
+    private Button boss, employee;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    ;
+    private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     ProgressDialog progressDialog;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginway);
-        boss=findViewById(R.id.bosswaybutton);
-        employee=findViewById(R.id.employeewaybutton);
+        boss = findViewById(R.id.bosswaybutton);
+        employee = findViewById(R.id.employeewaybutton);
         boss.setOnClickListener(this);
         employee.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
         if (mAuth.getCurrentUser() != null) {
-            progressDialog.setMessage("자동 로그인중입니다. 잠시기다려주세요...");
-            progressDialog.show();
-            //이미 로그인 되었다면 이 액티비티를 종료함
+            if (mAuth.getCurrentUser().isEmailVerified()) {
+                progressDialog.setMessage("자동 로그인중입니다. 잠시기다려주세요...");
+                progressDialog.show();
+                //이미 로그인 되었다면 이 액티비티를 종료함
 
-            //그리고 profile 액티비티를 연다.
-            mStore.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    //Log.d("로그인웨이",documentSnapshot.toString());
-                    BossModel bossModel =documentSnapshot.toObject(BossModel.class);
-                    Log.d("로그인웨이", bossModel.toString());
-                    if(bossModel.getFlag()==1){
-                        startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
-                    }else{
-                        startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+                //그리고 profile 액티비티를 연다.
+                mStore.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        //Log.d("로그인웨이",documentSnapshot.toString());
+                        BossModel bossModel = documentSnapshot.toObject(BossModel.class);
+                        Log.d("로그인웨이", bossModel.toString());
+                        if (bossModel.getFlag() == 1) {
+                            startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
+                        } else {
+                            startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+                        }
+                        progressDialog.dismiss();
+                        finish();
                     }
-                    progressDialog.dismiss();
-                    finish();
-                }
-            });
-            FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Log.d("구독하기","성공");
-                }
-            });
+                });
+                FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d("구독하기", "성공");
+                    }
+                });
+
+            }else{
+                startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class)); //추가해 줄 ProfileActivity
+            }
 
         }
 
@@ -75,16 +80,16 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if (v == boss) {
-            Intent bossIntent=new Intent(this, LoginBossActivity.class);
-            bossIntent.putExtra("Flag","사장");
+            Intent bossIntent = new Intent(this, LoginBossActivity.class);
+            bossIntent.putExtra("Flag", "사장");
             startActivity(bossIntent);
-          //  finish();
+            //  finish();
         }
         if (v == employee) {
-            Intent employeeIntent=new Intent(this, LoginEmployeeActivity.class);
-            employeeIntent.putExtra("Flag","직원");
+            Intent employeeIntent = new Intent(this, LoginEmployeeActivity.class);
+            employeeIntent.putExtra("Flag", "직원");
             startActivity(employeeIntent);
-        //    finish();
+            //    finish();
         }
 
     }
