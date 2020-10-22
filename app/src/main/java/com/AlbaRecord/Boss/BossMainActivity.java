@@ -96,7 +96,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
 
 
         NaverMapOptions options = new NaverMapOptions()
-                .camera(new CameraPosition(new LatLng(35.1798159, 100.0750222), 8))
+                .camera(new CameraPosition(new LatLng(35.1798159, 100.0750222), 4))
                 .mapType(NaverMap.MapType.Hybrid)
                 .enabledLayerGroups(NaverMap.LAYER_GROUP_BUILDING)
                 .enabledLayerGroups(NaverMap.LAYER_GROUP_TRANSIT)
@@ -110,6 +110,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
             fm.beginTransaction().add(R.id.map, mapFragment).commit();
         }
         mapFragment.getMapAsync(this);//Onmapready메소드 호출
+
 
 //        FirebaseInstanceId.getInstance().getInstanceId()
 //                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -254,10 +255,12 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                         Marker marker = new Marker();
                         Log.d(TAG, String.valueOf(bossModel.getLatitude()));
                         marker.setPosition(new LatLng(bossModel.getLatitude(), bossModel.getLongtitude()));
-                        marker.setWidth(50);
-                        marker.setHeight(80);
+                        marker.setWidth(150);
+                        marker.setHeight(200);
                         marker.setIconTintColor(Color.RED);
+
                         marker.setMap(naverMap);
+
 
                     }
                 } else {

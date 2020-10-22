@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,24 +8,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MyEmployee.EvaluateEmployeeActivity"
-        android:background="@drawable/short_background">
+        android:background="@drawable/short_background"
+        tools:context=".MyEmployee.EvaluateEmployeeActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
-                android:layout_width="374dp"
-                android:layout_height="184dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/grayedgebox"
                 android:padding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -44,19 +44,43 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="홍길동"
+                    android:text="이름:"
                     app:layout_constraintStart_toStartOf="@+id/photo"
                     app:layout_constraintTop_toBottomOf="@+id/photo" />
+
+                <TextView
+                    android:id="@+id/name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="양성열"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/name"
+                    app:layout_constraintStart_toEndOf="@+id/name"
+                    app:layout_constraintTop_toTopOf="@+id/name" />
 
                 <TextView
                     android:id="@+id/age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
                     android:text="나이"
-                    app:layout_constraintBottom_toBottomOf="@+id/name"
-                    app:layout_constraintStart_toEndOf="@+id/name"
-                    app:layout_constraintTop_toTopOf="@+id/name" />
+
+                    app:layout_constraintStart_toStartOf="@+id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <TextView
+                    android:id="@+id/age_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="25"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/age"
+                    app:layout_constraintStart_toEndOf="@+id/age"
+                    app:layout_constraintTop_toTopOf="@+id/age" />
+
 
                 //오빠이거 뭔느낌인지알죠 !!!! 직접입력해놓고 나중에 수정가능하게 하고싶어요 !!
 
@@ -175,56 +199,59 @@
                     app:layout_constraintStart_toStartOf="@+id/today"
                     app:layout_constraintTop_toTopOf="parent" />
 
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:id="@+id/constraintLayout4"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="4dp"-->
-<!--                    android:background="@drawable/graybox"-->
-<!--                    android:padding="8dp"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView4">-->
+                <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+                <!--                    android:id="@+id/constraintLayout4"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="4dp"-->
+                <!--                    android:background="@drawable/graybox"-->
+                <!--                    android:padding="8dp"-->
+                <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@+id/textView4">-->
 
-<!--                    //가장 최근에 남긴 리뷰 날짜-->
-<!--                    //(부터 현재까지의 평가!)-->
+                <!--                    //가장 최근에 남긴 리뷰 날짜-->
+                <!--                    //(부터 현재까지의 평가!)-->
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/lastevaluation"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="2020/05/1"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/lastevaluation"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="2020/05/1"-->
+                <!--                        app:layout_constraintStart_toStartOf="parent"-->
+                <!--                        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/textView2"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text=" ~ "-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/lastevaluation"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/lastevaluation" />-->
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/textView2"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text=" ~ "-->
+                <!--                        app:layout_constraintStart_toEndOf="@+id/lastevaluation"-->
+                <!--                        app:layout_constraintTop_toTopOf="@+id/lastevaluation" />-->
 
-<!--                    //(가장 최근에 남긴 리뷰 날짜)-->
-<!--                    //부터 현재까지의 평가!-->
+                <!--                    //(가장 최근에 남긴 리뷰 날짜)-->
+                <!--                    //부터 현재까지의 평가!-->
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/today"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="2020/10/6"-->
-<!--                        app:layout_constraintStart_toEndOf="@+id/textView2"-->
-<!--                        app:layout_constraintTop_toTopOf="@+id/textView2" />-->
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/today"-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:text="2020/10/6"-->
+                <!--                        app:layout_constraintStart_toEndOf="@+id/textView2"-->
+                <!--                        app:layout_constraintTop_toTopOf="@+id/textView2" />-->
 
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
                 <TextView
                     android:id="@+id/today"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="오늘날짜"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -257,8 +284,7 @@
                         android:text="근면성\n(책임감)"
                         android:textAlignment="center"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                       />
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                     <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
@@ -353,7 +379,6 @@
                         app:layout_constraintTop_toTopOf="@+id/communication" />
 
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
@@ -392,32 +417,27 @@
                     <EditText
                         android:id="@+id/hashtagdetail"
                         android:layout_width="200dp"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:background="@drawable/grayedgebox"
+                        android:background="@drawable/login_edittext"
                         android:hint="세부사항"
+                        android:maxLines="8"
+                        android:scrollbars="vertical"
+                        android:textAlignment="viewStart"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/hashtag"
                         app:layout_constraintTop_toTopOf="@+id/hashtag" />
 
-                    <Button
-                        android:id="@+id/addhashtag"
-                        android:layout_width="30dp"
 
-                        android:layout_height="30dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/btn_main"
-                        android:text="+"
-                        app:layout_constraintEnd_toEndOf="@+id/hashtagdetail"
-                        app:layout_constraintTop_toBottomOf="@+id/hashtag" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
                     android:id="@+id/addevaluation"
-                    android:text="입력"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/btn_main"
+                    android:text="입력"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout6"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
 

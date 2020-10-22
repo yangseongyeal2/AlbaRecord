@@ -8,11 +8,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
+import com.AlbaRecord.Map.NaverMapActivity;
+import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
 import com.anychart.AnyChart;
@@ -20,18 +24,22 @@ import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Radar;
+import com.naver.maps.map.NaverMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.EvaluateViewHolder> {
     private ArrayList<EvaluateModel> evaluateModels=new ArrayList<>();
     private Context mContext;
+    private BossModel bossModel;
 
     public class EvaluateViewHolder extends RecyclerView.ViewHolder {
         TextView carrer,brandname,carrerlong,careerthing;
         AnyChartView anyChartView;
-        Button evaluate_detail;
+        Button evaluate_detail,brandnavermap1;
         public EvaluateViewHolder(@NonNull View itemView) {
             super(itemView);
             carrer=(TextView) itemView.findViewById(R.id.carrer);
@@ -40,12 +48,14 @@ public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.Evalu
             careerthing=(TextView)itemView.findViewById(R.id.careerthing);
             anyChartView=(AnyChartView)itemView.findViewById(R.id.carrerpentagon1);
             evaluate_detail=(Button)itemView.findViewById(R.id.evaluate_detail);
+            brandnavermap1=(Button)itemView.findViewById(R.id.brandnavermap1);
         }
     }
 
-    public EvaluateAdapter(ArrayList<EvaluateModel> evaluateModels, Context mContext) {
+    public EvaluateAdapter(ArrayList<EvaluateModel> evaluateModels, Context mContext, BossModel bossModel) {
         this.evaluateModels = evaluateModels;
         this.mContext=mContext;
+        this.bossModel=bossModel;
     }
 
     @NonNull
@@ -81,6 +91,17 @@ public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.Evalu
             public void onClick(View v) {
                // mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
                 Toast.makeText(mContext,"아직 기능구현이 안된 버튼입니다",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.brandnavermap1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(mContext, NaverMapActivity.class);
+                intent.putExtra("위도",bossModel.getLatitude());
+                Log.d("네이버로 보내는 위도",String.valueOf(bossModel.getLatitude()));
+                intent.putExtra("경도",bossModel.getLongtitude());
+                mContext.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
 

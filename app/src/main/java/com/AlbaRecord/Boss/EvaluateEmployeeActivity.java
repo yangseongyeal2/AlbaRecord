@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,11 +42,12 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
     String employeeDocumentId;
     CrystalSeekbar diligenceseekBar,flexibilityseekBar,masteryseekBar,attitudeseekBar,communicationseekBar;
     int diligence=0,flexibility=0,mastery=0,attitude=0,communication=0;
-    Button addevaluation;
+    Button addevaluation,call;
     EditText hashtag,hashtagdetail;
     TextView today;
     String brandname="";
     String careerthing="";
+    EmployeeModel employeeModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         initViewId();
         employeeDocumentId = getIntent().getStringExtra("DocumentId");
         Date currenttime= Calendar.getInstance().getTime();
-        String date_text=new SimpleDateFormat("yyyy년 MM월 dd일 ", Locale.getDefault()).format(currenttime);
+        String date_text=new SimpleDateFormat("yyyy년 MM월", Locale.getDefault()).format(currenttime);
         today.setText(date_text);
 
 
@@ -126,9 +128,9 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        Map<String, Object> data=documentSnapshot.getData();
-                        Log.d("어댑터",data.toString());
                         try {
+                            Map<String, Object> data=documentSnapshot.getData();
+                            Log.d("어댑터",data.toString());
                             workstart.setText(data.get("근무시작시간").toString());
                             careerthing=data.get("직급").toString();
                             position.setText(data.get("직급").toString());
@@ -145,7 +147,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         db.collection("users").document(employeeDocumentId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+                employeeModel=documentSnapshot.toObject(EmployeeModel.class);
                 assert employeeModel != null;
                 phone.setText(employeeModel.getPhonenumber());
                 name.setText(employeeModel.getName());
@@ -161,8 +163,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         position = (TextView) findViewById(R.id.position);
         workstart = (TextView) findViewById(R.id.workstart);
         phone = (TextView) findViewById(R.id.phone);
-        name = (TextView) findViewById(R.id.name);
-        age = (TextView) findViewById(R.id.age);
+        name = (TextView) findViewById(R.id.name_text);
+        age = (TextView) findViewById(R.id.age_text);
         diligenceseekBar=(CrystalSeekbar)findViewById(R.id.diligenceseekBar);
         flexibilityseekBar=(CrystalSeekbar)findViewById(R.id.flexibilityseekBar);
         masteryseekBar=(CrystalSeekbar)findViewById(R.id.masteryseekBar);
@@ -172,6 +174,8 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         hashtag=(EditText)findViewById(R.id.hashtag);
         hashtagdetail=(EditText)findViewById(R.id.hashtagdetail);
         today=(TextView)findViewById(R.id.today);
+        call=(Button)findViewById(R.id.call);
+        call.setOnClickListener(this);
 
     }
 
@@ -219,11 +223,10 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
                     }
                 });
                 ad.show();
-
-
-
-
-
+                break;
+            case R.id.call:
+                String tel="tel:"+employeeModel.getPhonenumber();
+                startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
                 break;
         }
     }

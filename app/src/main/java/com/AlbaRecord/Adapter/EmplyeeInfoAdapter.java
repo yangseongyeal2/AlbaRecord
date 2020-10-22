@@ -25,6 +25,7 @@ import android.util.Log;
 
 import com.AlbaRecord.Boss.EvaluateEmployeeActivity;
 import com.AlbaRecord.Boss.MyEmployeeActivity;
+import com.AlbaRecord.Boss.SearchEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeActivity;
 import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
 import com.AlbaRecord.Model.EmployeeModel;
@@ -166,9 +167,9 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                 callbackMethod = new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        holder.workstart.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
+                        holder.workstart.setText(year + "년" + (monthOfYear+1) + "월" + dayOfMonth + "일");
                         Map<String, Object> docData = new HashMap<>();
-                        docData.put("근무시작시간", year + "년" + monthOfYear + "월" + dayOfMonth + "일");
+                        docData.put("근무시작시간", year + "년" + (monthOfYear+1) + "월" + dayOfMonth + "일");
                         db.collection("users")
                                 .document(mAuth.getCurrentUser().getUid())
                                 .collection("MyEmployeeInfo")
@@ -181,7 +182,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
 
                     }
                 };
-                DatePickerDialog dialog = new DatePickerDialog(mContext, callbackMethod, 2020, 10, 25);
+                DatePickerDialog dialog = new DatePickerDialog(mContext, callbackMethod, 2020, 9, 25);
                 dialog.show();
             }
         });
@@ -192,6 +193,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                 Intent intent = new Intent(mContext, EvaluateEmployeeActivity.class);
                 intent.putExtra("DocumentId", employeeModel.getDocumentId());
                 mContext.startActivity(intent);
+                activity.finish();
             }
         });
         holder.call.setOnClickListener(new View.OnClickListener() {
@@ -220,22 +222,42 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                 Intent intent_ex=new Intent(mContext, ShowEmployeeDetailActivity.class);
                 intent_ex.putExtra("DocumentId",employeeModel.getDocumentId());
                 mContext.startActivity(intent_ex);
+                activity.finish();
             }
         });
 
         holder.fire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.collection("users")
-                        .document(mAuth.getCurrentUser().getUid())
-                        .update("MyEmployee", FieldValue.arrayRemove(employeeModel.getDocumentId()))
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
+                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setTitle("직원 해고");
+                ad.setMessage("이 직원을 해고 하시겠습니까?");
+                ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        mContext.startActivity(new Intent(mContext, MyEmployeeActivity.class));
-                        activity.finish();
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.collection("users")
+                                .document(mAuth.getCurrentUser().getUid())
+                                .update("MyEmployee", FieldValue.arrayRemove(employeeModel.getDocumentId()))
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        mContext.startActivity(new Intent(mContext, MyEmployeeActivity.class));
+                                        activity.finish();
+                                        dialog.dismiss();
+                                    }
+                                });
+
                     }
                 });
+                ad.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                ad.show();
+
 
 //                mContext.notify();
 

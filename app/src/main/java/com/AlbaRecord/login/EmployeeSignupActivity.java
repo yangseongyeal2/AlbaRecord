@@ -355,7 +355,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
 
     private void loginProcess(final String email, final String password) {
         List<Address> list = null;
-        Log.d("DownLoadURI", downloadUri.toString());
+        //Log.d("DownLoadURI", downloadUri.toString());
         double lat=0.0, lon=0.0;
         final Geocoder geocoder = new Geocoder(this);
 //        try {

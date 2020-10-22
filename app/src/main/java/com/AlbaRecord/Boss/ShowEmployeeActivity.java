@@ -123,7 +123,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                             EvaluateModel evaluateModel=document.toObject(EvaluateModel.class);
                                             evaluateModels.add(evaluateModel);
                                         }
-                                        EvaluateAdapter evaluateAdapter=new EvaluateAdapter(evaluateModels,getApplicationContext());
+                                        EvaluateAdapter evaluateAdapter=new EvaluateAdapter(evaluateModels,getApplicationContext(),bossModel);
                                         evaluate_recyclerview.setAdapter(evaluateAdapter);
                                     }
                                 });

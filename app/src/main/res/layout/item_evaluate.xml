@@ -54,14 +54,14 @@
 
         <Button
             android:id="@+id/brandnavermap1"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/navermap"
             app:layout_constraintBottom_toBottomOf="@+id/carrer"
             app:layout_constraintStart_toEndOf="@+id/brandname"
             app:layout_constraintTop_toTopOf="@+id/carrer"
-            app:layout_constraintVertical_bias="0.0" />
+            />
 
 
 
@@ -72,7 +72,7 @@
             android:layout_marginTop="4dp"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="근무기간:"
+            android:text="평가일자:"
             app:layout_constraintStart_toStartOf="@+id/carrer"
             app:layout_constraintTop_toBottomOf="@+id/carrer" />
         <TextView
