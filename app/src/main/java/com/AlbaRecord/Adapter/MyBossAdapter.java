@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
+import com.AlbaRecord.Employ.ShowBossDetailActivity;
 import com.AlbaRecord.Interface.OnItemClick;
 import com.AlbaRecord.Map.NaverMapActivity;
 import com.AlbaRecord.Model.BossModel;
@@ -62,6 +64,16 @@ public class MyBossAdapter extends RecyclerView.Adapter<MyBossAdapter.MyBossView
                 mContext.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
+        holder.ex_evalute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivity.finish();
+                Intent intent=new Intent(mContext, ShowBossDetailActivity.class);
+                intent.putExtra("DocumentId",bossModel.getDocumentId());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -72,12 +84,15 @@ public class MyBossAdapter extends RecyclerView.Adapter<MyBossAdapter.MyBossView
     public class MyBossViewHolder extends RecyclerView.ViewHolder {
         private TextView brandname,phonenum,address_result;
         private Button map;
+        private Button ex_evalute;
+
         public MyBossViewHolder(@NonNull View itemView) {
             super(itemView);
             brandname=itemView.findViewById(R.id.brandname);
             phonenum=itemView.findViewById(R.id.phonenum);
             address_result=itemView.findViewById(R.id.address_result);
             map=itemView.findViewById(R.id.map);
+            ex_evalute=itemView.findViewById(R.id.ex_evalute);
 
 
 

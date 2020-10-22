@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Employ.BossExEvaluateActivity"></activity>
+        <activity android:name=".Employ.ShowBossDetailActivity"></activity>
+        <activity android:name=".Employ.BossExEvaluateActivity" />
         <activity android:name=".Employ.MyBrandActivity" />
         <activity android:name=".Employ.EvaluateBossActivity" />
         <activity android:name=".Map.NaverMapActivity" />

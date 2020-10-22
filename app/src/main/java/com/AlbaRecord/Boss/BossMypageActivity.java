@@ -80,7 +80,8 @@ public class BossMypageActivity extends AppCompatActivity implements View.OnClic
         db.collection("users")
                 .document(mAuth.getCurrentUser().getUid())
                 .collection("Evaluate")
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful() && task.getResult() != null) {
