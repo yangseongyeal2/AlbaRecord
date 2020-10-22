@@ -21,6 +21,8 @@
         />
 
     <HorizontalScrollView
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+
         android:id="@+id/horizontalScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/include">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="true"
@@ -54,33 +57,11 @@
                 android:foreground="?attr/selectableItemBackground"
                 android:text="나의 알바생" />
 
-            <Button
-                android:id="@+id/salary"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/btn_main"
 
-                android:foreground="?attr/selectableItemBackground"
-                android:text="일당\n입력" />
 
-            <Button
-                android:id="@+id/MyPage"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/btn_main"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="My\nPage" />
 
-            <Button
-                android:id="@+id/Board"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/btn_main"
-                android:foreground="?attr/selectableItemBackground"
-                android:text="Q&amp;A\n게시판" />
+
+
 
             <Button
                 android:id="@+id/alram"
@@ -90,6 +71,31 @@
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
                 android:text="알람\n" />
+            <Button
+                android:id="@+id/MyPage"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/btn_main"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="My\nPage" />
+            <Button
+                android:id="@+id/Board"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/btn_main"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Q&amp;A\n게시판" />
+            <Button
+                android:id="@+id/salary"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/btn_main"
+
+                android:foreground="?attr/selectableItemBackground"
+                android:text="일당\n입력" />
 
         </LinearLayout>
 

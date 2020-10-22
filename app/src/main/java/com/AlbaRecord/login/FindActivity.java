@@ -55,7 +55,7 @@ public class FindActivity extends AppCompatActivity implements View.OnClickListe
                             if (task.isSuccessful()) {
                                 Toast.makeText(FindActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
                                 finish();
-                                startActivity(new Intent(getApplicationContext(), LoginBossActivity.class));
+                                startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
                             } else {
                                 Toast.makeText(FindActivity.this, "메일 보내기 실패!", Toast.LENGTH_LONG).show();
                             }

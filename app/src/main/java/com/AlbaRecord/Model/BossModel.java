@@ -1,8 +1,11 @@
 package com.AlbaRecord.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class BossModel {
+public class BossModel  implements Parcelable {
     private String email ;
     private String password ;
     private String phoneNumber;
@@ -15,6 +18,34 @@ public class BossModel {
     int flag;//0 : 사장님 1: 직원 2: 관리자
     private String DocumentId;
     private ArrayList<String>MyEmployee;
+
+    protected BossModel(Parcel in) {
+        email = in.readString();
+        password = in.readString();
+        phoneNumber = in.readString();
+        name = in.readString();
+        brand = in.readString();
+        address = in.readString();
+        businessNum = in.readString();
+        latitude = in.readDouble();
+        longtitude = in.readDouble();
+        flag = in.readInt();
+        DocumentId = in.readString();
+        MyEmployee = in.createStringArrayList();
+    }
+
+    public static final Creator<BossModel> CREATOR = new Creator<BossModel>() {
+        @Override
+        public BossModel createFromParcel(Parcel in) {
+            return new BossModel(in);
+        }
+
+        @Override
+        public BossModel[] newArray(int size) {
+            return new BossModel[size];
+        }
+    };
+
     public ArrayList<String> getDocumentIdList() {
         return MyEmployee;
     }
@@ -188,6 +219,29 @@ public class BossModel {
 
     public void setBusinessNum(String businessNum) {
         this.businessNum = businessNum;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+
+        dest.writeString(this.email);
+        dest.writeString(this.password);
+        dest.writeString(this.phoneNumber);
+        dest.writeString(this.brand);
+        dest.writeString(this.address);
+        dest.writeString(this.businessNum);
+        dest.writeString(this.name);
+        dest.writeDouble(this.latitude);
+        dest.writeDouble(this.longtitude);
+        dest.writeInt(this.flag);
+        dest.writeString(this.DocumentId);
+        dest.writeStringList(this.MyEmployee);
     }
 }
 

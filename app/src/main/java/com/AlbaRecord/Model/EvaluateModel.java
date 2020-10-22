@@ -1,6 +1,9 @@
 package com.AlbaRecord.Model;
 
-public class EvaluateModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class EvaluateModel  implements Parcelable {
     private int diligence,flexibility,mastery,attitude,communication;
     private String hashtag,hashtagdetail,date_text;
     private String brandname,careerthing;
@@ -21,6 +24,31 @@ public class EvaluateModel {
     public EvaluateModel() {
 
     }
+
+    protected EvaluateModel(Parcel in) {
+        diligence = in.readInt();
+        flexibility = in.readInt();
+        mastery = in.readInt();
+        attitude = in.readInt();
+        communication = in.readInt();
+        hashtag = in.readString();
+        hashtagdetail = in.readString();
+        date_text = in.readString();
+        brandname = in.readString();
+        careerthing = in.readString();
+    }
+
+    public static final Creator<EvaluateModel> CREATOR = new Creator<EvaluateModel>() {
+        @Override
+        public EvaluateModel createFromParcel(Parcel in) {
+            return new EvaluateModel(in);
+        }
+
+        @Override
+        public EvaluateModel[] newArray(int size) {
+            return new EvaluateModel[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -119,4 +147,25 @@ public class EvaluateModel {
         this.date_text = date_text;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+
+        dest.writeInt(this.diligence);
+        dest.writeInt(this.flexibility);
+        dest.writeInt(this.mastery);
+        dest.writeInt(this.attitude);
+        dest.writeInt(this.communication);
+        dest.writeString(this.hashtag);
+        dest.writeString(this.hashtagdetail);
+        dest.writeString(this.date_text);
+        dest.writeString(this.brandname);
+        dest.writeString(this.careerthing);
+
+    }
 }

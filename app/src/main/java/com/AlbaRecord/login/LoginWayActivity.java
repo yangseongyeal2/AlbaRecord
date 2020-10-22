@@ -78,13 +78,13 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
             Intent bossIntent=new Intent(this, LoginBossActivity.class);
             bossIntent.putExtra("Flag","사장");
             startActivity(bossIntent);
-            finish();
+          //  finish();
         }
         if (v == employee) {
             Intent employeeIntent=new Intent(this, LoginEmployeeActivity.class);
             employeeIntent.putExtra("Flag","직원");
             startActivity(employeeIntent);
-            finish();
+        //    finish();
         }
 
     }

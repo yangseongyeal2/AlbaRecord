@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
+import com.AlbaRecord.Employ.EmployeeEvaluateDeatailActivity;
 import com.AlbaRecord.Map.NaverMapActivity;
 import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Model.EmployeeModel;
@@ -89,8 +90,11 @@ public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.Evalu
         holder.evaluate_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // mContext.startActivity(new Intent(mContext, ShowEmployeeDetailActivity.class));
-                Toast.makeText(mContext,"아직 기능구현이 안된 버튼입니다",Toast.LENGTH_SHORT).show();
+                Intent intent =new Intent(mContext, EmployeeEvaluateDeatailActivity.class).addFlags(FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("EvaluateModel",evaluateModel);
+                intent.putExtra("BossModel",bossModel);
+                mContext.startActivity(intent);
+
             }
         });
 
