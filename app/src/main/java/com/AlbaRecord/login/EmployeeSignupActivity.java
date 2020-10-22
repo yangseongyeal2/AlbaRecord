@@ -354,10 +354,10 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
     }
 
     private void loginProcess(final String email, final String password) {
-        List<Address> list = null;
+      //  List<Address> list = null;
         //Log.d("DownLoadURI", downloadUri.toString());
         double lat=0.0, lon=0.0;
-        final Geocoder geocoder = new Geocoder(this);
+    //    final Geocoder geocoder = new Geocoder(this);
 //        try {
 //            list = geocoder.getFromLocationName(arg1, 10);
 //            Address addr = list.get(0);
@@ -412,7 +412,7 @@ public class EmployeeSignupActivity extends AppCompatActivity implements View.On
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-
+                                        Log.d("시발","스토어업로드실패");
                                         }
                                     });
                             FirebaseMessaging.getInstance().subscribeToTopic(firebaseUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
