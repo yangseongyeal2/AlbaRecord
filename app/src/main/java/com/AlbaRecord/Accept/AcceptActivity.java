@@ -60,7 +60,7 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
         if(flag.equals("1")){
             Toast.makeText(getApplicationContext(),"수락댐",Toast.LENGTH_SHORT).show();
 
-            mStore.collection("users").document(firebaseUser.getUid()).update("MyEmployee", FieldValue.arrayUnion(documentId));
+//            mStore.collection("users").document(firebaseUser.getUid()).update("MyEmployee", FieldValue.arrayUnion(documentId));
 
             finish();
             Intent acceptIntent=new Intent(getApplicationContext(), MyEmployeeActivity.class);

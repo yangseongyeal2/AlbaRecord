@@ -314,10 +314,6 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
                                                             Log.d("양성열","캐치");
                                                             e.printStackTrace();
                                                         }
-
-
-
-
                                                         mContext.startActivity(new Intent(mContext, MyEmployeeActivity.class));
                                                         activity.finish();
                                                         dialog.dismiss();
@@ -342,35 +338,14 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
 
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
     @Override
     public int getItemCount() {
         return employeeModels.size();
     }
-
     @NonNull
     @Override
     public EmplyeeInfoAdapter.EmplyeeInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new EmplyeeInfoViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_employ_info, parent, false));
     }
-
-
-
-
 }

@@ -35,6 +35,7 @@ public class FireAcceptActivity extends AppCompatActivity {
                 Log.d("해고메세지","마이보스에서 삭제완료");
             }
         });
+
         findViewById(R.id.accept).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

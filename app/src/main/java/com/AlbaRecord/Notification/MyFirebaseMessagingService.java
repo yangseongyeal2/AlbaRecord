@@ -2,10 +2,14 @@ package com.AlbaRecord.Notification;
 
 import com.AlbaRecord.Accept.AcceptActivity;
 import com.AlbaRecord.Accept.FireAcceptActivity;
+import com.AlbaRecord.Boss.BossMainActivity;
 import com.AlbaRecord.Model.NotiInfo;
 import com.AlbaRecord.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -35,6 +39,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public String flag;
     private FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     private FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -79,6 +84,16 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification() {
         if (flag.equals("3")) {
+            mStore.collection("users")
+                    .document(firebaseUser.getUid())
+                    .update("myBoss", FieldValue.arrayRemove(documentid))
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Log.d("해고메세지","마이보스에서 삭제완료");
+                        }
+                    });
+
            // Toast.makeText(getApplicationContext(), "해고메세지도착", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, FireAcceptActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -122,7 +137,49 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 
 
-        } else {
+        }else if(flag.equals("1")){
+            mStore.collection("users").document(firebaseUser.getUid()).update("MyEmployee", FieldValue.arrayUnion(documentid));
+            Intent intent = new Intent(this, BossMainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("title", title);
+            intent.putExtra("body", body);
+            intent.putExtra("DocumentId", documentid);
+            intent.putExtra("flag", flag);
+
+
+            TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+            stackBuilder.addParentStack(BossMainActivity.class);
+            stackBuilder.addNextIntent(intent);
+            Log.d("DocumentId", documentid);
+
+
+            PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);//이게 뒤로 눌렀을때 안꺼지는 방법
+            String channelId = "채널 ID";
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder =
+                    new NotificationCompat.Builder(this, channelId)
+                            .setSmallIcon(R.drawable.main)
+                            .setContentTitle(title)
+                            .setContentText(body)
+                            .setAutoCancel(true)
+                            .setSound(defaultSoundUri)
+                            .setContentIntent(pendingIntent);
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            //Since android Oreo notification channel is needed.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(channelId,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                assert notificationManager != null;
+                notificationManager.createNotificationChannel(channel);
+            }
+            assert notificationManager != null;
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
+        }
+
+        else {
 
             Intent intent = new Intent(this, AcceptActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
