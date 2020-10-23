@@ -26,7 +26,7 @@ import java.util.List;
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class EmployeeEvaluateDeatailActivity extends AppCompatActivity {
-    TextView carrer, brandname, carrerlong, careerthing,attitude,communication,diligence,flexibility,mastery;
+    TextView carrer, brandname, carrerlong, careerthing,attitude,communication,diligence,flexibility,mastery,detail;
     //AnyChartView carrerpentagon1;
     Button evaluate_detail, brandnavermap1;
 
@@ -91,6 +91,7 @@ public class EmployeeEvaluateDeatailActivity extends AppCompatActivity {
         diligence=findViewById(R.id.diligence);
         flexibility=findViewById(R.id.flexibility);
         mastery=findViewById(R.id.mastery);
+        detail=findViewById(R.id.detail);
 
 
 
