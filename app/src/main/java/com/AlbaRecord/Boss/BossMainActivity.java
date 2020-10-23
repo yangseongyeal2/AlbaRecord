@@ -165,8 +165,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
 
                         // Log and toast
                        // String msg = getString(R.string.msg_token_fmt, token);
-                        Log.d("보스토큰", token);
-                        Toast.makeText(BossMainActivity.this, token, Toast.LENGTH_SHORT).show();
+//                    //    Toast.makeText(BossMainActivity.this, token, Toast.LENGTH_SHORT).show();
                     }
                 });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);

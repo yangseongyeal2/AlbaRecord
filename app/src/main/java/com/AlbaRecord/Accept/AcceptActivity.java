@@ -68,6 +68,7 @@ public class AcceptActivity extends AppCompatActivity implements View.OnClickLis
         }else if(flag.equals("2")) {
             Toast.makeText(getApplicationContext(), "거절댐", Toast.LENGTH_SHORT).show();
             Intent denyIntent=new Intent(getApplicationContext(), MyEmployeeActivity.class);
+            finish();
             startActivity(denyIntent);
         }
         Log.d("Accepts",documentId);
