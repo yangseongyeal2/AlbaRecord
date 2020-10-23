@@ -46,7 +46,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="알바조회" />
+                android:text="알바\n조회" />
 
             <Button
                 android:id="@+id/myalba"
@@ -55,7 +55,7 @@
                 android:layout_marginStart="30dp"
                 android:background="@drawable/btn_main"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="나의 알바생" />
+                android:text="나의\n알바생" />
 
 
 

@@ -21,21 +21,22 @@
 
 
             <TextView
+                android:textColor="#000000"
                 android:id="@+id/employeesignup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="72dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
                 android:text="알바생 회원가입"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/information"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="60dp"
                 android:padding="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,24 +61,23 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="21dp"
                     android:text="Email:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/email_edittext"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/email_edittext" />
+                    app:layout_constraintTop_toBottomOf="@+id/information_textview" />
 
                 <EditText
                     android:id="@+id/email_edittext"
-                    android:layout_width="250dp"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10sp"
-                    android:background="@drawable/login_edittext"
+                    android:layout_height="39dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="textEmailAddress"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/eamil"
-                    app:layout_constraintTop_toBottomOf="@+id/information_textview" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eamil" />
 
                 <TextView
 
@@ -85,49 +85,47 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="8dp"
                     android:text="Password:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/password_edittext"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
                 <EditText
                     android:id="@+id/password_edittext"
-                    android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_edittext"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/password"
-                    app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password" />
 
                 <TextView
 
                     android:id="@+id/password_re"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
-                    android:text="Password:"
+                    android:layout_marginTop="8dp"
+                    android:text="Password확인:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/password_re_edittext"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
 
                 <EditText
                     android:id="@+id/password_re_edittext"
-                    android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_edittext"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="textPassword"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/password"
-                    app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password_re" />
 
                 <TextView
                     android:id="@+id/phone"
@@ -135,29 +133,29 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
 
+                    android:layout_marginTop="8dp"
                     android:text="전화번호:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/phone_edittext"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
 
 
                 <EditText
                     android:id="@+id/phone_edittext"
-                    android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/login_edittext"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="phone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.686"
-                    app:layout_constraintStart_toEndOf="@+id/password"
-                    app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phone" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/employeeinformation"
@@ -165,6 +163,7 @@
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/information">
 
@@ -176,7 +175,6 @@
                     android:text="알바생정보"
                     android:textAlignment="center"
                     android:textColor="#ffffff"
-                    app:layout_constraintBottom_toTopOf="@+id/name_edittext"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -186,73 +184,74 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="26dp"
                     android:text="이름:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/age_edittext"
                     app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/name_edittext" />
+                    app:layout_constraintTop_toBottomOf="@+id/employeeinformation_textview" />
 
                 <EditText
                     android:id="@+id/name_edittext"
-                    android:layout_width="170dp"
+                    android:layout_width="250sp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10sp"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/name"
-                    app:layout_constraintTop_toBottomOf="@+id/employeeinformation_textview" />
+                    app:layout_constraintStart_toStartOf="@+id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
 
                 <TextView
                     android:id="@+id/age"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="27dp"
                     android:text="나이:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/age_edittext"
                     app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/age_edittext" />
+                    app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
+
 
                 <EditText
                     android:id="@+id/age_edittext"
-                    android:layout_width="170dp"
+                    android:layout_width="250sp"
                     android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/age"
-                    app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
-
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintStart_toStartOf="@+id/age"
+                    app:layout_constraintTop_toBottomOf="@+id/age" />
 
                 <TextView
                     android:id="@+id/address"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="10dp"
                     android:text="주소:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/address_result"
                     app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/address_result" />
+                    app:layout_constraintTop_toBottomOf="@+id/age_edittext" />
 
 
                 <TextView
                     android:id="@+id/address_result"
-                    android:layout_width="170dp"
+                    android:layout_width="250sp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="16dp"
 
+                    android:background="@drawable/edge_bottom_gray"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/address"
-                    app:layout_constraintTop_toBottomOf="@+id/age_edittext" />
+                    app:layout_constraintStart_toEndOf="@+id/image"
+                    app:layout_constraintStart_toStartOf="@+id/address"
+                    app:layout_constraintTop_toBottomOf="@+id/address" />
 
                 <Button
                     android:id="@+id/address_button"
@@ -260,8 +259,7 @@
                     android:layout_height="40dp"
 
                     android:text="검색"
-                    app:layout_constraintBottom_toTopOf="@+id/education_edittext"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/address_result"
 
                     app:layout_constraintTop_toBottomOf="@+id/address_result" />
 
@@ -271,23 +269,24 @@
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="8dp"
                     android:text="최종학력:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/education_edittext"
                     app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/education_edittext" />
+                    app:layout_constraintStart_toStartOf="@+id/image"
+                    app:layout_constraintTop_toBottomOf="@+id/address_button" />
 
                 <EditText
                     android:id="@+id/education_edittext"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="textPersonName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/education"
-                    app:layout_constraintTop_toBottomOf="@+id/address_button" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/education" />
 
                 <ImageView
                     android:id="@+id/image"
@@ -295,7 +294,7 @@
                     android:layout_height="120dp"
                     android:layout_marginTop="20dp"
                     android:adjustViewBounds="true"
-                    android:src="@color/colorMain"
+                    android:background="@drawable/graybox"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -309,56 +308,56 @@
                     app:layout_constraintEnd_toEndOf="@+id/image"
                     app:layout_constraintStart_toStartOf="@+id/image"
                     app:layout_constraintTop_toBottomOf="@+id/image" />
+
                 <TextView
                     android:id="@+id/Account"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="8dp"
                     android:text="계좌번호:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/Account_edit"
-                    app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/Account_edit" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/education_edittext" />
 
                 <EditText
-                    android:layout_marginTop="10dp"
                     android:id="@+id/Account_edit"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:inputType="number"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Account"
-                    app:layout_constraintTop_toBottomOf="@+id/education_edittext" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Account" />
+
                 <TextView
                     android:id="@+id/Bank"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10sp"
+                    android:layout_marginTop="8dp"
                     android:text="계좌은행:"
                     android:textColor="#000000"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/Bank_edit"
-                    app:layout_constraintStart_toEndOf="@+id/image"
-                    app:layout_constraintTop_toTopOf="@+id/Bank_edit" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Account_edit" />
+
                 <EditText
-                    android:layout_marginTop="10dp"
                     android:id="@+id/Bank_edit"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@drawable/login_edittext"
+                    android:background="@drawable/edge_bottom_gray"
                     android:ems="10"
                     android:hint="국민은행"
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/Account"
-                    app:layout_constraintTop_toBottomOf="@+id/Account_edit" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Bank" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
