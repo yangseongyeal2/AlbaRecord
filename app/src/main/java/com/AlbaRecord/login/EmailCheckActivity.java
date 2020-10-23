@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class EmailCheckActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "EmailCheckActivity";
@@ -28,6 +29,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
 
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
+    private FirebaseAuth mAuth= FirebaseAuth.getInstance();;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class EmailCheckActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View view) {
         if (view == emailCheckLogout) {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic(mAuth.getCurrentUser().getUid());
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, LoginWayActivity.class));
             finish();

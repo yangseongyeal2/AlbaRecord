@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Employ.EmployeeEvaluateDeatailActivity"></activity>
+        <activity android:name=".Accept.FireAcceptActivity"></activity>
+        <activity android:name=".Employ.EmployeeEvaluateDeatailActivity" />
         <activity android:name=".Employ.ShowBossDetailActivity" />
         <activity android:name=".Employ.BossExEvaluateActivity" />
         <activity android:name=".Employ.MyBrandActivity" />

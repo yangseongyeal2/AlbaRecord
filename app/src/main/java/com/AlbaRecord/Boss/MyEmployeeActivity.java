@@ -54,7 +54,7 @@ public class MyEmployeeActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
                             myEmploy.add(employeeModel);
-                            EmplyeeInfoAdapter emplyeeInfoAdapter=new EmplyeeInfoAdapter(myEmploy,MyEmployeeActivity.this,MyEmployeeActivity.this);
+                            EmplyeeInfoAdapter emplyeeInfoAdapter=new EmplyeeInfoAdapter(myEmploy,MyEmployeeActivity.this,MyEmployeeActivity.this,bossModel);
                             myalba_recyclerview.setAdapter(emplyeeInfoAdapter);
                         }
                     });

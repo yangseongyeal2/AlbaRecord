@@ -61,13 +61,6 @@ public class LoginWayActivity extends AppCompatActivity implements View.OnClickL
                         finish();
                     }
                 });
-                FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Log.d("구독하기", "성공");
-                    }
-                });
-
             }else{
                 startActivity(new Intent(getApplicationContext(), EmailCheckActivity.class)); //추가해 줄 ProfileActivity
             }

@@ -30,6 +30,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
@@ -46,6 +48,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -67,6 +70,9 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_main);
+        //구독하기
+        FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid());
+
         db.collection("users")
                 .document(mAuth.getCurrentUser().getUid())
                 .get()
@@ -145,24 +151,24 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
         mapFragment.getMapAsync(this);//Onmapready메소드 호출
 
 
-//        FirebaseInstanceId.getInstance().getInstanceId()
-//                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-//                        if (!task.isSuccessful()) {
-//                            Log.w(TAG, "getInstanceId failed", task.getException());
-//                            return;
-//                        }
-//
-//                        // Get new Instance ID token
-//                        String token = task.getResult().getToken();
-//
-//                        // Log and toast
-//                       // String msg = getString(R.string.msg_token_fmt, token);
-//                        Log.d(TAG, token);
-//                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        // Log and toast
+                       // String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d("보스토큰", token);
+                        Toast.makeText(BossMainActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
 
@@ -227,6 +233,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
 
         switch (v.getId()) {
             case R.id.logout:
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(mAuth.getCurrentUser().getUid());
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
                 finish();

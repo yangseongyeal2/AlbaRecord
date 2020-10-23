@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.AlbaRecord.Adapter.EvaluateAdapter;
 import com.AlbaRecord.Employ.EmployeeBossSearchActivity;
@@ -16,6 +17,11 @@ import com.AlbaRecord.Model.BossModel;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Model.EvaluateModel;
 import com.AlbaRecord.R;
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,15 +31,22 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShowEmployeeDetailActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     String DocumentId;;
     RecyclerView recyclerView;
     EvaluateModel evaluateModel;
     BossModel bossModel;
+
 
 
 
@@ -43,6 +56,7 @@ public class ShowEmployeeDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_employee_detail);
         DocumentId=getIntent().getStringExtra("DocumentId");
         recyclerView=findViewById(R.id.recyclerView);
+
         RetreiveMyInfo();
 
     }
@@ -92,4 +106,8 @@ public class ShowEmployeeDetailActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
+
+
 }

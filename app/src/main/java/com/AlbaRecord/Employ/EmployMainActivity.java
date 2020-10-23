@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.AlbaRecord.Board.BoardActivity;
 import com.AlbaRecord.Boss.BossMainActivity;
@@ -32,6 +33,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
@@ -58,12 +61,15 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
+    String mToken;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employ_main);
+        //구독하기
+        FirebaseMessaging.getInstance().subscribeToTopic(mAuth.getCurrentUser().getUid());
 
         db.collection("users")
                 .document(mAuth.getCurrentUser().getUid())
@@ -142,24 +148,26 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         }
         mapFragment.getMapAsync(this);//Onmapready메소드 호출
 
-//        FirebaseInstanceId.getInstance().getInstanceId()
-//                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
-//                        if (!task.isSuccessful()) {
-//                            Log.w(TAG, "getInstanceId failed", task.getException());
-//                            return;
-//                        }
-//
-//                        // Get new Instance ID token
-//                        String token = task.getResult().getToken();
-//
-//                        // Log and toast
-//                       // String msg = getString(R.string.msg_token_fmt, token);
-//                        Log.d(TAG, token);
-//                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        mToken = task.getResult().getToken();
+
+                        // Log and toast
+                        // String msg = getString(R.string.msg_token_fmt, token);
+                        //Log.d("보스토큰", token);
+                     //   Toast.makeText(EmployMainActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+        FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
 
@@ -224,8 +232,11 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         // myhome,myshop,myboss,Q_A,searchBoss,logout;
         switch (v.getId()) {
             case R.id.logout:
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(mAuth.getCurrentUser().getUid());
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(), LoginWayActivity.class));
+
+
                 finish();
                 break;
             case R.id.myhome:
