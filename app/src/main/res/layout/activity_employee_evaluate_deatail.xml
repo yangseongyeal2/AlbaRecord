@@ -257,16 +257,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/edge_textview"
-        android:text="자세한 사항"
+        android:text="#알생COMMENT"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
     <TextView
-        android:id="@+id/SelfIntroduce"
+        android:id="@+id/detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="자세한 사항"
