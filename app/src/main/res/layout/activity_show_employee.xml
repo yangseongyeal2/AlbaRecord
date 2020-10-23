@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/short_background"
     android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/short_background"
         tools:context=".Boss.ShowEmployeeActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/basicinform"
-            android:layout_width="410dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/grayedgebox"
             android:layout_height="219dp"
-            android:layout_marginTop="144dp"
+            android:layout_marginTop="60dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -105,9 +107,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="4dp"
                 android:background="@drawable/btn_main"
                 android:text="찜하기"
                 app:layout_constraintEnd_toEndOf="@+id/selfintrobody"
+                app:layout_constraintStart_toEndOf="@+id/setmyemployee"
                 app:layout_constraintTop_toBottomOf="@+id/selfintrobody" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
