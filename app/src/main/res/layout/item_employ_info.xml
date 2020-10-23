@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/grayedgebox"
+    android:background="@drawable/graybox"
     android:padding="16dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
@@ -23,7 +23,7 @@
         android:id="@+id/name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="이름:"
         app:layout_constraintStart_toStartOf="@+id/photo"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
@@ -33,10 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorBlack"
+        android:layout_marginTop="8dp"
         android:text="홍길동"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/name_text"
         app:layout_constraintTop_toBottomOf="@+id/photo" />
 
@@ -62,51 +62,62 @@
         app:layout_constraintStart_toEndOf="@+id/age_text"
         app:layout_constraintTop_toBottomOf="@+id/name_text" />
 
-    <TextView
-        android:id="@+id/positionis"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="4dp"
+        android:id="@+id/constraintLayout10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="직급 :"
-        android:textSize="16sp"
+        android:background="@drawable/grayedgebox"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/photo"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/photo">
 
-    <EditText
-        android:id="@+id/position"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:hint="알바/직원/매니저/등등"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/positionis"
-        app:layout_constraintStart_toEndOf="@+id/positionis"
-        app:layout_constraintTop_toTopOf="@+id/positionis" />
+        <TextView
+            android:id="@+id/positionis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="직급 :"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/setposition"
-        android:layout_width="50dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="5sp"
-        android:background="@drawable/btn_main"
-        android:text="저장"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/position"
-        app:layout_constraintStart_toEndOf="@+id/position"
-        app:layout_constraintTop_toTopOf="@+id/position" />
+        <EditText
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="알바/직원/매니저/등등"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/positionis"
+            app:layout_constraintStart_toEndOf="@+id/positionis"
+            app:layout_constraintTop_toTopOf="@+id/positionis" />
 
+        <Button
+            android:id="@+id/setposition"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5sp"
+            android:background="@drawable/btn_main"
+            android:text="저장"
+            app:layout_constraintBottom_toBottomOf="@+id/position"
+            app:layout_constraintStart_toEndOf="@+id/position"
+            app:layout_constraintTop_toTopOf="@+id/position" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/worklongis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:text="근무시작 :"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/workstart"
-        app:layout_constraintStart_toStartOf="@+id/positionis"
-        app:layout_constraintTop_toBottomOf="@+id/positionis" />
+        app:layout_constraintStart_toEndOf="@+id/photo"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout10" />
 
 
     <TextView
@@ -115,7 +126,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:hint="입력하려면 클릭"
-        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/worklongis"
         app:layout_constraintTop_toTopOf="@+id/worklongis" />
 
@@ -124,10 +134,10 @@
         android:id="@+id/phoneis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:text="연락처 :"
         app:layout_constraintStart_toStartOf="@+id/worklongis"
-        app:layout_constraintTop_toBottomOf="@+id/workstart" />
+        app:layout_constraintTop_toBottomOf="@+id/worklongis" />
 
 
     <TextView
@@ -143,9 +153,8 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:text="계좌정보"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/phoneis"
         app:layout_constraintTop_toBottomOf="@+id/phoneis" />
 
@@ -153,23 +162,20 @@
         android:id="@+id/AccountInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+
+
         android:text="77880204189882 국민은행"
-
-
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/photo"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
         android:id="@+id/account_save"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_main"
-        android:text="복사하기"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/photo"
+        android:background="@drawable/grayedgebox"
+        android:text="계좌번호 복사"
+        app:layout_constraintStart_toStartOf="@+id/AccountInfo"
         app:layout_constraintTop_toBottomOf="@+id/AccountInfo" />
 
     <Button
