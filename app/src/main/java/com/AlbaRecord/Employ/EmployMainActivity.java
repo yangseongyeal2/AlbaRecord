@@ -2,10 +2,12 @@ package com.AlbaRecord.Employ;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,13 +16,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.AlbaRecord.Board.BoardActivity;
+import com.AlbaRecord.Boss.BossMainActivity;
+import com.AlbaRecord.Boss.ShowEmployeeActivity;
+import com.AlbaRecord.Boss.ShowEmployeeDetailActivity;
 import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -41,12 +49,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployMainActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
-    private final String TAG="메인액티비티";
+    private final String TAG = "메인액티비티";
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Button myhome,myshop,myboss,Q_A,searchBoss,logout,Alram,MyPage,salary;
+    private Button myhome, myshop, myboss, Q_A, searchBoss, logout, Alram, MyPage, salary;
     private MapView map_view;
     private NaverMap naverMap;
     List<BossModel> bosslist = new ArrayList<>();
@@ -56,6 +64,34 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employ_main);
+
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                EmployeeModel employeeModel=documentSnapshot.toObject(EmployeeModel.class);
+                Log.d("로그인확인",String.valueOf(employeeModel.getFlag()));
+                if (employeeModel.getFlag()==0){
+                    AlertDialog.Builder ad = new AlertDialog.Builder(EmployMainActivity.this);
+                    ad.setIcon(R.drawable.main);
+                    ad.setTitle("로그인 방법 확인요망");
+                    ad.setMessage("이 계정은 사장님 ID입니다.사장님 화면으로 이동하겠습니다.");
+                    ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), BossMainActivity.class));
+                            dialog.dismiss();
+                        }
+                    });
+                    ad.show();
+                }
+            }
+        });
+
+
         initToolBar();
         initViewId();
         //String adress=getIntent().getStringExtra("주소");
@@ -69,11 +105,6 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         Alram.setOnClickListener(this);
         MyPage.setOnClickListener(this);
         salary.setOnClickListener(this);
-
-
-
-
-
 
 
 //        try{      //해쉬키 얻는 코드
@@ -132,8 +163,7 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
 
 
-       // refreshLatLon();
-
+        // refreshLatLon();
 
 
     }
@@ -166,15 +196,14 @@ public class EmployMainActivity extends AppCompatActivity implements View.OnClic
 
 
     private void initViewId() {
-        myhome=(Button)findViewById(R.id.myhome);
-        myshop=(Button)findViewById(R.id.myshop);
-        myboss=(Button)findViewById(R.id.myboss);
-        Q_A=(Button)findViewById(R.id.Q_A);
-        searchBoss=(Button)findViewById(R.id.searchBoss);
-        Alram=(Button)findViewById(R.id.Alram);
-        MyPage=(Button)findViewById(R.id.MyPage);
-        salary=(Button)findViewById(R.id.salary);
-
+        myhome = (Button) findViewById(R.id.myhome);
+        myshop = (Button) findViewById(R.id.myshop);
+        myboss = (Button) findViewById(R.id.myboss);
+        Q_A = (Button) findViewById(R.id.Q_A);
+        searchBoss = (Button) findViewById(R.id.searchBoss);
+        Alram = (Button) findViewById(R.id.Alram);
+        MyPage = (Button) findViewById(R.id.MyPage);
+        salary = (Button) findViewById(R.id.salary);
 
 
     }

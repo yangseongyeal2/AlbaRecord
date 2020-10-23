@@ -1,26 +1,32 @@
 package com.AlbaRecord.Boss;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import com.AlbaRecord.Board.BoardActivity;
+import com.AlbaRecord.Employ.EmployMainActivity;
 import com.AlbaRecord.Model.BossModel;
+import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.Notification.AlramActivity;
 import com.AlbaRecord.R;
 import com.AlbaRecord.Employ.SalaryActivity;
 import com.AlbaRecord.login.LoginWayActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -61,6 +67,33 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss_main);
+        db.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        BossModel bossModel=documentSnapshot.toObject(BossModel.class);
+                        Log.d("로그인확인",String.valueOf(bossModel.getFlag()));
+                        if (bossModel.getFlag()==1){
+                            AlertDialog.Builder ad = new AlertDialog.Builder(BossMainActivity.this);
+                            ad.setIcon(R.mipmap.ic_launcher);
+                            ad.setTitle("로그인 방법 확인요망");
+                            ad.setMessage("이 계정은 직원님 ID입니다.직원님 화면으로 이동하겠습니다.");
+                            ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    finish();
+                                    startActivity(new Intent(getApplicationContext(), EmployMainActivity.class));
+                                    dialog.dismiss();
+                                }
+                            });
+                            ad.show();
+                        }
+                    }
+                });
+
+
         initToolBar();
         initViewId();
         //String adress=getIntent().getStringExtra("주소");
