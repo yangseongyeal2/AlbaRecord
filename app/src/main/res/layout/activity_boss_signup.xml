@@ -14,21 +14,24 @@
 
 
         <TextView
+            android:textColor="#000000"
+            android:id="@+id/bosssignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:id="@+id/bosssignup"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="사장님 회원가입"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:background="@drawable/edge_bottom_gray"
             android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="60dp"
             android:padding="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,24 +56,24 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="16dp"
                 android:text="Email:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/email_edittext"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/email_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/information_textview" />
 
             <EditText
                 android:id="@+id/email_edittext"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edge_bottom_gray"
                 android:layout_height="40dp"
-                android:layout_marginTop="10sp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/eamil"
-                app:layout_constraintTop_toBottomOf="@+id/information_textview"
-                android:background="@drawable/login_edittext"/>
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/eamil"
+                app:layout_constraintTop_toBottomOf="@+id/eamil" />
 
             <TextView
 
@@ -78,24 +81,23 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="8dp"
                 android:text="Password:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/password_edittext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
 
             <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_edittext"
                 android:id="@+id/password_edittext"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/password"
-                app:layout_constraintTop_toBottomOf="@+id/email_edittext" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password" />
 
             <TextView
 
@@ -103,24 +105,23 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="8dp"
                 android:text="Password:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/password_re_edittext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
 
             <EditText
-                android:background="@drawable/login_edittext"
                 android:id="@+id/password_re_edittext"
-                android:layout_width="250dp"
                 android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/password"
-                app:layout_constraintTop_toBottomOf="@+id/password_edittext"
-                android:layout_marginTop="10dp"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_re" />
 
             <TextView
                 android:id="@+id/phone"
@@ -128,25 +129,25 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
 
+                android:layout_marginTop="8dp"
                 android:text="전화번호:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/phone_edittext"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
 
 
             <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_edittext"
                 android:id="@+id/phone_edittext"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
                 android:inputType="phone"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/password"
-                app:layout_constraintTop_toBottomOf="@+id/password_re_edittext" />
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -168,7 +169,6 @@
                 android:text="사장님정보"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
-                app:layout_constraintBottom_toTopOf="@+id/name_edittext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -178,48 +178,47 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="20dp"
                 android:text="이름:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/brand_edittext"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/name_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />
 
             <EditText
-                android:background="@drawable/login_edittext"
                 android:id="@+id/name_edittext"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10sp"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/name"
-                app:layout_constraintTop_toBottomOf="@+id/bossinformation_textview" />
+                app:layout_constraintHorizontal_bias="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/name" />
 
             <TextView
                 android:id="@+id/brand"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="8dp"
                 android:text="상호명:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/brand_edittext"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/brand_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
 
             <EditText
-                android:layout_marginTop="10dp"
-                android:background="@drawable/login_edittext"
                 android:id="@+id/brand_edittext"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/brand"
-                app:layout_constraintTop_toBottomOf="@+id/name_edittext" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/brand" />
 
 
             <TextView
@@ -227,57 +226,58 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="8dp"
                 android:text="주소:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/address_result"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/address_result" />
+                app:layout_constraintTop_toBottomOf="@+id/brand_edittext" />
 
 
             <TextView
                 android:id="@+id/address_result"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
 
-                app:layout_constraintStart_toEndOf="@+id/address"
-                app:layout_constraintTop_toBottomOf="@+id/brand_edittext"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:background="@drawable/edge_bottom_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
 
             <Button
                 android:id="@+id/address_button"
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:text="검색"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/address_result"
+                app:layout_constraintEnd_toEndOf="@+id/address_result"
                 app:layout_constraintTop_toBottomOf="@+id/address_result" />
 
 
             <TextView
                 android:id="@+id/business"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
+                android:layout_marginTop="11dp"
                 android:text="사업자등록번호:"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/business_edittext"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/business_edittext" />
+                app:layout_constraintTop_toBottomOf="@+id/address_button" />
 
             <EditText
-                android:background="@drawable/login_edittext"
                 android:id="@+id/business_edittext"
-                android:layout_width="250dp"
                 android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edge_bottom_gray"
                 android:ems="10"
 
                 android:inputType="number"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/business"
-                app:layout_constraintTop_toBottomOf="@+id/address_button" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/business" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
