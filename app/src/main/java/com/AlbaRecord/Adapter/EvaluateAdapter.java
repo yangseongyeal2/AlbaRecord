@@ -68,7 +68,7 @@ public class EvaluateAdapter  extends RecyclerView.Adapter<EvaluateAdapter.Evalu
     @Override
     public void onBindViewHolder(@NonNull EvaluateAdapter.EvaluateViewHolder holder, int position) {
         EvaluateModel evaluateModel=evaluateModels.get(position);
-        String carrer="경력"+ position;
+        String carrer="경력"+ (position+1);
         holder.carrer.setText(carrer);
         holder.brandname.setText(evaluateModel.getBrandname());
         holder.carrerlong.setText(evaluateModel.getDate_text());
