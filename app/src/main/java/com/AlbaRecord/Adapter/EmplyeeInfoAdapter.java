@@ -152,7 +152,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
             public void onClick(View v) {
                 if (holder.position.getText().toString().trim().isEmpty()) {
                     AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
-                    ad.setIcon(R.mipmap.ic_launcher);
+                    ad.setIcon(R.drawable.main);
                     ad.setTitle("직원의 직급");
                     ad.setMessage("직원의 직급을 적어주십시오");
                     ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
@@ -250,7 +250,7 @@ public class EmplyeeInfoAdapter extends RecyclerView.Adapter<EmplyeeInfoAdapter.
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
-                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setIcon(R.drawable.main);
                 ad.setTitle("직원 해고");
                 ad.setMessage("이 직원을 해고 하시겠습니까?");
                 ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
