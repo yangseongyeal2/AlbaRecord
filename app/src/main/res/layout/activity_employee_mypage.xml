@@ -1,462 +1,469 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    >
-
-
-<androidx.constraintlayout.widget.ConstraintLayout
-
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/short_background"
-    android:padding="16dp"
-    tools:context=".Employ.EmployeeMypageActivity">
+    android:layout_height="match_parent">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:background="@drawable/grayedgebox"
+        android:layout_height="match_parent"
+        android:background="@drawable/short_background"
         android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".Employ.EmployeeMypageActivity">
 
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="97dp"
-            android:layout_height="20dp"
-            android:background="@drawable/btn_main"
-            android:gravity="center_horizontal"
-            android:text="기본정보"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:background="@drawable/grayedgebox"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/photo"
-            android:layout_width="120dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <Button
-            android:id="@+id/setphoto"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/graybox"
-            android:text="사진변경"
-            app:layout_constraintEnd_toEndOf="@+id/photo"
-            app:layout_constraintStart_toStartOf="@+id/photo"
-            app:layout_constraintTop_toBottomOf="@+id/photo" />
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="16dp"
-            android:text="이름 :"
-            app:layout_constraintStart_toEndOf="@+id/photo"
-            app:layout_constraintTop_toTopOf="@+id/photo" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            app:layout_constraintStart_toEndOf="@+id/textView11"
-            app:layout_constraintTop_toTopOf="@+id/textView11" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="16dp"
-            android:text="나이 :"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-        <TextView
-            android:id="@+id/age"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text=""
-            app:layout_constraintStart_toEndOf="@+id/textView14"
-            app:layout_constraintTop_toTopOf="@+id/textView14" />
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="60dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="16dp"
-            android:text="비밀번호 :"
-            app:layout_constraintStart_toStartOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-        <Button
-            android:id="@+id/setpassword"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/graybox"
-            android:text="비밀번호 변경"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
-
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="주소 :"
-            app:layout_constraintStart_toEndOf="@+id/photo"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/grayedgebox"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView17" />
-
-        <Button
-            android:id="@+id/setaddress"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/graybox"
-            android:text="변경"
-            app:layout_constraintEnd_toEndOf="@+id/address"
-            app:layout_constraintTop_toBottomOf="@+id/address" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:text="학력 :"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/education" />
-
-        <EditText
-            android:id="@+id/education"
-            android:layout_width="150dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/grayedgebox"
-            app:layout_constraintStart_toStartOf="@+id/address"
-            app:layout_constraintTop_toBottomOf="@+id/setaddress" />
-
-
-        <Button
-            android:id="@+id/seteducation"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/graybox"
-            android:text="변경"
-            app:layout_constraintEnd_toEndOf="@+id/education"
-            app:layout_constraintTop_toBottomOf="@+id/education" />
-        <TextView
-            android:id="@+id/account"
-            android:layout_width="38dp"
-            android:layout_height="21dp"
-            android:text="계좌 :"
-            app:layout_constraintStart_toStartOf="@+id/textView16"
-            app:layout_constraintTop_toTopOf="@+id/account_text" />
-
-        <TextView
-            android:id="@+id/account_text"
-            android:layout_width="150dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/grayedgebox"
-            app:layout_constraintStart_toStartOf="@+id/address"
-            app:layout_constraintTop_toBottomOf="@+id/seteducation" />
-
-        <Button
-            android:id="@+id/setAccount"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/graybox"
-            android:text="변경"
-            app:layout_constraintEnd_toEndOf="@+id/education"
-            app:layout_constraintTop_toBottomOf="@+id/account_text" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/grayedgebox"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
-
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:background="@drawable/btn_main"
-            android:gravity="center_horizontal"
-            android:text="자기소개"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="자격증"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="recyclerview 어려워요............."
-            app:layout_constraintEnd_toEndOf="@+id/textView9"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="97dp"
+                android:layout_height="20dp"
+                android:background="@drawable/btn_main"
+                android:gravity="center_horizontal"
+                android:text="기본정보"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <Button
+                android:id="@+id/setphoto"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/graybox"
+                android:text="사진변경"
+                app:layout_constraintEnd_toEndOf="@+id/photo"
+                app:layout_constraintStart_toStartOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/photo" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="38dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:text="이름 :"
+                app:layout_constraintStart_toEndOf="@+id/photo"
+                app:layout_constraintTop_toTopOf="@+id/photo" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@+id/textView11"
+                app:layout_constraintTop_toTopOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="38dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="16dp"
+                android:text="나이 :"
+                app:layout_constraintStart_toStartOf="@+id/textView11"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text=""
+                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="60dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="16dp"
+                android:text="비밀번호 :"
+                app:layout_constraintStart_toStartOf="@+id/textView14"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+            <Button
+                android:id="@+id/setpassword"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/graybox"
+                android:text="비밀번호 변경"
+                app:layout_constraintStart_toEndOf="@+id/textView15"
+                app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="38dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="주소 :"
+                app:layout_constraintStart_toEndOf="@+id/photo"
+                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/grayedgebox"
+                app:layout_constraintStart_toEndOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+            <Button
+                android:id="@+id/setaddress"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/graybox"
+                android:text="변경"
+                app:layout_constraintEnd_toEndOf="@+id/address"
+                app:layout_constraintTop_toBottomOf="@+id/address" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="38dp"
+                android:layout_height="21dp"
+                android:text="학력 :"
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toTopOf="@+id/education" />
+
+            <EditText
+                android:id="@+id/education"
+                android:layout_width="150dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/grayedgebox"
+                app:layout_constraintStart_toStartOf="@+id/address"
+                app:layout_constraintTop_toBottomOf="@+id/setaddress" />
+
+
+            <Button
+                android:id="@+id/seteducation"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/graybox"
+                android:text="변경"
+                app:layout_constraintEnd_toEndOf="@+id/education"
+                app:layout_constraintTop_toBottomOf="@+id/education" />
+
+            <TextView
+                android:id="@+id/account"
+                android:layout_width="38dp"
+                android:layout_height="21dp"
+                android:text="계좌 :"
+                app:layout_constraintStart_toStartOf="@+id/textView16"
+                app:layout_constraintTop_toTopOf="@+id/account_text" />
+
+            <TextView
+                android:id="@+id/account_text"
+                android:layout_width="150dp"
+                android:layout_height="22dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/grayedgebox"
+                app:layout_constraintStart_toStartOf="@+id/address"
+                app:layout_constraintTop_toBottomOf="@+id/seteducation" />
+
+            <Button
+                android:id="@+id/setAccount"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/graybox"
+                android:text="변경"
+                app:layout_constraintEnd_toEndOf="@+id/education"
+                app:layout_constraintTop_toBottomOf="@+id/account_text" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout7"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="자기소개"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        <EditText
-            android:id="@+id/SelfIntroduce"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
             android:background="@drawable/grayedgebox"
-            app:layout_constraintStart_toStartOf="@+id/textView1"
-            app:layout_constraintTop_toBottomOf="@+id/textView1" />
-
-        <Button
-            android:id="@+id/setSelfInroduce"
-            android:layout_width="70dp"
-            android:layout_height="30dp"
-            android:background="@drawable/graybox"
-            android:text="수정"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/SelfIntroduce" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:background="@drawable/btn_main"
+                android:gravity="center_horizontal"
+                android:text="자기소개"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자격증"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <!--        <TextView-->
+            <!--            android:id="@+id/textView10"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text="recyclerview 어려워요............."-->
+            <!--            app:layout_constraintEnd_toEndOf="@+id/textView9"-->
+            <!--            app:layout_constraintHorizontal_bias="0.0"-->
+            <!--            app:layout_constraintStart_toStartOf="@+id/textView9"-->
+            <!--            app:layout_constraintTop_toBottomOf="@+id/textView9" />-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="자기소개"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+            <EditText
+                android:id="@+id/SelfIntroduce"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/grayedgebox"
+                app:layout_constraintStart_toStartOf="@+id/textView1"
+                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+            <Button
+                android:id="@+id/setSelfInroduce"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:background="@drawable/graybox"
+                android:text="수정"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SelfIntroduce" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginTop="16dp"-->
+        <!--        android:background="@drawable/grayedgebox"-->
+        <!--        android:padding="16dp"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/button"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:background="@drawable/btn_main"-->
+        <!--            android:padding="4dp"-->
+        <!--            android:text=" 내가 받은 후기 ▼ "-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--            android:background="@drawable/grayedgebox"-->
+        <!--            android:padding="16dp"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/button">-->
+
+        <!--            <ImageView-->
+        <!--                android:id="@+id/photo1"-->
+        <!--                android:layout_width="100dp"-->
+        <!--                android:layout_height="100dp"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                tools:srcCompat="@tools:sample/avatars" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/name1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="이재은"-->
+        <!--                app:layout_constraintStart_toStartOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/photo1" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/rank1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:text="알바생"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/name1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/name1" />-->
+
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView27"-->
+        <!--                android:layout_width="100dp"-->
+        <!--                android:layout_height="100dp"-->
+        <!--                android:text="여기따 오각형 !!"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView29"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginTop="8dp"-->
+        <!--                android:text="평균"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/average1"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/textView27" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/average1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="(평균점수)"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/textView30"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/textView29" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView30"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="점"-->
+        <!--                app:layout_constraintEnd_toEndOf="@+id/textView27"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/average1" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/content1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="4dp"-->
+        <!--                android:text="근면성: "-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/photo1" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/diligence1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="15"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/content1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/content2"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="4dp"-->
+        <!--                android:layout_marginTop="24dp"-->
+        <!--                android:text="상황대처능력: "-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/flexibility1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="15"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/content2"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/content3"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="4dp"-->
+        <!--                android:layout_marginTop="24dp"-->
+        <!--                android:text="업무습득력: "-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/mastery1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="15"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/content3"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/content4"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="4dp"-->
+        <!--                android:layout_marginTop="24dp"-->
+        <!--                android:text="근무태도: "-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/attitude1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="15"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/content4"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/textView28"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="20dp"-->
+        <!--                android:layout_marginStart="4dp"-->
+        <!--                android:layout_marginTop="24dp"-->
+        <!--                android:text="커뮤니케이션: "-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
+
+        <!--            <TextView-->
+        <!--                android:id="@+id/communication1"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="15"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/textView28"-->
+        <!--                app:layout_constraintTop_toTopOf="@+id/textView28" />-->
+
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:background="@drawable/grayedgebox"-->
-<!--        android:padding="16dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/button"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:background="@drawable/btn_main"-->
-<!--            android:padding="4dp"-->
-<!--            android:text=" 내가 받은 후기 ▼ "-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:background="@drawable/grayedgebox"-->
-<!--            android:padding="16dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/button">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/photo1"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                tools:srcCompat="@tools:sample/avatars" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/name1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="이재은"-->
-<!--                app:layout_constraintStart_toStartOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/photo1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/rank1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:text="알바생"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/name1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/name1" />-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView27"-->
-<!--                android:layout_width="100dp"-->
-<!--                android:layout_height="100dp"-->
-<!--                android:text="여기따 오각형 !!"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView29"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:text="평균"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/average1"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/textView27" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/average1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="(평균점수)"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/textView30"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/textView29" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView30"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="점"-->
-<!--                app:layout_constraintEnd_toEndOf="@+id/textView27"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/average1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:text="근면성: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/photo1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/diligence1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content2"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="상황대처능력: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content1" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/flexibility1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content2"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content3"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="업무습득력: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content2" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/mastery1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content3"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/content4"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="근무태도: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content3" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/attitude1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/content4"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/textView28"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="20dp"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:text="커뮤니케이션: "-->
-<!--                app:layout_constraintStart_toEndOf="@+id/photo1"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/content4" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/communication1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="15"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/textView28"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/textView28" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

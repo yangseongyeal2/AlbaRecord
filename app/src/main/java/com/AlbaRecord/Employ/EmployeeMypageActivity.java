@@ -3,6 +3,7 @@ package com.AlbaRecord.Employ;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.ClipData;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.AlbaRecord.Adapter.CertificateAdapter;
 import com.AlbaRecord.Boss.BossMypageActivity;
 import com.AlbaRecord.Model.EmployeeModel;
 import com.AlbaRecord.R;
@@ -35,6 +37,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Objects;
 
@@ -51,6 +54,7 @@ public class EmployeeMypageActivity extends AppCompatActivity implements View.On
     Uri downloadUri;
     String changedAdress="";
     String AccountInfo="";
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,9 @@ public class EmployeeMypageActivity extends AppCompatActivity implements View.On
                 SelfIntroduce.setText(employeeModel.getSelf_introduce());
                 AccountInfo=employeeModel.getAccount()+" "+employeeModel.getBank();
                 account_text.setText(AccountInfo);
+                ArrayList<String>arr =employeeModel.getLicenses();
+                CertificateAdapter certificateAdapter=new CertificateAdapter(arr);
+                recyclerView.setAdapter(certificateAdapter);
 
 
             }
@@ -120,6 +127,7 @@ public class EmployeeMypageActivity extends AppCompatActivity implements View.On
         account_text.setOnClickListener(this);
         setAccount=findViewById(R.id.setAccount);
         setAccount.setOnClickListener(this);
+        recyclerView=findViewById(R.id.recyclerView);
 
 
     }
