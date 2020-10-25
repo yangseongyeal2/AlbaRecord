@@ -95,6 +95,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     if (pos != RecyclerView.NO_POSITION) {
                         if (mListener != null) {
                             mListener.onitemClick(v, pos);
+
                         }
                     }
                 }

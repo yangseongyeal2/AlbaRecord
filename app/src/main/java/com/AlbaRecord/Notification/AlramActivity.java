@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.AlbaRecord.Accept.AcceptActivity;
 import com.AlbaRecord.Adapter.NotificationAdapter;
 import com.AlbaRecord.Board.DetailActivity;
 import com.AlbaRecord.Model.NotiInfo;
@@ -53,11 +54,13 @@ public class AlramActivity extends AppCompatActivity {
                     mNotificationAdapter.setOnIemlClickListner(new NotificationAdapter.OnItemClickListener() {
                         @Override
                         public void onitemClick(View v, int pos) {
-//                            Log.d("클릭","내가쓴글:"+String.valueOf(pos));
-//                            Intent intent=new Intent(getApplicationContext(), DetailActivity.class);
-//                            intent.putExtra("DocumentId",list.get(pos).getDocumentId());
-//                            intent.putExtra("BoardName",list.get(pos).getBoardName());
-//                            startActivity(intent);
+                            NotiInfo notiInfo=list.get(pos);
+                            if (notiInfo.getFlag().equals("0")){
+                                Intent acceptIntent=new Intent(getApplicationContext(), AcceptActivity.class);
+                                acceptIntent.putExtra("DocumentId",notiInfo.getDocumentId());
+                                acceptIntent.putExtra("flag",notiInfo.getFlag());
+                                startActivity(acceptIntent);
+                            }
                         }
                     });
                     Alram_RecyclerView.setAdapter(mNotificationAdapter);
