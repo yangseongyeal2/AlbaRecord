@@ -136,7 +136,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                                 Log.d(TAG,"실패");
                                 //다이어로그 추가
                                 AlertDialog.Builder ad = new AlertDialog.Builder(ShowEmployeeActivity.this);
-                                ad.setIcon(R.mipmap.ic_launcher);
+                                ad.setIcon(R.drawable.main);
                                 ad.setTitle("이메일이 존재하지 않습니다");
                                 ad.setMessage("직원의 이메일을 다시한번 확인해서 작성해주십시오");
                                 ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -176,7 +176,7 @@ public class ShowEmployeeActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.setmyemployee:
                 AlertDialog.Builder ad = new AlertDialog.Builder(ShowEmployeeActivity.this);
-                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setIcon(R.drawable.main);
                 ad.setTitle("직원 채용이 확정되었습니까?");
                 ad.setMessage("직원에게 신청서를 보내시겠습니까?");
                 ad.setPositiveButton("예", new DialogInterface.OnClickListener() {
