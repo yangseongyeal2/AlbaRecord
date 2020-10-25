@@ -55,7 +55,7 @@ public class ShowBossDetailActivity extends AppCompatActivity {
                 if(!flag) {
                     //다이어로그 추가
                     AlertDialog.Builder ad = new AlertDialog.Builder(ShowBossDetailActivity.this);
-                    ad.setIcon(R.mipmap.ic_launcher);
+                    ad.setIcon(R.drawable.main);
                     ad.setTitle("사장 평가");
                     ad.setMessage("아직 사장님에 대한 평가가 이루어지지 않았습니다.");
                     ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {

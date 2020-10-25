@@ -165,7 +165,7 @@ public class EmployeeMypageActivity extends AppCompatActivity implements View.On
                                     progressDialog.dismiss();
 //                                    Toast.makeText(FindActivity.this, "이메일을 보냈습니다.", Toast.LENGTH_LONG).show();
                                     AlertDialog.Builder ad = new AlertDialog.Builder(EmployeeMypageActivity.this);
-                                    ad.setIcon(R.mipmap.ic_launcher);
+                                    ad.setIcon(R.drawable.main);
                                     ad.setTitle("비밀번호 재설정");
                                     ad.setMessage("본인의 Email에 비밀번호 재설정 Link를 보냈습니다");
                                     ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {

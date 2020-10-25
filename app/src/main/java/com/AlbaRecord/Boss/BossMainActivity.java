@@ -83,7 +83,7 @@ public class BossMainActivity extends AppCompatActivity implements View.OnClickL
                         Log.d("로그인확인",String.valueOf(bossModel.getFlag()));
                         if (bossModel.getFlag()==1){
                             AlertDialog.Builder ad = new AlertDialog.Builder(BossMainActivity.this);
-                            ad.setIcon(R.mipmap.ic_launcher);
+                            ad.setIcon(R.drawable.main);
                             ad.setTitle("로그인 방법 확인요망");
                             ad.setMessage("이 계정은 직원님 ID입니다.직원님 화면으로 이동하겠습니다.");
                             ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {

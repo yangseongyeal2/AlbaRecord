@@ -184,7 +184,7 @@ public class EvaluateEmployeeActivity extends AppCompatActivity implements View.
         switch(v.getId()){
             case R.id.addevaluation:
                 AlertDialog.Builder ad = new AlertDialog.Builder(EvaluateEmployeeActivity.this);
-                ad.setIcon(R.mipmap.ic_launcher);
+                ad.setIcon(R.drawable.main);
                 ad.setTitle("직원 평가");
                 ad.setMessage("직원 평가를 저장하시겠습니까 ?\n(한달내에 수정 가능합니다.)");
                 ad.setPositiveButton("예", new DialogInterface.OnClickListener() {

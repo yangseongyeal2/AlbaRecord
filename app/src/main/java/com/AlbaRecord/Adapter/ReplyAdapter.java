@@ -193,7 +193,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<ReplyAdapter.ReplyViewHol
             @Override
             public void onClick(View v) {//대댓글 다이어로그 실행.
                 AlertDialog.Builder ad = new AlertDialog.Builder(mContext);
-                //ad.setIcon(R.mipmap.ic_launcher);
+                ad.setIcon(R.drawable.main);
                 //ad.setTitle("제목");
                 ad.setMessage("대댓글을 실행하시겠습니까?");
                 //yes or no

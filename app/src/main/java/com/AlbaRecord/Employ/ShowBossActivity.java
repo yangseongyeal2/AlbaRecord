@@ -62,7 +62,7 @@ public class ShowBossActivity extends AppCompatActivity implements OnItemClick {
                     if(!flag){
                         //다이어로그 추가
                         AlertDialog.Builder ad = new AlertDialog.Builder(ShowBossActivity.this);
-                        ad.setIcon(R.mipmap.ic_launcher);
+                        ad.setIcon(R.drawable.main);
                         ad.setTitle("상호명이 존재하지않습니다");
                         ad.setMessage("상호명을 다시한번 확인해서 작성해주십시오");
                         ad.setPositiveButton("확인", new DialogInterface.OnClickListener() {
