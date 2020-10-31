@@ -216,7 +216,7 @@ public class ReplyAdapter extends RecyclerView.Adapter<ReplyAdapter.ReplyViewHol
                         assert imm != null;
                         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
                         holder.itemView.setBackgroundColor(Color.GRAY);
-
+//
                         textInputLayout_temp.setEndIconOnClickListener(new View.OnClickListener() {//대댓글 달때
                             @Override
                             public void onClick(View v) {
