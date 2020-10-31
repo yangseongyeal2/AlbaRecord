@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/remove_superficially"
-        android:title="나한태만삭제" />
+        android:title="notihing" />
     <item
         android:id="@+id/remove_firebase"
         android:title="파이어베이스삭제" />

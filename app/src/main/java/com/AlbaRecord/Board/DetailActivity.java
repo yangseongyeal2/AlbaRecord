@@ -580,7 +580,7 @@ public class DetailActivity extends AppCompatActivity implements OnItemClick {
     }
     private void show_menu(View v,String documentId,final String boardname) {
         final FirebaseFirestore mStore = FirebaseFirestore.getInstance();
-        documentReference_reply=mStore.collection(boardname).document(documentId);
+        documentReference_reply=mStore.collection("Board").document(documentId);
         final Context mContext=DetailActivity.this;
         PopupMenu popup = new PopupMenu(mContext, v);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
