@@ -14,7 +14,7 @@ public class BossModel  implements Parcelable {
     private String address;
     private String businessNum;
     private double latitude;
-    private double longtitude;
+    private double longtitude;//
     int flag;//0 : 사장님 1: 직원 2: 관리자
     private String DocumentId;
     private ArrayList<String>MyEmployee;
