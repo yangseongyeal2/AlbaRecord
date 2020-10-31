@@ -100,8 +100,8 @@
 
         <Button
             android:id="@+id/setposition"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_height="20sp"
             android:layout_marginStart="5sp"
             android:background="@drawable/btn_main"
             android:text="저장"
